@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MayTinh</title>
+</head>
+<body>
+<label><h1>Caculator</h1></label>
+<input type="text" id="giatri1">
+<input type="text" id="giatri2"><br><br>
+
+<button onclick="doadd();">ADD(+)</button>
+<button onclick="dosub()">SUB(-)</button>
+<button onclick="domul()">MUL(*)</button>
+<button onclick="dodiv()">DIV(/)</button>
+<p id="result"></p>
+<script>
+    function doadd() {
+        let Result=0;
+        let GT1 = document.getElementById("giatri1");
+        let GT2 = document.getElementById("giatri2");
+        Result = parseInt(GT1.value) + parseInt(GT2.value);
+              document.getElementById("result").innerHTML = "Ket qua phep cong la: " + Result;
+    }
+    function dosub() {
+        let Result=0;
+        let GT1 = document.getElementById("giatri1");
+        let GT2 = document.getElementById("giatri2");
+        Result = parseInt(GT1.value) - parseInt(GT2.value);
+        document.getElementById("result").innerHTML = "Ket qua phep tru la: " + Result;
+    }
+    function domul() {
+        let Result = 0;
+        let GT1 = document.getElementById("giatri1");
+        let GT2 = document.getElementById("giatri2");
+        Result = parseInt(GT1.value) * parseInt(GT2.value);
+        document.getElementById("result").innerHTML = "Ket qua phep nhan la: " + Result;
+    }
+    function dodiv() {
+        let Result = 0;
+        let GT1 = document.getElementById("giatri1");
+        let GT2 = document.getElementById("giatri2");
+        Result = parseInt(GT1.value) / parseInt(GT2.value);
+        document.getElementById("result").innerHTML = "Ket qua phep chia la: " + Result;
+    }
+</script>
+
+</body>
+</html>

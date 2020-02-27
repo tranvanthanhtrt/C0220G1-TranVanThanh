@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MayTinh</title>
+</head>
+<body>
+<label><h1>Caculator</h1></label>
+<input type="text" id="giatri1">
+<input type="text" id="giatri2"><br><br>
+
+<button value="1" name="butt" onclick="docal()">ADD(+)</button>
+<button value="2" name="butt" onclick="docal()">SUB(-)</button>
+<button value="3" name="butt" onclick="docal()">MUL(*)</button>
+<button value="4" name="butt" onclick="docal()">DIV(/)</button>
+<p id="result"></p>
+<script>
+    function docal() {
+        let Result = 0;
+        let GT1 = document.getElementById("giatri1");
+        let GT2 = document.getElementById("giatri2");
+        let DO;
+        let buttons = document.getElementsByName('butt');
+        for (let i = 0; i < buttons.length; i++) {
+            buttons[i].addEventListener("click", function () {
+                DO = buttons[i].value;
+                if (DO === "1") {
+                    Result = parseInt(GT1.value) + parseInt(GT2.value);
+                    document.getElementById("result").innerHTML = "Ket qua phep cong la: " + Result;
+                } else if (DO === "2") {
+                    Result = parseInt(GT1.value) - parseInt(GT2.value);
+                    document.getElementById("result").innerHTML = "Ket qua phep tru la: " + Result;
+                } else if (DO === "3") {
+                    Result = parseInt(GT1.value) * parseInt(GT2.value);
+                    document.getElementById("result").innerHTML = "Ket qua phep nhan la: " + Result;
+                } else if (DO === "4") {
+                    Result = parseInt(GT1.value) / parseInt(GT2.value);
+                    document.getElementById("result").innerHTML = "Ket qua phep chia la: " + Result;
+                }
+            })
+        }
+    }
+
+
+
+
+</script>
+
+</body>
+</html>
