@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let customerName=prompt("Enter Customer Name:");
+    let cmnd=prompt("Enter ID/CMND");
+    let dayofbirth=prompt("Enter day of birth (dd/mm/yyyy)");
+    let email=prompt("Enter Email");
+    let address=prompt("Enter Address");
+    let typeofcus=prompt("Enter type of Customer");
+    let discount=prompt("Enter Discount (%)");
+    let Numofguess=prompt("Enter number of guess");
+    let rentdays=prompt("Enter rent days");
+    let service=prompt("Enter type of Service");
+    let room=prompt("Enter type of Room")
+    let rentservice=100;
+    if (service=="Villa"){
+        rentservice=500;
+    }
+    else if(service=="House") {
+        rentservice=300};
+    let Rent=rentservice* parseInt(rentdays)*(1-parseInt(discount)/100);
+    alert(  "Customer Name: "+customerName+"\n"+
+            "CMND/ID: " +cmnd+"\n"+
+            "Day of Birth: "+dayofbirth+"\n"+
+            "Email: "+email+"\n"+
+            "Address: "+address+"\n"+
+            "Type of Customer: "+typeofcus+"\n"+
+            "Discount: "+discount+" %"+"\n"+
+            "Number of Guess: "+Numofguess+"\n"+
+            "Rentdays: "+rentdays+"\n"+
+            "Service: "+service+"\n"+
+            "Type of Room: "+room+"\n"+
+            "Rent: "+ Rent+" $"
+   )
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kinh chao quy khach !</title>
+</head>
+<body>
+<form>
+    <fieldset>
+        <legend>Customer Information</legend>
+        Custumer Name:
+        <input type="text" name="input" id="Custumer Name:" value="Hovaten"><br>
+        CMND:
+        <input type="text" name="input" id="CMND:" value="123456789"><br>
+        Day of Birth:
+        <input type="text" name="input" id="Day of Birth:"value="12/3/2020"><br>
+        Email:
+        <input type="text" name="input" id ="Email" value="abc@gmai.com"><br>
+        Address:
+        <input type="text" name="input" value="Da Nang"><br>
+        Type of Customer:
+        <select type="text" name="input">
+            <option value="Diamond">Diamond</option>
+            <option value="Platinum">Platinum</option>
+            <option value="Gold">Gold</option>
+            <option value="Silver">Silver</option>
+            <option value="Member">Member</option>
+        </select><br>
+        Discount:
+        <input type="text" name="input" value="15">%<br>
+        Number Of Guess:
+        <input type="text" name="input" value="3"><br>
+        RentDays:
+        <input type="text" name="input" value="12"><br>
+        Type of Service:
+        <label><input name="typeofservice" value="Villa" type="radio" checked>Villa</label>
+        <label><input name="typeofservice" value="House" type="radio" >House</label>
+        <label><input name="typeofservice" value="Room" type="radio">Room</label><br>
+        Type of Room:
+        <label><input name="typeofroom" value="Vip" type="radio" checked/>Vip</label>
+        <label><input name="typeofroom" value="Business" type="radio" >Business</label>
+        <label><input name="typeofroom" value="Normal" type="radio" >Normal</label><br>
+        <input type="submit" value="Check"onclick="check()"/>
+            <script>
+                function check() {
+                let input = document.getElementsByName("input");
+                    for (let i = 0; i < input.length; i++) {
+                      document.write(input[i].id + input[i].value) }
+
+                }
+            </script>        
+
+
+
+
+
+
+
+    </fieldset>
+</form>
+</body>
+</html>
