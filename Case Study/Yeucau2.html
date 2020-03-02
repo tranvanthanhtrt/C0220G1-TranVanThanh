@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let customerName=prompt("Enter Customer Name:");
+    let cmnd=prompt("Enter ID/CMND");
+    let dayofbirth=prompt("Enter day of birth (dd/mm/yyyy)");
+    let email=prompt("Enter Email");
+    let address=prompt("Enter Address");
+    let typeofcus=prompt("Enter type of Customer (Diamond/Platinum/Gold/Silver/Member)");
+    let discount=prompt("Enter Discount (%)");
+    let Numofguess=prompt("Enter number of guess");
+    let rentdays=prompt("Enter rent days");
+    let service=prompt("Enter type of Service (Villa/House/Room)");
+    let room=prompt("Enter type of Room (Vip/Business/Normal)")
+    let rentservice=100;
+    if (service=="Villa"){
+        rentservice=500;
+    }
+    else if(service=="House") {
+        rentservice=300};
+    let Rent=rentservice* parseInt(rentdays)*(1-parseInt(discount)/100);
+    let thaotac=parseInt(prompt("Chon hanh dong ban muon thuc hien tiep theo:"+"\n"+"1.Hien thi thong tin khach hang."
+    +"\n"+"2.Chinh sua thong tin khach hang."+"\n"+"3.Tnh tien."));
+    switch (thaotac) {
+        case 1:{
+            alert("Thong tin khach hang:"+"\n"+
+                "1.Customer Name: "+customerName +"\n"+
+                "2.CMND/ID: " +cmnd+"\n"+
+                "3.Day of Birth: "+dayofbirth+"\n"+
+                "4.Email: "+email+"\n"+
+                "5.Address: "+address+"\n"+
+                "6.Type of Customer: "+typeofcus+"\n"+
+                "7.Discount: "+discount+" %"+"\n"+
+                "8.Number of Guess: "+Numofguess+"\n"+
+                "9.Rentdays: "+rentdays+"\n"+
+                "10.Service: "+service+"\n"+
+                "11.Type of Room: "+room+"\n"
+                )
+        }
+        break;
+        case 2 :{
+           let chooseedit= parseInt(promt("Chon thong tin muon chinh sua:"+"\n"+
+                "1.Customer Name: "+customerName +"\n"+
+                "2.CMND/ID: " +cmnd+"\n"+
+                "3.Day of Birth: "+dayofbirth+"\n"+
+                "4.Email: "+email+"\n"+
+                "5.Address: "+address+"\n"+
+                "6.Type of Customer: "+typeofcus+"\n"+
+                "7.Discount: "+discount+" %"+"\n"+
+                "8.Number of Guess: "+Numofguess+"\n"+
+                "9.Rentdays: "+rentdays+"\n"+
+                "10.Service: "+service+"\n"+
+                "11.Type of Room: "+room+"\n"));
+            switch (chooseedit) {
+             case 1:
+                 customerName=prompt("Enter the Customer Name");
+                 break;
+             case 2:
+                 cmnd=prompt("Enter ID/CMND");
+                 break;
+             case 3:
+                 dayofbirth=prompt("Enter day of birth (dd/mm/yyyy)");
+                 break;
+             case 4 :
+                 email=prompt("Enter Email");
+                 break;
+             case 5 :
+                 address=prompt("Enter Address");
+                 break;
+             case 6 :
+                 typeofcus=prompt("Enter type of Customer (Diamond/Platinum/Gold/Silver/Member)");
+                 break;
+             case 7:
+                 discount=prompt("Enter Discount (%)");
+                 break;
+             case 8:
+                 Numofguess=prompt("Enter number of guess");
+                 break;
+             case 9:
+                 rentdays=prompt("Enter rent days");
+                 break;
+             case 10:
+                 service=prompt("Enter type of Service (Villa/House/Room)");
+                 break;
+             case 11:
+                 room=prompt("Enter type of Room (Vip/Business/Normal)")
+                 break;
+             default:
+                 alert("Failed");
+
+
+         }
+
+            alert("Thong tin khach hang:"+"\n"+
+                "1.Customer Name: "+customerName +"\n"+
+                "2.CMND/ID: " +cmnd+"\n"+
+                "3.Day of Birth: "+dayofbirth+"\n"+
+                "4.Email: "+email+"\n"+
+                "5.Address: "+address+"\n"+
+                "6.Type of Customer: "+typeofcus+"\n"+
+                "7.Discount: "+discount+" %"+"\n"+
+                "8.Number of Guess: "+Numofguess+"\n"+
+                "9.Rentdays: "+rentdays+"\n"+
+                "10.Service: "+service+"\n"+
+                "11.Type of Room: "+room+"\n"
+            )
+            break;
+
+
+            }
+
+
+    }
+
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body onload="sansang()">
+<img id="gaixinh" src="gaixing.jpg" style="position: absolute; left: 0;top:0 " height="200" width="180">
+
+
+<script>
+    function anxuong() {
+        var bucanh=document.getElementById("gaixinh");
+        bucanh.style.top=parseInt(bucanh.style.top) +5+'px';
+    }
+    function anlen() {
+        var bucanh = document.getElementById("gaixinh");
+        bucanh.style.top = parseInt(bucanh.style.top) - 5 + 'px';
+    }
+    function antrai() {
+        var bucanh=document.getElementById("gaixinh")
+        bucanh.style.left=parseInt(bucanh.style.left)-5+ 'px';
+    }
+    function anphai() {
+        var bucanh=document.getElementById("gaixinh")
+        bucanh.style.left=parseInt(bucanh.style.left)+5+ 'px';
+    }
+    function dichuyen(evt) {
+        switch (evt.keyCode) {
+        case 37:
+            antrai();
+            break;
+        case 39:
+            anphai();
+            break;
+        case 38:
+            anlen();
+            break;
+        case 40:
+            anxuong();
+            break;
+
+        }
+    }
+    function sansang() {
+        window.addEventListener('keydown', dichuyen);
+
+    }
+</script>
+
+
+</body>
+</html>

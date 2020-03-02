@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Do You Love Me ??</h1>
+<button  onclick="alert('ban chon dung roi do')">Yes</button>
+<button id="nobutton" style="position: absolute" onmouseover="dichuyen()">No</button>
+<script>
+    function dichuyen() {
+        nobutton = document.getElementById("nobutton");
+        nobutton.style.left = Math.random() * parseInt(window.innerWidth)+'px';
+        nobutton.style.top = Math.random()* parseInt(window.innerHeight)+'px';
+    }
+</script>
+</body>
+</html>

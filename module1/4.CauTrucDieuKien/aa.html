@@ -1,36 +1,54 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>MayTinhDonGian</title>
+    <style>
+        .button{
+            width: 45px;
+            height: 45px;
+        }
+    </style>
 </head>
 <body>
-<form action="/action_page.php">
-    <fieldset>
-        <legend>Personal information:</legend>
-        First name:<br>
-        <input type="text" name="firstname" value="Mickey"><br>
-        Last name:<br>
-        <input type="text" name="lastname" value="Mouse"><br><br>
-        <input type="submit" value="Submit">
-    </fieldset>
-</form>
+<table border="0">
+    <tr>
+        <input type="text" id="nhap" style="width:192px;height: 45px"><br>
+    </tr>
+    <tr>
+        <th> <button type="button" value="1" class="button" onclick="calculator(this.value)">1</button></th>
+        <th> <button type="button" value="2" class="button" onclick="calculator(this.value)">2</button></th>
+        <th> <button type="button" value="3" class="button" onclick="calculator(this.value)">3</button></th>
+        <th> <button type="button" value="+" class="button" onclick="calculator(this.value)">+</button></th>
+    </tr>
+    <tr>
+        <th> <button type="button" value="4" class="button" onclick="calculator(this.value)">4</button></th>
+        <th> <button type="button" value="5" class="button" onclick="calculator(this.value)">5</button></th>
+        <th> <button type="button" value="6" class="button" onclick="calculator(this.value)">6</button></th>
+        <th> <button type="button" value="-" class="button" onclick="calculator(this.value)">-</button></th>
+    </tr>
+    <tr>
+        <th> <button type="button" value="7" class="button" onclick="calculator(this.value)">7</button></th>
+        <th> <button type="button" value="8" class="button" onclick="calculator(this.value)">8</button></th>
+        <th> <button type="button" value="9" class="button" onclick="calculator(this.value)">9</button></th>
+        <th> <button type="button" value="*" class="button" onclick="calculator(this.value)">x</button></th>
+    </tr>
+    <tr>
+        <th> <button type="button" value="C" class="button" onclick="calculator(this.value)">C</button></th>
+        <th> <button type="button" value="0" class="button" onclick="calculator(this.value)">0</button></th>
+        <th> <button type="button" value="=" class="button" onclick="calculator(this.value)">=</button></th>
+        <th> <button type="button" value="/" class="button" onclick="calculator(this.value)">/</button></th>
+    </tr>
+</table>
 <script>
-    let day = "Mon";
-    let message = "";
+    function calculator(tinh) {
 
-    switch (day) {
-        case "Mon":
-            message = "Ngày đầu tuần";
-
-        case "Wed":
-            message = "Ngày giữa tuần";
-
-        case "Sat":
-        case "Sun":
-            message = "Ngày nghỉ";
+        let nhap=document.getElementById('nhap');
+        nhap.value=(tinh=='=')?
+            eval(nhap.value):
+            (tinh=='C')?
+                '': nhap.value+tinh;
+​
     }
-    console.log(message);
 </script>
 </body>
 </html>
