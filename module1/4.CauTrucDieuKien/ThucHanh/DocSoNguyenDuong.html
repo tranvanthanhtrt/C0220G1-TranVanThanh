@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let inputnumber = parseInt(prompt("Nhap mot so nguyen duong nho hon 1000:"));
+    let hienthi3 = "";
+   doc3so(inputnumber);
+
+
+ alert(hienthi3);
+
+
+    // function doc4so(input) {
+    //
+    //     let hangnghin = (input-input%1000)/1000;
+    //
+    //     let hienthi4 = docso(hangnghin)+" thousand " + doc3so(input);
+    //
+    //
+    // }
+
+
+    function doc3so(input) {
+        let hangdonvi = (input * 1) % 10;
+        let hangchuc = ((input * 1) % 100 - hangdonvi) / 10;
+        let hangtram = ((input * 1) - (hangchuc * 10 + hangdonvi)) / 100;
+
+
+        switch (input) {
+            case 10:
+                hienthi3 = ("ten");
+                break;
+            case  11:
+                hienthi3 = ("eleven");
+                break;
+            case 12:
+                hienthi3 = ("twelve");
+                break;
+            case 13:
+                hienthi3 = ("thirtteen");
+                break;
+            case 15:
+                hienthi3 = ("fifteen");
+                break;
+            case 14:
+            case 16:
+            case 17:
+            case 18:
+            case 19:
+                hienthi3 = (docso(hangdonvi) + "teen");
+                break;
+            default: {
+                if (hangtram == 0) {
+                    if (hangchuc == 0) {
+                        hienthi3 = (docso(hangdonvi));
+                    } else if (hangchuc == 2) {
+                        hienthi3 = ("twenty " + docso(hangdonvi));
+                    } else if (hangchuc == 3) {
+                        hienthi3 = ("thirdty " + docso(hangdonvi));
+                    } else if (hangchuc == 5) {
+                        hienthi3("fifty " + docso(hangdonvi));
+                    } else {
+                        hienthi3(docso(hangchuc) + "ty " + docso(hangdonvi));
+                    }
+                } else {
+                    if (hangchuc == 0) {
+                        hienthi3 = (docso(hangtram) + " hundred and " + docso(hangdonvi));
+                    } else if (hangchuc == 2) {
+                        hienthi3 = (docso(hangtram) + " hundred and twenty " + docso(hangdonvi));
+                    } else if (hangchuc == 3) {
+                        hienthi3 = (docso(hangtram) + " hundred and thirdty " + docso(hangdonvi));
+                    } else if (hangchuc == 5) {
+                        hienthi3 = (docso(hangtram) + " hundred and fifty " + docso(hangdonvi));
+                    } else {
+                        hienthi3 = (docso(hangtram) + " hundred and " + docso(hangchuc) + "ty " + docso(hangdonvi));
+                    }
+                }
+            }
+        }
+return hienthi3
+    }
+        function docso(number) {
+            switch (number) {
+                case 9: {
+                    return "nine";
+                    break;
+                }
+                case 8:
+                    return "eight";
+                    break;
+                case  7:
+                    return "seven";
+                    break;
+                case  6:
+                    return "six";
+                    break;
+                case 5:
+                    return "five";
+                    break;
+                case 4:
+                    return "four";
+                    break;
+                case 3:
+                    return "three";
+                    break;
+                case 2:
+                    return "two";
+                    break;
+                case 1:
+                    return "one";
+                    break;
+                case  0:
+                    return "";
+                    break;
+
+
+            }
+
+        }
+
+
+
+</script>
+
+</body>
+</html>
