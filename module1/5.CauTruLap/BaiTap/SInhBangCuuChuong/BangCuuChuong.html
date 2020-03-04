@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table, td{
+            border: 2px solid black ;
+        }
+
+        .j {
+            color: red;
+           font-family: ".VnArial NarrowH" ;
+            background: yellowgreen;
+
+
+        }
+    </style>
+</head>
+<body>
+<script>
+    let bangCuuChuong;
+    bangCuuChuong = "<table cellspacing='2' cellpadding='10'>";
+    for (let i = 1; i <= 9; i++) {
+        bangCuuChuong = bangCuuChuong + "<tr>";
+        for (let j = 2; j <= 9; j++) {
+            bangCuuChuong = bangCuuChuong + "<td class='j'>" + j + "x" + i + "=" + i * j + "</td>";
+        }
+        bangCuuChuong = bangCuuChuong + "</tr>";
+    }
+    bangCuuChuong = bangCuuChuong + "</table>";
+    document.write(bangCuuChuong);
+</script>
+
+</body>
+</html>
