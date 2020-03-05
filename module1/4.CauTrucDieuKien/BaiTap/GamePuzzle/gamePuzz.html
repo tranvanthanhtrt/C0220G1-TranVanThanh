@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .image1{
+
+        }
+    </style>
+</head>
+<body>
+<button onclick="doihinhanh1()" class="image" ><img id="hang1" src="anh11.png" height="196" width="622"/></button><br>
+<button onclick="doihinhanh2()" class="image" ><img id="hang2" src="anh22.png" height="196" width="622"/></button><br>
+<button onclick="doihinhanh3()" class="image" ><img id="hang3" src="anh33.png" height="196" width="622"/></button><br>
+<script>
+function doihinhanh1() {
+
+    let anhhang1=document.getElementById("hang1").getAttribute('src');
+    console.log(anhhang1)
+if (anhhang1==="anh11.png"){
+    document.getElementById("hang1").src="anh12.png";
+}else if(anhhang1==="anh12.png"){
+    document.getElementById("hang1").src="anh13.png";
+}
+else if(anhhang1==="anh13.png"){
+    document.getElementById("hang1").src="anh11.png";
+
+}
+}
+function doihinhanh2() {
+
+    let anhhang2=document.getElementById("hang2").getAttribute('src');
+    console.log(anhhang2)
+    if (anhhang2==="anh21.png"){
+        document.getElementById("hang2").src="anh22.png";
+    }else if(anhhang2==="anh22.png"){
+        document.getElementById("hang2").src="anh23.png";
+    }
+    else if(anhhang2==="anh23.png"){
+        document.getElementById("hang2").src="anh21.png";
+
+    }
+}
+function doihinhanh3() {
+
+    let anhhang3=document.getElementById("hang3").getAttribute('src');
+    console.log(anhhang3)
+    if (anhhang3==="anh31.png"){
+        document.getElementById("hang3").src="anh32.png";
+    }else if(anhhang3==="anh32.png"){
+        document.getElementById("hang3").src="anh33.png";
+    }
+    else if(anhhang3==="anh33.png"){
+        document.getElementById("hang3").src="anh31.png";
+
+    }
+}
+</script>
+</body>
+</html>
