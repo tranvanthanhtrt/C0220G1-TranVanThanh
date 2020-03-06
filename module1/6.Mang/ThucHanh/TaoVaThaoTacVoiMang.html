@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="nhapdulieu">
+<button id="add" onclick="addMang()">Thêm phẩn tử mảng</button>
+<button id="inmang" onclick="inMang()">Hiển thị mảng</button>
+<div id="ketqua"></div>
+
+<script>
+    let x = 0
+    let myArray = [];
+
+    function addMang() {
+        myArray[x] = document.getElementById("nhapdulieu").value;
+        alert("Phần từ  " + myArray[x] + " được thêm vào vị trí " + (x+1));
+        x++;
+        document.getElementById("nhapdulieu").value="";
+    }
+    function inMang() {
+        let result=""
+for(let i=0;i<myArray.length; i++){
+    result=result+"Phần tử thứ "+(i+1)+": "+myArray[i]+ "\n";
+
+document.getElementById("ketqua").innerText=result;
+}
+    }
+    
+</script>
+</body>
+</html>

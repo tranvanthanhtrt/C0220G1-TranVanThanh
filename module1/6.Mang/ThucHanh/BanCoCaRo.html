@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+
+        input {
+
+            background: bisque;
+            border-width: 1px;
+            border-color: lightslategray;
+            width: 30px;
+            height: 30px;
+            padding: 0px;
+            border-spacing: 0px;
+            font-family: ".VnBlack";
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+<div id="inbanco">
+</div>
+<script>
+    let banco = [];
+    let onPlay = 1;
+    for (let i = 0; i < 20; i++) {
+        banco[i] = new Array();
+        for (let j = 0; j < 20; j++) {
+            banco[i][j] = "<input type='button' value=' ' id=" + i + "," + j + " onclick='changeValue(" + i + "," + j + ") '>";
+        }
+    }
+    let inBanCo = "";
+    for (let i = 0; i < 20; i++) {
+        for (let j = 0; j < 20; j++) {
+            inBanCo += banco[i][j];
+        }
+        inBanCo += "<br>";
+    }
+    document.getElementById("inbanco").innerHTML = inBanCo;
+
+    function changeValue(i, j) {
+// alert(""+i+j)
+        let choose = document.getElementById(+i + "," + j);
+        if (choose.value === ' ') {
+            if (onPlay == 1) {
+                choose.style.color = 'red';
+                choose.value = "X";
+                onPlay = 2;
+                checkWin(i, j);
+            } else {
+                choose.style.color = 'blue';
+                choose.value = "O";
+                onPlay = 1;
+                checkWin(i, j);
+            }
+        }
+
+
+    }
+
+    function checkWin(i, j) {
+        let chuaWin = true;
+        if (chuaWin) {
+            for (let jCheck = (j - 4); jCheck <= j; jCheck++) {
+                let chuoiCheck = "";
+                let get1 = (document.getElementById(+i + "," + (jCheck)));
+                let get2 = (document.getElementById(+i + "," + (jCheck + 1)));
+                let get3 = (document.getElementById(+i + "," + (jCheck + 2)));
+                let get4 = (document.getElementById(+i + "," + (jCheck + 3)));
+                let get5 = (document.getElementById(+i + "," + (jCheck + 4)));
+                chuoiCheck += get1.value + get2.value + get3.value + get4.value + get5.value;
+                if (chuoiCheck === "XXXXX") {
+                    get1.style.background = "green";
+                    get2.style.background = "green";
+                    get3.style.background = "green";
+                    get4.style.background = "green";
+                    get5.style.background = "green";
+                    setTimeout(function () {
+
+                        alert("Playe 1 Win");
+                        choilai();
+                    }, 200);
+                    chuaWin = false;
+
+                    break;
+                } else if (chuoiCheck === "OOOOO") {
+                    get1.style.background = "green";
+                    get2.style.background = "green";
+                    get3.style.background = "green";
+                    get4.style.background = "green";
+                    get5.style.background = "green";
+                    setTimeout(function () {
+                        alert("Playe 2 Win");
+                        choilai();
+                    }, 200);
+                    chuaWin = false;
+
+                    break;
+                }
+            }
+
+        }
+        if (chuaWin) {
+            for (let iCheck = (i - 4); iCheck <= i; iCheck++) {
+                let chuoiCheck = "";
+                let get1 = (document.getElementById(+iCheck + "," + j));
+                let get2 = (document.getElementById(+(iCheck + 1) + "," + j));
+                let get3 = (document.getElementById(+(iCheck + 2) + "," + j));
+                let get4 = (document.getElementById(+(iCheck + 3) + "," + j));
+                let get5 = (document.getElementById(+(iCheck + 4) + "," + j));
+                chuoiCheck += get1.value + get2.value + get3.value + get4.value + get5.value;
+                if (chuoiCheck === "XXXXX") {
+                    get1.style.background = "green";
+                    get2.style.background = "green";
+                    get3.style.background = "green";
+                    get4.style.background = "green";
+                    get5.style.background = "green";
+                    setTimeout(function () {
+                        alert("Playe 1 Win");
+                        choilai();
+                    }, 200);
+                    chuaWin = false;
+
+                    break;
+                } else if (chuoiCheck === "OOOOO") {
+                    get1.style.background = "green";
+                    get2.style.background = "green";
+                    get3.style.background = "green";
+                    get4.style.background = "green";
+                    get5.style.background = "green";
+                    setTimeout(function () {
+                        alert("Playe 2 Win");
+                        choilai();
+                    }, 200);
+                    chuaWin = false;
+                    break;
+                }
+            }
+        }
+        if (chuaWin) {
+            for (let n = 1; n <= 5; n++) {
+                let chuoiCheck = "";
+                let get1 = (document.getElementById(+(i + 5 - n) + "," + (j - 5 + n)));
+                let get2 = (document.getElementById(+(i + 4 - n) + "," + (j - 4 + n)));
+                let get3 = (document.getElementById(+(i + 3 - n) + "," + (j - 3 + n)));
+                let get4 = (document.getElementById(+(i + 2 - n) + "," + (j - 2 + n)));
+                let get5 = (document.getElementById(+(i + 1 - n) + "," + (j - 1 + n)));
+                chuoiCheck += get1.value + get2.value + get3.value + get4.value + get5.value;
+                if (chuoiCheck === "XXXXX") {
+                    get1.style.background = "green";
+                    get2.style.background = "green";
+                    get3.style.background = "green";
+                    get4.style.background = "green";
+                    get5.style.background = "green";
+                    setTimeout(function () {
+                        alert("Playe 1 Win");
+                        choilai();
+                    }, 200);
+                    chuaWin = false;
+                    break;
+                } else if (chuoiCheck === "OOOOO") {
+                    get1.style.background = "green";
+                    get2.style.background = "green";
+                    get3.style.background = "green";
+                    get4.style.background = "green";
+                    get5.style.background = "green";
+                    setTimeout(function () {
+                        alert("Playe 2 Win");
+                        choilai();
+                    }, 200);
+                    chuaWin = false;
+                    break;
+                }
+            }
+
+        }
+        if (chuaWin) {
+            for (let n = 1; n <= 5; n++) {
+                let chuoiCheck = "";
+                let get1 = (document.getElementById(+(i - 5 + n) + "," + (j - 5 + n)));
+                let get2 = (document.getElementById(+(i - 4 + n) + "," + (j - 4 + n)));
+                let get3 = (document.getElementById(+(i - 3 + n) + "," + (j - 3 + n)));
+                let get4 = (document.getElementById(+(i - 2 + n) + "," + (j - 2 + n)));
+                let get5 = (document.getElementById(+(i - 1 + n) + "," + (j - 1 + n)));
+                chuoiCheck += get1.value + get2.value + get3.value + get4.value + get5.value;
+                if (chuoiCheck === "XXXXX") {
+                    get1.style.background = "green";
+                    get2.style.background = "green";
+                    get3.style.background = "green";
+                    get4.style.background = "green";
+                    get5.style.background = "green";
+                    setTimeout(function () {
+                        alert("Playe 1 Win");
+                        choilai();
+                    }, 200);
+                    chuaWin = false;
+                    break;
+                } else if (chuoiCheck === "OOOOO") {
+                    get1.style.background = "green";
+                    get2.style.background = "green";
+                    get3.style.background = "green";
+                    get4.style.background = "green";
+                    get5.style.background = "green";
+                    setTimeout(function () {
+                        alert("Playe 2 Win");
+                        choilai();
+                    }, 200);
+                    chuaWin = false;
+                    break;
+                }
+            }
+        }
+    }
+
+    function choilai() {
+        let tieptuc = confirm("Ban co muon choi tiep")
+        if (tieptuc) {
+            location.reload();
+        }
+    }
+</script>
+</body>
+</html>
