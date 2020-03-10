@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let customerName = prompt("Nhập tên khách hàng:");
+    let cmnd;
+    do {
+        cmnd = prompt("Nhập ID/CMND");
+    }
+    while (!kiemTraCmnd(cmnd));
+    let dayofbirth = "";
+    do {
+        dayofbirth = prompt("Nhập ngày sinh (dd/mm/yyyy)");
+    } while (!kiemTraNgaySinh(dayofbirth));
+    let email = "";
+    do {
+        email = prompt("Nhập Email");
+    }
+    while (!kiemTraEmail(email));
+    let address = prompt("Nhập địa chỉ");
+    let typeofcus = prompt("Nhập loại khách hàng (Diamond/Platinum/Gold/Silver/Member)");
+    let discount = prompt("Nhập Giảm giá (%)");
+    let Numofguess
+    do {
+        Numofguess = prompt("Nhập số khách đi kèm");
+    }
+    while (!kiemtrasokhach(Numofguess));
+    let rentdays;
+    do {
+        rentdays = prompt("Nhập Số ngày thuê");
+    } while (!kiemTraSoNgayThue(rentdays))
+    let service = prompt("Nhập loại dịch vụ (Villa/House/Room)");
+    let room = prompt("Nhập loại phòng (Vip/Business/Normal)")
+    let thaotacnhap = false;
+
+    function tenDung(name) {
+        let charName = name.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '');
+        charName = charName[0].toUpperCase() + charName.slice(1).toLowerCase();
+        for (let i = 0; i < charName.length - 1; i++) {
+            if (charName[i] == " ") {
+                if (charName[i + 1] == " ") {
+                    charName = charName.slice(0, i + 1) + charName.slice(i + 2);
+                    i -= 1;
+                } else charName = charName.slice(0, i + 1) + charName[i + 1].toUpperCase() + charName.slice(i + 2).toLocaleLowerCase();
+            }
+        }
+        return charName;
+    }
+
+    function kiemTraCmnd(cmnd) {
+        if ((!isNaN(cmnd)) && (parseInt(cmnd).toString().length == 9) && (cmnd.toString().length == 9)) {
+            return true
+        } else
+            return false;
+    }
+
+    function kiemTraNgaySinh(ngaysinh) {
+        let day = (ngaysinh.slice(0, 2));
+        let month = (ngaysinh.slice(3, 5));
+        let year = (ngaysinh.slice(6))
+        if ((ngaysinh.length == 10) && (ngaysinh[2] == "/") && (ngaysinh[5] == "/") && (parseInt(day) <= 31) && (parseInt(day) > 0)
+            && (parseInt(month) > 0) && (parseInt(month) <= 12) && (parseInt(year) > 1900) && (parseInt(year) <= 2020)) {
+            return true
+        } else return false;
+    }
+
+    function kiemTraEmail(email) {
+        let demi = 0;
+        let demj = 0;
+        let indexa;
+        let indexcham;
+        for (let i = 1; i < email.length; i++) {
+            if (email[i] == "@") {
+                demi++;
+                indexa = i;
+            } else if (email[i] == ".") {
+                demj++;
+                indexcham = i
+            }
+        }
+        if ((demi == 1) && (demj == 1) && (indexcham > indexa)) {
+            return true
+        } else return false;
+    }
+
+    function kiemtrasokhach(sokhach) {
+        if (Number.isInteger(+sokhach) && (sokhach > 0) & (parseInt(sokhach).toString() == sokhach.toString())) {
+            return true
+        } else
+            return false;
+    }
+
+    function kiemTraSoNgayThue(ngaythue) {
+        if (Number.isInteger(+ngaythue) && (ngaythue > 0) && (parseInt(ngaythue).toString() == ngaythue.toString())) {
+            return true
+        } else
+            return false;
+    }
+
+    function hienThiTtkh() {
+        alert("Thông tin khách hàng:" + "\n" +
+            "1.Tên khách hàng: " + tenDung(customerName) + "\n" +
+            "2.CMND/ID: " + cmnd + "\n" +
+            "3.Ngày sinh: " + dayofbirth + "\n" +
+            "4.Email: " + email + "\n" +
+            "5.Địa chỉ: " + address + "\n" +
+            "6.Loại khách hàng: " + typeofcus + "\n" +
+            "7.Giảm giá: " + discount + " %" + "\n" +
+            "8.Số lượng đi kèm: " + Numofguess + "\n" +
+            "9.Số ngày thuê: " + rentdays + "\n" +
+            "10.Loại dịch vụ: " + service + "\n" +
+            "11.Loại phòng: " + room + "\n"
+        )
+    }
+
+    function chinhSuaTtkh() {
+        let menunhap = false;
+        while (!menunhap) {
+            let chooseedit = parseInt(prompt("Chọn thông tin muốn chỉnh sửa:" + "\n" +
+                "1.Tên khách hàng: " + tenDung(customerName) + "\n" +
+                "2.CMND/ID: " + cmnd + "\n" +
+                "3.Ngày sinh: " + dayofbirth + "\n" +
+                "4.Email: " + email + "\n" +
+                "5.Địa chỉ: " + address + "\n" +
+                "6.Loại khách hàng: " + typeofcus + "\n" +
+                "7.Giảm giá: " + discount + " %" + "\n" +
+                "8.Số lượng đi kèm: " + Numofguess + "\n" +
+                "9.Số ngày thuê: " + rentdays + "\n" +
+                "10.Loại dịch vụ: " + service + "\n" +
+                "11.Loại phòng: " + room + "\n"));
+            switch (chooseedit) {
+                case 1:
+                    customerName = prompt("Nhập tên khách hàng");
+                    menunhap = true;
+                    break;
+                case 2:
+                    do {
+                        cmnd = prompt("Nhập ID/CMND");
+                    }
+                    while (!kiemTraCmnd(cmnd));
+                    menunhap = true;
+                    break;
+                case 3:
+                    do {
+                        dayofbirth = prompt("Nhập ngày sinh (dd/mm/yyyy)");
+                    } while (!kiemTraNgaySinh(dayofbirth));
+                    menunhap = true;
+                    break;
+                case 4 :
+                    do {
+                        email = prompt("Nhập Email");
+                    }
+                    while (!kiemTraEmail(email));
+                    menunhap = true;
+                    break;
+                case 5 :
+                    address = prompt("Nhập địa chỉ");
+                    menunhap = true;
+                    break;
+                case 6 :
+                    typeofcus = prompt("Nhập loại khách hàng (Diamond/Platinum/Gold/Silver/Member)");
+                    menunhap = true;
+                    break;
+                case 7:
+                    discount = prompt("Giảm giá (%)");
+                    menunhap = true;
+                    break;
+                case 8:
+                    do {
+                        Numofguess = prompt("Nhập số khách đi kèm");
+                    }
+                    while (!kiemtrasokhach(Numofguess));
+                    menunhap = true;
+                    break;
+                case 9:
+                    do {
+                        rentdays = prompt("Nhập Số ngày thuê");
+                    } while (!kiemTraSoNgayThue(rentdays));
+                    menunhap = true;
+                    break;
+                case 10:
+                    service = prompt("Nhập loại Dịch vụ (Villa/House/Room):");
+                    menunhap = true;
+                    break;
+                case 11:
+                    room = prompt("Nhập loại phòng (Vip/Business/Normal)");
+                    menunhap = true;
+                    break;
+                default: {
+                    alert("Failed");
+                    menunhap = false;
+                }
+
+            }
+        }
+    }
+
+    function tinhTien() {
+        let rentservice = 100;
+        if (service == "Villa") {
+            rentservice = 500;
+        } else if (service == "House") {
+            rentservice = 300;
+        }
+
+        let discountForAdd = 0;
+        let discountForRentsDay = 30;
+        let discountForCustomer = 0;
+
+        switch (address) {
+            case "Da Nang"  : {
+                discountForAdd = 20;
+                break;
+            }
+            case "Hue": {
+                discountForAdd = 10;
+                break;
+            }
+            case  "Quang Nam": {
+                discountForAdd = 5;
+                break;
+            }
+        }
+        switch (parseInt(rentdays)) {
+            case 0:
+            case 1: {
+                discountForRentsDay = 0;
+                break;
+            }
+            case 2:
+            case 3:
+            case 4: {
+                discountForRentsDay = 10;
+                break;
+            }
+            case 5:
+            case 6:
+            case 7: {
+                discountForRentsDay = 20;
+                break;
+            }
+        }
+        switch (typeofcus) {
+            case "Diamond": {
+                discountForCustomer = 15;
+                break;
+            }
+            case "Platium": {
+                discountForCustomer = 10;
+                break;
+            }
+            case "Gold": {
+                discountForCustomer = 5;
+                break;
+            }
+            case  "Silver": {
+                discountForCustomer = 2;
+                break;
+            }
+        }
+
+        let rent = rentservice * rentdays - (discountForCustomer + discountForRentsDay + discountForAdd);
+        alert("Số tiền quý khách phải thanh toán là: " + rent);
+    }
+
+    while (!thaotacnhap) {
+        let thaotac = parseInt(prompt("Chon hanh dong ban muon thuc hien tiep theo:" + "\n" + "1.Hien thi thong tin khach hang."
+            + "\n" + "2.Chinh sua thong tin khach hang." + "\n" + "3.Tnh tien."));
+        switch (thaotac) {
+            case 1: {
+                hienThiTtkh();
+                thaotacnhap = true;
+                break;
+            }
+
+            case 2 : {
+                chinhSuaTtkh()
+                hienThiTtkh()
+                thaotacnhap = true;
+                break;
+
+            }
+
+            case 3: {
+                tinhTien()
+                thaotacnhap = true;
+                break;
+
+
+            }
+            default: {
+                alert("Vui lòng chọn thao tác trong menu");
+                thaotacnhap = false;
+
+            }
+
+        }
+    }
+
+
+</script>
+</body>
+</html>

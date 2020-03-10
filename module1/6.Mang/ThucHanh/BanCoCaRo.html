@@ -27,15 +27,15 @@
 <script>
     let banco = [];
     let onPlay = 1;
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 50; i++) {
         banco[i] = new Array();
-        for (let j = 0; j < 20; j++) {
+        for (let j = 0; j < 50; j++) {
             banco[i][j] = "<input type='button' value=' ' id=" + i + "," + j + " onclick='changeValue(" + i + "," + j + ") '>";
         }
     }
     let inBanCo = "";
-    for (let i = 0; i < 20; i++) {
-        for (let j = 0; j < 20; j++) {
+    for (let i = 0; i < 50; i++) {
+        for (let j = 0; j < 50; j++) {
             inBanCo += banco[i][j];
         }
         inBanCo += "<br>";
