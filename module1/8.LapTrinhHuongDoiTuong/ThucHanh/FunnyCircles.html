@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="myCanvas" width="1920xp" height="1080xp" style="border:1px solid #d3d3d3;"></canvas>
+
+<script>
+    let mangHinhTron = [];
+
+    function Circle(x, y, radius) {
+        this.x = x;
+        this.y = y;
+        this.radius = radius;
+    }
+
+    function getRandomHex() {
+        return Math.floor(Math.random() * 255);
+    }
+
+    function getRandomColor() {
+        var red = getRandomHex();
+        var green = getRandomHex();
+        var blue = getRandomHex();
+        return "rgb(" + red + "," + blue + "," + green + ")";
+    }
+
+    function createCircle() {
+        var ctx = document.getElementById("myCanvas").getContext("2d");
+        var radius = Math.floor(Math.random() * 80);
+        var color = getRandomColor();
+        var x = Math.random() * window.innerWidth;
+        var y = Math.random() * window.innerHeight;
+        var circle = new Circle(x, y, radius);
+        ctx.beginPath();
+        ctx.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI);
+        ctx.fillStyle = color;
+        ctx.fill();
+    }
+
+    function veLaiHinhTron(xxx, yyy, RR, CC) {
+        var ctx3 = document.getElementById("myCanvas").getContext("2d");
+        ctx3.beginPath();
+        ctx3.arc(xxx, yyy, RR, 0, 2 * Math.PI);
+        ctx3.fillStyle = CC;
+        ctx3.fill();
+    }
+
+    function diChuyenCircle(xx, yy, R, C) {
+        // var ctx2 = document.getElementById("myCanvas").getContext("2d");
+        var xadd = Math.random() * 10 - 5;
+        var yadd = Math.random() * 10 - 5;
+        let xxx = parseInt(xx + xadd);
+        let yyy = parseInt(yy + yadd);
+        // var circle2 = new Circle(xxx, yyy, R);
+        // ctx2.beginPath();
+        // ctx2.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI);
+        // ctx2.fillStyle = C;
+        // ctx2.fill();
+        return {rtx: xxx, rty: yyy};
+    }
+
+    for (let j = 0; j < 20; j++) {
+        mangHinhTron[j] = [];
+        var ctx = document.getElementById("myCanvas").getContext("2d");
+        var radius = Math.floor(Math.random() * 80);
+        var color = getRandomColor();
+        var x = Math.random() * 1920;
+        var y = Math.random() * 1080;
+        var circle = new Circle(x, y, radius);
+        ctx.beginPath();
+        ctx.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI);
+        ctx.fillStyle = color;
+        ctx.fill();
+        mangHinhTron[j][0] = (x);
+        mangHinhTron[j][1] =(y);
+        mangHinhTron[j][2] = radius;
+        mangHinhTron[j][3] = color;
+    }
+    setTimeout(function () {
+        ctx.clearRect(0, 0, 1920, 1080);
+    }, 1000);
+    // console.log(mangHinhTron[0][0] + "," + mangHinhTron[0][1] + "," + mangHinhTron[0][2] + "," + mangHinhTron[0][3] + ",")
+    // console.log(mangHinhTron[1][0] + "," + mangHinhTron[1][1] + "," + mangHinhTron[1][2] + "," + mangHinhTron[1][3] + ",")
+    // console.log(mangHinhTron[2][0] + "," + mangHinhTron[2][1] + "," + mangHinhTron[2][2] + "," + mangHinhTron[2][3] + ",")
+    // for (let i = 1; i < 300; i++) {
+
+    setInterval(function () {
+        for (let f = 0; f < 20; f++) {
+            mangHinhTron[f][0] = (mangHinhTron[f][0] + Math.random() * 4- 2);
+            mangHinhTron[f][1] = (mangHinhTron[f][1] + Math.random() * 4- 2);
+            veLaiHinhTron(mangHinhTron[f][0], mangHinhTron[f][1], mangHinhTron[f][2], mangHinhTron[f][3]);
+
+        }
+    }, 2);
+
+    setInterval(function () {
+        ctx.clearRect(0, 0, 1920, 1080);
+    }, 20);
+
+    // setTimeout(function () {
+    //     ctx.clearRect(0, 0, 1920, 1080);
+    // }, 1000*i);
+
+
+</script>
+</body>
+</html>

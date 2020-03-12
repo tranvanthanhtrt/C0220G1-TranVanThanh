@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let danhSachKh = [];
+    let demSoKh = 0;
+    let thuocTinhKH = ["Tên Khách hàng", "CMND/ID", "Ngày sinh", "Email", "Địa chỉ", "Loại Khách hàng",
+        "Giảm giá", "Số lượng đi kèm", "Số ngày thuê", "Loại dịch vụ", "Loại phòng", "Số tiền"];
+    menuChinh();
+
+    function menuChinh() {
+        let nhapMenuchinh;
+        do {
+
+            nhapMenuchinh = parseInt(prompt("Chọn hành động bạn muốn thực hiện:" + "\n" +
+                "1.Thêm khách hàng" + "\n" +
+                "2.Hiển thị thông tin khách hàng " + "\n" +
+                "3.Chỉnh sửa thông tinh khách hàng" + "\n" +
+                "4.Xóa thông tin khách hàng" + "\n" +
+                "5.Thoát"));
+            switch (nhapMenuchinh) {
+                case 1: {
+                    themThongTinKh();
+                    demSoKh += 1;
+                    console.log(danhSachKh);
+                    break;
+                }
+                case 2: {
+                    hienThiTtkh(hienThiDanhSachKh());
+                    break;
+                }
+                case 3: {
+                    chinhSuaTtkh(hienThiDanhSachChinhSua());
+                    break;
+                }
+            }
+            menuChinh();
+
+        }
+        while (!checkMenuChinh(nhapMenuchinh));
+
+
+    }
+
+    function hienThiDanhSachKh() {
+        let thongBaoHienThiDanhSachKh = "";
+        let checkluaChonKhHienThiThongTin=false;
+        for (let i = 0; i < danhSachKh.length; i++) {
+            thongBaoHienThiDanhSachKh += (i + 1) + "." + danhSachKh[i][0] + "\n";
+        }
+        let luaChonKhHienThiThongTin = (prompt("Chọn Khách hàng muốn xem thông tin" + "\n" + thongBaoHienThiDanhSachKh));
+        for (let k = 1; k <= danhSachKh.length; k++) {
+            if (k == parseInt(luaChonKhHienThiThongTin)) {
+                checkluaChonKhHienThiThongTin=true;
+                return parseInt(luaChonKhHienThiThongTin);
+                break;
+            }
+        }
+        if (luaChonKhHienThiThongTin === null) {
+            menuChinh();
+        } else if (!checkluaChonKhHienThiThongTin){
+            hienThiDanhSachKh();
+        }
+    }
+
+    function hienThiTtkh(soThuTuKh) {
+        let bangThongTinKh = "";
+        for (let j = 0; j < 11; j++) {
+            bangThongTinKh += thuocTinhKH[j] + ": " + danhSachKh[soThuTuKh - 1][j] + "\n";
+        }
+        alert(bangThongTinKh);
+    }
+
+    function checkMenuChinh(giatricheck) {
+        switch (giatricheck) {
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+                return true;
+                break;
+            default :
+                return false;
+                break;
+        }
+    }
+
+    function checkMenuChinhSua(giatricheck) {
+        switch (giatricheck) {
+            case 0:
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+            case 6:
+            case 7:
+            case 8:
+            case 9:
+            case 10:
+                return true;
+                break;
+            default :
+                return false;
+                break;
+        }
+    }
+
+    function hienThiDanhSachChinhSua() {
+        let checkLuaChonChinhSua = false;
+        let danhSachChinhSua = "";
+        for (let i = 0; i < danhSachKh.length; i++) {
+            danhSachChinhSua += (i + 1) + "." + danhSachKh[i][0] + "\n";
+        }
+        let luaChonKhChinhSuaThongTin = (prompt("Chọn Khách hàng muốn sửa thông tin" + "\n" + danhSachChinhSua));
+        for (let k = 1; k <= danhSachKh.length; k++) {
+            if (k == parseInt(luaChonKhChinhSuaThongTin)) {
+                checkLuaChonChinhSua = true;
+                break;
+            }
+        }
+        if (luaChonKhChinhSuaThongTin === null) {
+            menuChinh();
+        } else if (!checkLuaChonChinhSua) {
+            hienThiDanhSachChinhSua()
+        } else return parseInt(luaChonKhChinhSuaThongTin);
+
+    }
+
+    function themThongTinKh() {
+        let chiSoKh = demSoKh;
+        danhSachKh[chiSoKh] = [];
+        for (let j = 0; j < 12; j++) {
+            switch (j) {
+                case 0: {
+                    let customerName = prompt("Nhập tên Khách hàng");
+                    if (customerName === null) {
+                        menuChinh()
+                    }
+                    danhSachKh[chiSoKh][0] = tenDung(customerName);
+                    break;
+                }
+                case 1: {
+                    let cmnd;
+                    do {
+                        cmnd = prompt("Nhập CMND/ID");
+                        if (cmnd === null) {
+                            menuChinh()
+                        }
+                        danhSachKh[chiSoKh][j] = cmnd;
+                    }
+                    while (!kiemTraCmnd(cmnd)) ;
+                    break;
+                }
+                // case 2: {
+                //     let dayofbirth = "";
+                //     do {
+                //         dayofbirth = prompt("Nhập ngày sinh (DD/MM/YYYY)");
+                //         if (dayofbirth === null) {
+                //             menuChinh()
+                //         }
+                //         danhSachKh[chiSoKh][j] = dayofbirth;
+                //     } while (!kiemTraNgaySinh(dayofbirth));
+                //     break;
+                // }
+                //
+                // case 3: {
+                //     let email = "";
+                //     do {
+                //         email = prompt("Nhập Email");
+                //         if (email === null) {
+                //             menuChinh()
+                //         }
+                //         danhSachKh[chiSoKh][j] = email;
+                //     }
+                //     while (!kiemTraEmail(email));
+                //     break;
+                // }
+                // case 4: {
+                //
+                //     let address = prompt("Nhập địa chỉ");
+                //     if (address === null) {
+                //         menuChinh()
+                //     }
+                //     danhSachKh[chiSoKh][j] = address;
+                //     break;
+                // }
+                // case 5: {
+                //
+                //     let typeofcus = prompt("Nhập loại khách hàng (Diamond/Platinum/Gold/Silver/Member)");
+                //     if (typeofcus === null) {
+                //         menuChinh()
+                //     }
+                //     danhSachKh[chiSoKh][j] = typeofcus;
+                //     break;
+                // }
+                // case  6: {
+                //
+                //
+                //     let discount = prompt("Nhập Giảm giá (%)");
+                //     if (discount === null) {
+                //         menuChinh()
+                //     }
+                //     danhSachKh[chiSoKh][j] = discount;
+                //     break;
+                // }
+                // case 7: {
+                //
+                //     let Numofguess
+                //     do {
+                //         Numofguess = prompt("Nhập số khách đi kèm");
+                //         if (Numofguess === null) {
+                //             menuChinh()
+                //         }
+                //         danhSachKh[chiSoKh][j] = Numofguess;
+                //     }
+                //     while (!kiemtrasokhach(Numofguess));
+                //     break;
+                // }
+                // case 8 : {
+                //
+                //     let rentdays;
+                //     do {
+                //         rentdays = prompt("Nhập Số ngày thuê");
+                //         if (rentdays === null) {
+                //             menuChinh()
+                //         }
+                //         danhSachKh[chiSoKh][j] = rentdays;
+                //     } while (!kiemTraSoNgayThue(rentdays));
+                //     break;
+                // }
+                // case  9: {
+                //     let service = prompt("Nhập loại dịch vụ (Villa/House/Room)");
+                //     if (service === null) {
+                //         menuChinh()
+                //     }
+                //     danhSachKh[chiSoKh][j] = service;
+                //     break;
+                // }
+                // case 10: {
+                //     let room = prompt("Nhập loại phòng (Vip/Business/Normal)");
+                //     if (room === null) {
+                //         menuChinh()
+                //     }
+                //     danhSachKh[chiSoKh][j] = room;
+                //     break;
+                // }
+                // case 11: {
+                //     tinhTien();
+                //     danhSachKh[chiSoKh][j] = rent;
+                //     break;
+                // }
+            }
+        }
+        alert("Đã thêm khách hàng " + danhSachKh[chiSoKh][0] + " vào danh sách");
+    }
+
+    function chinhSuaTtkh(soThuTuKh) {
+        let nhapMenuChinhsua;
+        do {
+            let bangThongTinChinhSua = "Chọn thông tin bạn muốn chỉnh sửa" + "\n";
+            for (let j = 0; j < 11; j++) {
+                bangThongTinChinhSua += +j + 1 +
+                    ". " + thuocTinhKH[j] + ": " + danhSachKh[soThuTuKh - 1][j] + "\n";
+            }
+            nhapMenuChinhsua = parseInt(prompt(bangThongTinChinhSua)) - 1;
+            switch (nhapMenuChinhsua) {
+                case 0: {
+                    let customerName = prompt("Nhập tên Khách hàng");
+                    if (customerName === null) {
+                        chinhSuaTtkh(hienThiDanhSachChinhSua());
+                    }
+                    danhSachKh[soThuTuKh - 1][0] = tenDung(customerName);
+                    break;
+                }
+                case 1: {
+                    let cmnd;
+                    do {
+                        cmnd = prompt("Nhập CMND/ID");
+                        if (cmnd === null) {
+                            chinhSuaTtkh(hienThiDanhSachChinhSua());
+                        }
+                        danhSachKh[soThuTuKh - 1][1] = cmnd;
+                    }
+                    while (!kiemTraCmnd(cmnd)) ;
+                    break;
+                }
+                case 2: {
+                    let dayofbirth = "";
+                    do {
+                        dayofbirth = prompt("Nhập ngày sinh (DD/MM/YYYY)");
+                        if (dayofbirth === null) {
+                            chinhSuaTtkh(hienThiDanhSachChinhSua());
+                        }
+                        danhSachKh[soThuTuKh - 1][2] = dayofbirth;
+                    } while (!kiemTraNgaySinh(dayofbirth));
+                    break;
+                }
+
+                case 3: {
+                    let email = "";
+                    do {
+                        email = prompt("Nhập Email");
+                        if (email === null) {
+                            chinhSuaTtkh(hienThiDanhSachChinhSua());
+                        }
+                        danhSachKh[soThuTuKh - 1][3] = email;
+                    }
+                    while (!kiemTraEmail(email));
+                    break;
+                }
+                case 4: {
+
+                    let address = prompt("Nhập địa chỉ");
+                    if (address === null) {
+                        chinhSuaTtkh(hienThiDanhSachChinhSua());
+                    }
+                    danhSachKh[soThuTuKh - 1][4] = address;
+                    break;
+                }
+                case 5: {
+
+                    let typeofcus = prompt("Nhập loại khách hàng (Diamond/Platinum/Gold/Silver/Member)");
+                    if (typeofcus === null) {
+                        chinhSuaTtkh(hienThiDanhSachChinhSua());
+                    }
+                    danhSachKh[soThuTuKh - 1][5] = typeofcus;
+                    break;
+                }
+                case  6: {
+
+
+                    let discount = prompt("Nhập Giảm giá (%)");
+                    if (discount === null) {
+                        chinhSuaTtkh(hienThiDanhSachChinhSua());
+                    }
+                    danhSachKh[soThuTuKh - 1][6] = discount;
+                    break;
+                }
+                case 7: {
+
+                    let Numofguess
+                    do {
+                        Numofguess = prompt("Nhập số khách đi kèm");
+                        if (Numofguess === null) {
+                            chinhSuaTtkh(hienThiDanhSachChinhSua());
+                        }
+                        danhSachKh[soThuTuKh - 1][7] = Numofguess;
+                    }
+                    while (!kiemtrasokhach(Numofguess));
+                    break;
+                }
+                case 8 : {
+
+                    let rentdays;
+                    do {
+                        rentdays = prompt("Nhập Số ngày thuê");
+                        if (rentdays === null) {
+                            chinhSuaTtkh(hienThiDanhSachChinhSua());
+                        }
+                        danhSachKh[soThuTuKh - 1][8] = rentdays;
+                    } while (!kiemTraSoNgayThue(rentdays));
+                    break;
+                }
+                case  9: {
+                    let service = prompt("Nhập loại dịch vụ (Villa/House/Room)");
+                    if (service === null) {
+                        chinhSuaTtkh(hienThiDanhSachChinhSua());
+                    }
+                    danhSachKh[soThuTuKh - 1][9] = service;
+                    break;
+                }
+                case 10: {
+                    let room = prompt("Nhập loại phòng (Vip/Business/Normal)");
+                    if (room === null) {
+                        chinhSuaTtkh(hienThiDanhSachChinhSua());
+                    }
+                    danhSachKh[soThuTuKh - 1][10] = room;
+                    break;
+                }
+                default : {
+                    hienThiTtkh(hienThiDanhSachKh());
+                }
+            }
+        }
+        while (!checkMenuChinhSua(nhapMenuChinhsua));
+    }
+
+    function tinhTien() {
+        let rentservice = 100;
+        if (service == "Villa") {
+            rentservice = 500;
+        } else if (service == "House") {
+            rentservice = 300;
+        }
+
+        let discountForAdd = 0;
+        let discountForRentsDay = 30;
+        let discountForCustomer = 0;
+
+        switch (address) {
+            case "Da Nang"  : {
+                discountForAdd = 20;
+                break;
+            }
+            case "Hue": {
+                discountForAdd = 10;
+                break;
+            }
+            case  "Quang Nam": {
+                discountForAdd = 5;
+                break;
+            }
+        }
+        switch (parseInt(rentdays)) {
+            case 0:
+            case 1: {
+                discountForRentsDay = 0;
+                break;
+            }
+            case 2:
+            case 3:
+            case 4: {
+                discountForRentsDay = 10;
+                break;
+            }
+            case 5:
+            case 6:
+            case 7: {
+                discountForRentsDay = 20;
+                break;
+            }
+        }
+        switch (typeofcus) {
+            case "Diamond": {
+                discountForCustomer = 15;
+                break;
+            }
+            case "Platium": {
+                discountForCustomer = 10;
+                break;
+            }
+            case "Gold": {
+                discountForCustomer = 5;
+                break;
+            }
+            case  "Silver": {
+                discountForCustomer = 2;
+                break;
+            }
+        }
+
+        let rent = rentservice * rentdays - (discountForCustomer + discountForRentsDay + discountForAdd);
+    }
+
+    function tenDung(name) {
+        let charName = name.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '');
+        charName = charName[0].toUpperCase() + charName.slice(1).toLowerCase();
+        for (let i = 0; i < charName.length - 1; i++) {
+            if (charName[i] == " ") {
+                if (charName[i + 1] == " ") {
+                    charName = charName.slice(0, i + 1) + charName.slice(i + 2);
+                    i -= 1;
+                } else charName = charName.slice(0, i + 1) + charName[i + 1].toUpperCase() + charName.slice(i + 2).toLocaleLowerCase();
+            }
+        }
+        return charName;
+    }
+
+    function kiemTraCmnd(cmnd) {
+        if ((!isNaN(cmnd)) && (parseInt(cmnd).toString().length == 9) && (cmnd.toString().length == 9)) {
+            return true
+        } else
+            return false;
+    }
+
+    function kiemTraNgaySinh(ngaysinh) {
+        let day = (ngaysinh.slice(0, 2));
+        let month = (ngaysinh.slice(3, 5));
+        let year = (ngaysinh.slice(6))
+        if ((ngaysinh.length == 10) && (ngaysinh[2] == "/") && (ngaysinh[5] == "/") && (parseInt(day) <= 31) && (parseInt(day) > 0)
+            && (parseInt(month) > 0) && (parseInt(month) <= 12) && (parseInt(year) > 1900) && (parseInt(year) <= 2020)) {
+            return true
+        } else return false;
+    }
+
+    function kiemTraEmail(email) {
+        let demi = 0;
+        let demj = 0;
+        let indexa;
+        let indexcham;
+        for (let i = 1; i < email.length; i++) {
+            if (email[i] == "@") {
+                demi++;
+                indexa = i;
+            } else if (email[i] == ".") {
+                demj++;
+                indexcham = i
+            }
+        }
+        if ((demi == 1) && (demj == 1) && (indexcham > indexa)) {
+            return true
+        } else return false;
+    }
+
+    function kiemtrasokhach(sokhach) {
+        if (Number.isInteger(+sokhach) && (sokhach > 0) & (parseInt(sokhach).toString() == sokhach.toString())) {
+            return true
+        } else
+            return false;
+    }
+
+    function kiemTraSoNgayThue(ngaythue) {
+        if (Number.isInteger(+ngaythue) && (ngaythue > 0) && (parseInt(ngaythue).toString() == ngaythue.toString())) {
+            return true
+        } else
+            return false;
+    }
+
+
+</script>
+</body>
+</html>

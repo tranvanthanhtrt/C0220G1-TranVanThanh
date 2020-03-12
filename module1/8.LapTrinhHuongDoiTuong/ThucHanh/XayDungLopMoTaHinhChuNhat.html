@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+
+<canvas id="veHcn" style="border: 1px solid red" height="200" width="400"></canvas>
+<div id="text"></div>
+<script>
+    class hinhChuNhat {
+        constructor(chieuDai, chieuRong,) {
+            this.chieuDai = chieuDai;
+            this.chieuRong = chieuRong;
+        }
+
+        dienTichHcn() {
+            return this.chieuDai * this.chieuRong;
+        }
+
+        chuViHcn() {
+            return (this.chieuRong + this.chieuRong) * 2;
+        }
+
+        veHcn() {
+            let img = document.getElementById("veHcn");
+            let veHcn = img.getContext("2d");
+            // let grd = veHcn.createLinearGradient(0,0,200,0);
+            // grd.addColorStop(0,"red");
+            // grd.addColorStop(1,"white");
+            veHcn.beginPath();
+            // veHcn.strokeStyle = "blue";
+            veHcn.lineWidth = 6;
+            veHcn.font = "20px Arial";
+            veHcn.fillText(this.chieuDai, (this.chieuDai + 10) / 2, (this.chieuRong + 30));
+            veHcn.fillText(this.chieuRong, (this.chieuDai + 14), (this.chieuRong + 30) / 2);
+            // veHcn.rect(10, 10, this.chieuDai, this.chieuRong);
+            veHcn.fillStyle = "blue";
+            veHcn.fillRect(10, 10, this.chieuDai, this.chieuRong);
+            veHcn.stroke();
+        }
+    }
+
+    let myHcn = new hinhChuNhat(90, 60);
+    let text = document.getElementById("text")
+    text = document.write("<h3>"+"dien tich hinh chu nhat la: " + myHcn.dienTichHcn() +"</h3>" +
+        "chu vi hình chữ nhật là: " + myHcn.chuViHcn());
+    myHcn.veHcn();
+</script>
+</body>
+</html>
