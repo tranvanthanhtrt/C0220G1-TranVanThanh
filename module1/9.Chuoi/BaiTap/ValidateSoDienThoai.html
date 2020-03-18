@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ValidateClassName</title>
+</head>
+<body>
+<script>
+    checkValidateClassName("(84)-(0978489648)")
+    function checkValidateClassName(str) {
+        let patt = /^\([0-9]{2}\)-\(0[0-9]{9}\)$/;
+        if (patt.test(str)) {
+            alert("Right");
+        } else alert("wrong");
+    }
+</script>
+
+</body>
+</html>

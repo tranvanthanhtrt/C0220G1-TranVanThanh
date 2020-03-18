@@ -4,29 +4,28 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+
 <body onload="sansang()">
-<img id="gaixinh" src="gaixing.jpg" style="position: absolute; left: 0;top:0 " height="200" width="180">
-
-
+<img id="gaixinh" src="tranh-o-to-cho-be-tap-to-mau_113830801.jpg" style="position: absolute; left: 500px;top:300px " height="300" width="180">
 <script>
     function anxuong() {
         var bucanh = document.getElementById("gaixinh");
-        bucanh.style.top = parseInt(bucanh.style.top) + 1 + 'px';
+        bucanh.style.top = parseInt(bucanh.style.top) + 3 + 'px';
     }
 
     function anlen() {
         var bucanh = document.getElementById("gaixinh");
-        bucanh.style.top = parseInt(bucanh.style.top) - 1 + 'px';
+        bucanh.style.top = parseInt(bucanh.style.top) - 3 + 'px';
     }
 
     function antrai() {
         var bucanh = document.getElementById("gaixinh")
-        bucanh.style.left = parseInt(bucanh.style.left) - 1 + 'px';
+        bucanh.style.left = parseInt(bucanh.style.left) - 3 + 'px';
     }
 
     function anphai() {
         var bucanh = document.getElementById("gaixinh")
-        bucanh.style.left = parseInt(bucanh.style.left) + 1 + 'px';
+        bucanh.style.left = parseInt(bucanh.style.left) + 3 + 'px';
     }
 
     function anxuongNhanh() {
@@ -53,21 +52,27 @@
         switch (evt.keyCode) {
             case 37:
                 if (event.ctrlKey){
-                antraiNhanh();
+                    antraiNhanh();
                 }else antrai();
                 break;
             case 39:
-                anphai();
+                if (event.ctrlKey){
+                    anphaiNhanh();
+                }else anphai();
                 break;
             case 38:
-                anlen();
+                if (event.ctrlKey){
+                    anlenNhanh();
+                }else anlen();
                 break;
             case 40:
-                anxuong();
+                if (event.ctrlKey){
+                    anxuongNhanh();
+                }else anxuong();
                 break;
 
         }
-            }
+    }
 
     function sansang() {
         window.addEventListener('keydown', dichuyen);

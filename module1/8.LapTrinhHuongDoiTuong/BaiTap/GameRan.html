@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        input {
+
+            background: white;
+            border-width: 1px;
+            border-color: snow;
+            width: 30px;
+            height: 30px;
+            /*padding: 0px;*/
+            /*border-spacing: 0px;*/
+            /*font-family: ".VnBlack";*/
+            /*font-size: 20px;*/
+        }
+    </style>
+
+</head>
+<body onload="sansang()">
+<div id="sanGame">
+</div>
+<script>
+    class nutGame {
+        constructor(x, y, huong) {
+            this.x = x;
+            this.y = y;
+            this.huong = huong;
+        }
+
+        nuttat() {
+            document.getElementById(+this.x + "," + this.y).style.background = "white";
+        }
+        nutSangPhai() {
+            document.getElementById(+this.x + "," + this.y).style.background = "white";
+            document.getElementById(+this.x + "," + (this.y + 1)).style.background = "black";
+            this.y = this.y + 1;
+        }
+        nutSangTrai() {
+            document.getElementById(+this.x + "," + this.y).style.background = "white";
+            document.getElementById(+this.x + "," + (this.y - 1)).style.background = "black";
+            this.y = this.y - 1;
+        }
+
+        nutSangLen() {
+            document.getElementById(+this.x + "," + this.y).style.background = "white";
+            document.getElementById(+(this.x - 1) + "," + (this.y)).style.background = "black";
+            this.x = this.x - 1;
+        }
+
+        nutSangXuong() {
+            document.getElementById(+this.x + "," + this.y).style.background = "white";
+            document.getElementById(+(this.x + 1) + "," + (this.y)).style.background = "black";
+            this.x = this.x + 1;
+        }
+
+        dichuyen() {
+            switch (this.huong) {
+                case  37: {
+                    this.nutSangTrai()
+                    break;
+                }
+                case 38: {
+                    this.nutSangLen()
+                    break;
+                }
+                case  39: {
+
+                    this.nutSangPhai()
+                    break;
+                }
+                case 40: {
+
+                    this.nutSangXuong()
+                    break;
+                }
+            }
+        }
+    }
+
+    let sanGame = [];
+    for (let i = 0; i < 35; i++) {
+        sanGame[i] = new Array();
+        for (let j = 0; j < 70; j++) {
+            sanGame[i][j] = "<input type='button' value=' ' id=" + i + "," + j + " '>";
+        }
+    }
+    let hienThiSanGame = "";
+    for (let i = 0; i < 35; i++) {
+        for (let j = 0; j < 70; j++) {
+            hienThiSanGame += sanGame[i][j];
+        }
+        hienThiSanGame += "<br>";
+    }
+    document.getElementById("sanGame").innerHTML = hienThiSanGame;
+    let a = parseInt(Math.random() * 35);
+    let b = parseInt(Math.random() * 70);
+    document.getElementById(+(a) + "," + (b)).style.background = "red"
+    let t;
+    let conRan = [];
+    for (let i = 0; i <= 1; i++) {
+        conRan[i] = new nutGame(20, 20, 39)
+    }
+    let n = 1;
+      function traphim(evt) {
+        clearInterval(t);
+        t = setInterval(function () {
+            for (let j = 0; j <= n; j++) {
+                setTimeout(function () {
+                    conRan[j].huong = evt.keyCode;
+                    conRan[j].dichuyen();
+                }, j * 110);
+            }
+            if ((conRan[0].x == a) && (conRan[0].y == b)) {
+                n++;
+                conRan[n] = new nutGame(conRan[0].x, conRan[0].y, conRan[0].huong);
+                setTimeout(function () {
+                    conRan[n].dichuyen();
+
+                }, (n + 1) * 110);
+                setTimeout(function () {
+                    a = parseInt(Math.random() * 35);
+                    b = parseInt(Math.random() * 70);
+                    document.getElementById(+(a) + "," + (b)).style.background = "red"
+                }, 1000);
+            }
+        }, 100);
+          }
+    function sansang() {
+        window.addEventListener('keydown', traphim);
+    }
+</script>
+</body>
+</html>

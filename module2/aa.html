@@ -1,61 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <style>
-        let xx = this.x;
-        let yy = this.y;
-        do {
-            xx += Math.random() * 10 - 5;
-            yy += Math.random() * 10 - 5;
-    </style>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
+<h1 id="nomination">helolololo</h1>
 <script>
-function drawHeart(fromx, fromy, tox, toy,lw,hlen,color) {
 
-var x = fromx;
-var y = fromy;
-var width = lw ;
-var height = hlen;
+    function a() {
+        let x = prompt("nhập x");
+        document.getElementById("nomination").innerHTML = x;
+    }
+    a()
 
-ctx.save();
-ctx.beginPath();
-var topCurveHeight = height * 0.3;
-ctx.moveTo(x, y + topCurveHeight);
-// top left curve
-ctx.bezierCurveTo(
-x, y,
-x - width / 2, y,
-x - width / 2, y + topCurveHeight
-);
 
-// bottom left curve
-ctx.bezierCurveTo(
-x - width / 2, y + (height + topCurveHeight) / 2,
-x, y + (height + topCurveHeight) / 2,
-x, y + height
-);
-
-// bottom right curve
-ctx.bezierCurveTo(
-x, y + (height + topCurveHeight) / 2,
-x + width / 2, y + (height + topCurveHeight) / 2,
-x + width / 2, y + topCurveHeight
-);
-
-// top right curve
-ctx.bezierCurveTo(
-x + width / 2, y,
-x, y,
-x, y + topCurveHeight
-);
-
-ctx.closePath();
-ctx.fillStyle = color;
-ctx.fill();
-ctx.restore();
-
-}
 </script>
+
 </body>
 </html>
