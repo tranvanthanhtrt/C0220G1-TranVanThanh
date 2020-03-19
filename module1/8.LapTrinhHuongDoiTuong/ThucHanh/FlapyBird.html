@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>fappy bird</title>
+    <style>
+        /*.canvas{*/
+        /*    background-image: url("gaixing.jpg");*/
+        /*    background-size:1000px 600px;*/
+        /*}*/
+    </style>
+    <script>
+        let highscore = 0;
+        const ON_STARTING = 0;
+        const ON_PLAYING = 1;
+        const ON_OVER = 2;
+        const GAME_WIDTH = 1000;
+        const GAME_HEIGHT = 600;
+        const GATE_SPACING = 220;
+
+        class Bird {
+            constructor() {
+                this.x = 50;
+                this.y = GAME_HEIGHT / 2;
+                this.width = 40;
+                this.height = 40;
+                this.gravity = 0.2;
+                this.stepY = 2;
+                this.update = function () {
+                    this.y += this.stepY;
+                    if (this.y < 0) {
+                        this.y = 0;
+                        this.stepY = 0
+                    }
+                    this.stepY += this.gravity;
+                }
+                this.draw = function (context) {
+                    context.beginPath();
+                    // context.rect(this.x, this.y, this.width, this.height);
+                    context.fillRect(this.x, this.y, this.width, this.height);
+
+                    context.stroke();
+                }
+                this.jum = function () {
+                    this.stepY = -5
+                }
+            }
+
+        }
+
+        class Gate {
+            GATE_WIDTH = 150;
+            VECTOR_X = 2;
+
+            constructor(x) {
+                this.getscore = false;
+                this.x = x;
+                this.y1 = Math.random() * (GAME_HEIGHT - this.GATE_WIDTH);
+                this.y2 = this.GATE_WIDTH + this.y1;
+                this.width = 50;
+
+                this.update = function () {
+                    this.x -= this.VECTOR_X;
+                    if (this.x + this.width < 0) {
+                        this.y1 = Math.random() * (GAME_HEIGHT - this.GATE_WIDTH);
+                        this.y2 = this.GATE_WIDTH + this.y1;
+                        this.x += 4 * GATE_SPACING;
+                        this.getscore = false;
+                    }
+                }
+                this.draw = function (context) {
+                    context.beginPath();
+                    context.rect(this.x, 0, this.width, this.y1,);
+                    context.stroke();
+                    context.rect(this.x, this.y2, this.width, GAME_HEIGHT - this.y2);
+                    context.stroke();
+                }
+                this.collisionWith = function (bird) {
+                    let gateRect1 = {
+                        left: this.x,
+                        right: this.x + this.width,
+                        top: 0,
+                        bottom: this.y1
+                    };
+                    let gateRect2 = {
+                        left: this.x,
+                        right: this.x + this.width,
+                        top: this.y2,
+                        bottom: GAME_HEIGHT
+                    };
+                    let birdRect = {
+                        left: bird.x,
+                        right: bird.x + bird.width,
+                        top: bird.y,
+                        bottom: bird.y + bird.height
+                    };
+                    return collision2Rect(gateRect1, birdRect) || collision2Rect(gateRect2, birdRect)
+                }
+            }
+
+        }
+
+        class myGame {
+            score = 0;
+
+            constructor() {
+                this.newGame = function () {
+                    if (highscore < this.score) {
+                        highscore = this.score;
+                    }
+                    this.score=0;
+                    this.status = ON_STARTING;
+                    this.bird = new Bird();
+                    this.gate = [
+                        new Gate(GAME_WIDTH / 2),
+                        new Gate(GAME_WIDTH / 2 + GATE_SPACING),
+                        new Gate(GAME_WIDTH / 2 + 2 * GATE_SPACING),
+                        new Gate(GAME_WIDTH / 2 + 3 * GATE_SPACING)
+                    ];
+                };
+                this.update = function () {
+                    // let game = this;
+                    if (this.status === ON_PLAYING) {
+                        this.bird.update();
+                        if (this.bird.y - this.bird.height > GAME_HEIGHT) {
+                            this.status = ON_OVER;
+
+                        }
+                        this.gate.forEach(function (gateGame) {
+                            gateGame.update();
+                            if (gateGame.collisionWith(game.bird)) {
+                                game.status = ON_OVER;
+                            } else if ((gateGame.getscore === false) && (gateGame.x < game.bird.x)) {
+                                gateGame.getscore = true;
+                                game.score++;
+                            }
+                        });
+                    }
+                };
+                this.showGame = function (context) {
+                    context.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
+                    this.bird.draw(context);
+                    this.gate.forEach((gateGame) => gateGame.draw(context));
+
+                    if (this.status === ON_STARTING) {
+                        context.font = "20px Arial";
+                        let text = "Press any key to start!";
+                        let textMetrics = context.measureText(text);
+                        context.fillText(text, GAME_WIDTH / 2 - textMetrics.width / 2, GAME_HEIGHT / 4 * 3)
+                    } else if (this.status === ON_OVER) {
+                        context.font = "30px Arial";
+                        let text = "GAME OVER";
+                        context.fillText(text, GAME_WIDTH / 2 - context.measureText(text).width / 2, GAME_HEIGHT / 3);
+
+                        let playAgainText = "Press any key to play again";
+                        context.font = "20px Arial";
+                        context.fillText(playAgainText, GAME_WIDTH / 2 - context.measureText(playAgainText).width / 2, GAME_HEIGHT / 4 * 3);
+                        if (this.score < highscore) {
+                            context.font = "20px Arial";
+                            let yourScoreText = "Your score: " + this.score;
+                            let highScoreText = "High score: " + highscore;
+                            context.fillText(yourScoreText, GAME_WIDTH / 2 - context.measureText(yourScoreText).width / 2, GAME_HEIGHT / 2);
+                            context.fillText(highScoreText, GAME_WIDTH / 2 - context.measureText(highScoreText).width / 2, GAME_HEIGHT / 2 + 60);
+                        } else {
+                            context.font = "35px Arial";
+                            let text = "New High Score: " + this.score;
+                            context.fillText(text, GAME_WIDTH / 2 - context.measureText(text).width / 2, GAME_HEIGHT / 2);
+                        }
+                    } else {
+                        context.font = "30px Arial";
+                        let scoreText = this.score.toString();
+                        context.fillText(scoreText, GAME_WIDTH / 2 - context.measureText(scoreText).width / 2, 50);
+                    }
+                }
+                this.onkeyEvent = function (keyCode) {
+                    if (this.status === ON_PLAYING) {
+                        this.bird.jum();
+                    } else if (this.status === ON_STARTING) {
+                        this.status = ON_PLAYING;
+                        this.bird.jum();
+                    } else {
+                        this.newGame();
+                    }
+                };
+                this.newGame();
+            }
+
+        }
+
+        function collision2Rect(rect, bird) {
+            return !(bird.right < rect.left ||
+                bird.left > rect.right ||
+                bird.top > rect.bottom ||
+                bird.bottom < rect.top)
+        }
+    </script>
+</head>
+<body onload="loadGame()" onkeydown="onkeyEvent(event)">
+</body>
+<script>
+    let canvas = document.createElement("canvas");
+    canvas.width = 1000;
+    canvas.height = 600;
+        canvas.style.background = "lightblue"
+    // canvas.style.backgroundImage= "url(\"gaixing.jpg\")";
+    // canvas.style.backgroundRepeat= "no-repeat";
+    // canvas.style.backgroundSize="1000px 600px"
+    canvas.onmousedown=function (){game.onkeyEvent();}
+    document.body.appendChild(canvas);
+    let context = canvas.getContext("2d");
+    let game = new myGame();
+
+    function loadGame() {
+        game.update();
+        game.showGame(context);
+        requestAnimationFrame(loadGame);
+        // setTimeout(loadGame, 10);
+    }
+
+    function onkeyEvent(evt) {
+        game.onkeyEvent(evt.keyCode);
+    }
+</script>
+</html>

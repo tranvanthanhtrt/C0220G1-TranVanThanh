@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let array = [1, 2, 30, 4, 51, 30, 5, 7, 8, 9];
+    let max = 1;
+    let max2 = 0;
+    array.forEach(function (arr) {
+        if (arr > max) {
+            max2 = max;
+            max = arr;
+        } else if (arr > max2) {
+            max2 = arr;
+        }
+    });
+    alert(max + "," + max2);
+</script>
+</body>
+</html>
