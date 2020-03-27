@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>myGameRan</title>
+</head>
+<script>
+    class SnakeDot {
+        constructor() {
+            this.radius = 5;
+            this.x = 20;
+            this.y = 20;
+            this.draw = function (context) {
+                context.beginPath();
+                context.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
+                context.fill();
+                context.stroke();
+            }
+        }
+
+    }
+
+    class Snake {
+        SNAKE_SPEED =2 ;
+        SNAKE_LENGHT = 10
+
+        constructor() {
+            this.gavity=0.5
+            this.velx = 1;
+            this.vely = 1;
+
+            // this.snake = [new SnakeDot(), new SnakeDot(), new SnakeDot(), new SnakeDot(), new SnakeDot(), new SnakeDot(), new SnakeDot(), new SnakeDot(), new SnakeDot(), new SnakeDot()];
+            this.snake=new Array(100);
+            for (let j=0;j<=100;j++)
+            {
+                this.snake[j]=new SnakeDot();
+            }
+                        this.update = function (quarter) {
+                for (let i = this.snake.length - 1; i > 0; i--) {
+                    this.snake[i].x = this.snake[i - 1].x;
+                    this.snake[i].y = this.snake[i - 1].y;
+                }
+                switch (quarter) {
+                    case 37: {
+
+                            this.velx += -this.gavity;
+                            console.log(this.velx);
+                        if (this.velx <= -this.SNAKE_SPEED) {
+                            this.velx = -this.SNAKE_SPEED;
+                            this.vely=0;
+                        } else {
+                            if (this.vely >= 0) {
+                                this.vely = Math.sqrt(this.SNAKE_SPEED*this.SNAKE_SPEED- this.velx * this.velx);
+                            } else
+                                this.vely = -Math.sqrt(this.SNAKE_SPEED*this.SNAKE_SPEED - this.velx * this.velx);
+                        }
+                        break;
+                    }
+                    case 38: {
+
+                            this.vely += -this.gavity;
+                        if (this.vely <= -this.SNAKE_SPEED) {
+                            this.vely = -this.SNAKE_SPEED;
+                            this.velx=0;
+                        } else {
+                            if (this.velx >= 0) {
+                                this.velx = Math.sqrt(this.SNAKE_SPEED*this.SNAKE_SPEED - this.vely * this.vely);
+                            } else
+                                this.velx = -Math.sqrt(this.SNAKE_SPEED*this.SNAKE_SPEED - this.vely * this.vely);
+                        }
+                        break;
+                    }
+                    case 39: {
+
+                            this.velx += this.gavity;
+                        if (this.velx >= this.SNAKE_SPEED) {
+                            this.velx =this.SNAKE_SPEED;
+                            this.vely=0;
+                        } else {
+                            if (this.vely >= 0) {
+                                this.vely = Math.sqrt(this.SNAKE_SPEED*this.SNAKE_SPEED - this.velx * this.velx);
+                            } else
+                                this.vely = -Math.sqrt(this.SNAKE_SPEED*this.SNAKE_SPEED - this.velx * this.velx);
+                        }
+                        break;
+                    }
+                    case 40: {
+
+                            this.vely += this.gavity;
+                        if (this.vely >= this.SNAKE_SPEED) {
+                            this.vely = this.SNAKE_SPEED;
+                            this.velx=0;
+                        } else {
+                            if (this.velx >= 0) {
+                                this.velx = Math.sqrt(this.SNAKE_SPEED*this.SNAKE_SPEED- this.vely * this.vely);
+                            } else
+                                this.velx = -Math.sqrt(this.SNAKE_SPEED*this.SNAKE_SPEED - this.vely * this.vely);
+                        }
+                        break;
+                    }
+
+                }
+                this.snake[0].x += this.velx;
+                this.snake[0].y += this.vely;
+            };
+            this.draw = function () {
+                this.snake.forEach(function (dot) {
+                    dot.draw(context);
+                });
+            }
+        }
+    }
+
+    class Game {
+        constructor(props) {
+            this.newGame = function () {
+                this.snakeGame = new Snake();
+            };
+
+            this.update = function (keyCode) {
+                this.snakeGame.update(keyCode);
+            };
+            this.draw = function (context) {
+                context.clearRect(0, 0, 800, 600);
+                this.snakeGame.draw(context);
+            };
+            this.onkeyEvent = function (keyCode) {
+
+            }
+            this.newGame()
+        }
+    }
+</script>
+<body onload="LoadGame()" onkeydown="onkeyEvent(event)">
+
+</body>
+<script>
+    let canvas = document.createElement("canvas");
+    canvas.width = 800;
+    canvas.height = 600;
+    canvas.style.background = "lightblue";
+    document.body.appendChild(canvas);
+    let context = canvas.getContext("2d");
+    let myGame = new Game();
+
+    function LoadGame() {
+        myGame.update();
+        myGame.draw(context);
+        requestAnimationFrame(LoadGame);
+
+    }
+
+    function onkeyEvent(evt) {
+        myGame.update(evt.keyCode)
+
+    }
+
+</script>
+</html>

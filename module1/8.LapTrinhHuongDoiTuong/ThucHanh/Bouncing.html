@@ -4,17 +4,18 @@
     <meta charset="UTF-8">
     <title>MyBoucingGame</title>
     <style>
-
     </style>
     <script>
         const GAME_WIDTH = 500;
         const GAME_HEIGHT = 700;
         const BOUN_RADIUS = 20;
-        const BOUN_SPEED = 5;
+        const BOUN_SPEED_X = 5;
+        const BOUN_SPEED_Y = 5;
         const ON_STARTING = 0;
         const ON_PLAYING = 1;
         const ON_OVER = 2;
         let highscore = 0;
+
         class Bar {
             constructor() {
                 this.height = 30;
@@ -79,8 +80,8 @@
                     }
                 }
                 this.update = function () {
-                    this.x += this.ratioQuarterX * BOUN_SPEED;
-                    this.y += this.ratioQuarterY * BOUN_SPEED;
+                    this.x += this.ratioQuarterX * BOUN_SPEED_X;
+                    this.y += this.ratioQuarterY * BOUN_SPEED_Y;
                 }
                 this.draw = function (context) {
                     context.beginPath();
@@ -108,18 +109,18 @@
                 }
                 this.update = function () {
                     if (this.status === ON_PLAYING) {
-                        this.score++;
+
                         this.bar.update();
                         if (this.boun.x + this.boun.radius >= GAME_WIDTH) {
                             this.boun.chanceQuarter("R");
-
                         } else if (this.boun.x - this.boun.radius <= 0) {
                             this.boun.chanceQuarter("L");
                         } else if (this.boun.y - this.boun.radius <= 0) {
                             this.boun.chanceQuarter("T");
                         } else if ((this.boun.y + this.boun.radius >= GAME_HEIGHT - this.bar.height - 5) &&
-                            (this.boun.x > this.bar.x - 5 ) &&
+                            (this.boun.x > this.bar.x - 5) &&
                             (this.boun.x < this.bar.x + 5 + this.bar.width)) {
+                            this.score++;
                             this.boun.chanceQuarter("B")
                         }
                         this.boun.update();
@@ -198,8 +199,8 @@
     function loadGame() {
         game.update();
         game.drawGame(context);
-        requestAnimationFrame(loadGame);
-        // setTimeout(loadGame, 10);
+        // requestAnimationFrame(loadGame);
+        setTimeout(loadGame, 15);
     }
 
     function onkeyEvent(evt) {

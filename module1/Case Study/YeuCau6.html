@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./Customer.js"></script>
+</head>
+<body>
+<script>
+    let listCustomer=[];
+    displayMainMenu();
+    function displayMainMenu() {
+        let choose = parseInt(prompt("Chọn hành động bạn muốn thực hiện:" + "\n" +
+            "1.Thêm khách hàng" + "\n" +
+            "2.Hiển thị thông tin khách hàng " + "\n" +
+            "3.Hiển thị số tiền phải thanh toán" + "\n" +
+            "4.Chỉnh sửa thông tinh khách hàng" + "\n" +
+            "5.Xóa thông tin khách hàng" + "\n" +
+            "6.Thoát"));
+        switch (choose) {
+            case  1: {
+                addNewCustomer();
+                break;
+            }
+            default: {
+                alert("Failed")
+            }
+        }
+    }
+
+    function addNewCustomer() {
+        let cus = new Customer();
+        let customerName = prompt("Nhập tên Khách hàng");
+        let cmnd = prompt("Nhập CMND/ID");
+        let birthday = prompt("Nhập ngày sinh (DD/MM/YYYY)");
+        let email = prompt("Nhập Email");
+        let address = prompt("Nhập địa chỉ");
+        let typeService=prompt("Nhập loại dịch vụ");
+        let typeRoom = prompt("Nhập loại phòng (Vip/Business/Normal)");
+        let typeCustomer = prompt("Nhập loại khách hàng (Diamond/Platinum/Gold/Silver/Member)");
+        let discount = prompt("Nhập Giảm giá (%)");
+        let quantityIncluded=prompt("Nhập số lượng khách đi kèm");
+        let rentDays = prompt("Nhập Số ngày thuê");
+        cus.setName(customerName);
+        cus.setCMND(cmnd);
+        cus.setBirthday(birthday);
+        cus.setEmail(email);
+        cus.setAddress(address);
+        cus.setTypeService(typeService);
+        cus.setTypeRoom(typeRoom);
+        cus.setTypeCustomer(typeCustomer);
+        cus.setDiscount(discount);
+        cus.setQuantityIncluded(quantityIncluded);
+        cus.setRentDays(rentDays);
+        listCustomer.push(cus);
+        alert("Đã thêm thông tin khách hàng!");
+        displayMainMenu();
+    }
+
+
+</script>
+</body>
+</html>
