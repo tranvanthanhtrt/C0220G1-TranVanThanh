@@ -7,20 +7,37 @@
 </head>
 <body>
 <script>
-    let listCustomer=[];
+    let listCustomer = [];
     displayMainMenu();
+
     function displayMainMenu() {
         let choose = parseInt(prompt("Chọn hành động bạn muốn thực hiện:" + "\n" +
-            "1.Thêm khách hàng" + "\n" +
-            "2.Hiển thị thông tin khách hàng " + "\n" +
-            "3.Hiển thị số tiền phải thanh toán" + "\n" +
-            "4.Chỉnh sửa thông tinh khách hàng" + "\n" +
-            "5.Xóa thông tin khách hàng" + "\n" +
-            "6.Thoát"));
+            "1.Thêm khách hàng                          " + "6.Thêm nhân viên" + "\n" +
+            "2.Hiển thị thông tin khách hàng       " + "7.Hiển thị thông tin nhân viên" + "\n" +
+            "3.Hiển thị số tiền phải thanh toán    " + "8.Tính lương nhân viên" + "\n" +
+            "4.Chỉnh sửa thông tin khách hàng    " + "9.Thoát" + "\n" +
+            "5.Xóa thông tin khách hàng            "));
         switch (choose) {
             case  1: {
                 addNewCustomer();
+                displayMainMenu();
                 break;
+            }
+            case 2: {
+                displayInfoCustomer();
+                displayMainMenu();
+                break;
+            }
+            case 3: {
+                displayTotalPays();
+                displayMainMenu();
+                break;
+            }
+            case 4: {
+                editInfoCustomer();
+                displayMainMenu();
+                break;
+
             }
             default: {
                 alert("Failed")
@@ -28,19 +45,39 @@
         }
     }
 
+    function chooseCustomer(action) {
+        let listNameCustomer = "Chọn khách hàng muốn " + action + " :" + "\n";
+        for (let i = 0; i < listCustomer.length; i++) {
+            listNameCustomer += i + 1 + "." + listCustomer[i].getName() + " - " + "CMND: " + listCustomer[i].getCMND() + "\n";
+        }
+        let choose;
+        do {
+            choose = parseInt(prompt(listNameCustomer));
+        }
+        while (!((choose > 0) && (choose <= listCustomer.length)));
+        return choose;
+    }
+
     function addNewCustomer() {
         let cus = new Customer();
         let customerName = prompt("Nhập tên Khách hàng");
         let cmnd = prompt("Nhập CMND/ID");
-        let birthday = prompt("Nhập ngày sinh (DD/MM/YYYY)");
-        let email = prompt("Nhập Email");
+        let birthday;
+        do {
+            birthday = prompt("Nhập ngày sinh (DD/MM/YYYY)");
+        } while (!checkValidateBirthday(birthday));
+        let email;
+        do {
+            email = prompt("Nhập Email");
+        }
+        while (!checkValidateEmail(email));
         let address = prompt("Nhập địa chỉ");
-        let typeService=prompt("Nhập loại dịch vụ");
+        let typeService = prompt("Nhập loại dịch vụ");
         let typeRoom = prompt("Nhập loại phòng (Vip/Business/Normal)");
         let typeCustomer = prompt("Nhập loại khách hàng (Diamond/Platinum/Gold/Silver/Member)");
-        let discount = prompt("Nhập Giảm giá (%)");
-        let quantityIncluded=prompt("Nhập số lượng khách đi kèm");
-        let rentDays = prompt("Nhập Số ngày thuê");
+        let discount = parseInt(prompt("Nhập Giảm giá (%)"));
+        let quantityIncluded = parseInt(prompt("Nhập số lượng khách đi kèm"));
+        let rentDays = parseInt(prompt("Nhập Số ngày thuê"));
         cus.setName(customerName);
         cus.setCMND(cmnd);
         cus.setBirthday(birthday);
@@ -54,7 +91,120 @@
         cus.setRentDays(rentDays);
         listCustomer.push(cus);
         alert("Đã thêm thông tin khách hàng!");
-        displayMainMenu();
+
+    }
+    function displayTotalPays() {
+        let cusPosition = chooseCustomer("xem số tiền phải thanh toán") - 1;
+        alert("Số tiền phải thanh toán là: "+listCustomer[cusPosition].totalPays());
+    }
+
+    function editInfoCustomer() {
+        let cusPosition = chooseCustomer("chỉnh sửa thông tin") - 1;
+        let choose;
+        do {
+            choose = parseInt(prompt("Chọn thông tin muốn chỉnh sửa:" + "\n" +
+                "1.Tên khách hàng: " + listCustomer[cusPosition].getName() + "\n" +
+                "2.CMND/ID: " + listCustomer[cusPosition].getCMND() + "\n" +
+                "3.Ngày sinh: " + listCustomer[cusPosition].getBirthday() + "\n" +
+                "4.Email: " + listCustomer[cusPosition].getEmail() + "\n" +
+                "5.Địa chỉ: " + listCustomer[cusPosition].getaddress() + "\n" +
+                "6.Loại khách hàng: " + listCustomer[cusPosition].getTypeCustomer() + "\n" +
+                "7.Giảm giá: " + listCustomer[cusPosition].getDiscount() + " %" + "\n" +
+                "8.Số lượng đi kèm: " + listCustomer[cusPosition].getQuantityIncluded() + "\n" +
+                "9.Loại phòng: " + listCustomer[cusPosition].gettypeRoom() + "\n" +
+                "10.Số ngày thuê: " + listCustomer[cusPosition].getRentDays() + "\n" +
+                "11.Loại dịch vụ: " + listCustomer[cusPosition].gettypeService() + "\n"
+            ));
+        }
+        while (!((choose > 0) && (choose <= 11)));
+        switch (choose) {
+            case 1: {
+                listCustomer[cusPosition].setName(prompt("Nhập tên Khách hàng"));
+            }
+                break;
+            case  2: {
+                listCustomer[cusPosition].setCMND(prompt("Nhập CMND"));
+                break
+            }
+            case  3: {
+                let birthday;
+                do {
+                    birthday = listCustomer[cusPosition].setBirthday(prompt("Nhập ngày sinh (DD/MM/YYYY)"));
+                } while (!checkValidateBirthday(birthday));
+                break
+            }
+            case  4: {
+                let email;
+                do {
+                    email = listCustomer[cusPosition].setEmail(prompt("Nhập Email"));
+                } while (!checkValidateEmail(email));
+                break
+            }
+            case  5: {
+                listCustomer[cusPosition].setAddress(prompt("Nhập địa chỉ"));
+                break
+            }
+            case  6: {
+                listCustomer[cusPosition].setTypeCustomer(prompt("Nhập loại Khách hàng"));
+                break
+            }
+            case  7: {
+                listCustomer[cusPosition].setDiscount(prompt("Nhập giảm giá(%)"));
+                break
+            }
+            case  8: {
+                listCustomer[cusPosition].setQuantityIncluded(prompt("Nhập Số lượng khách đi kèm"));
+                break
+            }
+            case  9: {
+                listCustomer[cusPosition].setTypeRoom(prompt("Nhập loại phòng"));
+                break
+            }
+            case  10: {
+                listCustomer[cusPosition].setRentDays(prompt("Nhập Số ngày thuê"));
+                break
+            }
+            case  11: {
+                listCustomer[cusPosition].setTypeService(prompt("Nhập loại dịch vụ"));
+                break
+            }
+
+        }
+
+    }
+
+    function displayInfoCustomer() {
+        let cusPosition = chooseCustomer("hiển thị thông tin") - 1;
+        alert("Thông tin khách hàng:" + "\n" +
+            "1.Tên khách hàng: " + listCustomer[cusPosition].getName() + "\n" +
+            "2.CMND/ID: " + listCustomer[cusPosition].getCMND() + "\n" +
+            "3.Ngày sinh: " + listCustomer[cusPosition].getBirthday() + "\n" +
+            "4.Email: " + listCustomer[cusPosition].getEmail() + "\n" +
+            "5.Địa chỉ: " + listCustomer[cusPosition].getaddress() + "\n" +
+            "6.Loại khách hàng: " + listCustomer[cusPosition].getTypeCustomer() + "\n" +
+            "7.Giảm giá: " + listCustomer[cusPosition].getDiscount() + " %" + "\n" +
+            "8.Số lượng đi kèm: " + listCustomer[cusPosition].getQuantityIncluded() + "\n" +
+            "9.Loại phòng: " + listCustomer[cusPosition].gettypeRoom() + "\n" +
+            "10.Số ngày thuê: " + listCustomer[cusPosition].getRentDays() + "\n" +
+            "11.Loại dịch vụ: " + listCustomer[cusPosition].gettypeService() + "\n"
+        )
+
+    }
+
+    function checkValidateEmail(email) {
+        let patt = /^[a-z]+@[a-z]+\.com$/;
+        if (patt.test(email)) {
+            return true
+        } else
+            return false
+    }
+
+    function checkValidateBirthday(birthday) {
+        let patt = /^[0-9]{2}\/[0-9]{2}\/[0-9]{4}$/;
+        if (patt.test(birthday)) {
+            return true
+        } else
+            return false
     }
 
 

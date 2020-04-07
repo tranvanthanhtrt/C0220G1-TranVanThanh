@@ -66,7 +66,7 @@ let Customer = function () {
         return this.typeService;
     };
     this.totalPays = function () {
-        let money = 0;
+        let money = 200;
         if (this.gettypeService == "Villa") {
             money = 500;
         } else if (this.gettypeService == "House") {

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bai4</title>
+</head>
+<body>
+<script>
+    class Student {
+        constructor(index, name, birthday, avrageScore) {
+            this.index = index;
+            this.name = name;
+            this.birthday = birthday;
+            this.avrageScore = (avrageScore);
+            this.achivement = function () {
+                if (this.avrageScore > 8) {
+                    return "GIOI";
+                } else if (this.avrageScore >= 6.5) {
+                    return "KHA";
+                } else if (this.avrageScore >= 5) {
+                    return "TRUNGBINH";
+                } else if (this.avrageScore >= 3.5) {
+                    return "YEU";
+                } else {
+                    return "KEM";
+                }
+            };
+
+            this.displayInfo = function () {
+                alert("Index: "+this.index+"\n"+
+                        "Name: "+this.name+"\n"+
+                        "Birth: "+this.birthday+"\n"+
+                        "Avrage score: "+this.avrageScore+"\n"+
+                        "Archivement :"+this.achivement());
+            }
+        }
+    }
+    let Thanh1=new Student(1,"Trần Văn Thanh","31/12/1993",6.8);
+    let Thanh2=new Student(2,"Trần Văn Thanh","31/12/1993",5.5);
+    let Thanh3=new Student(2,"Trần Văn Thanh","31/12/1993",2);
+    Thanh1.displayInfo();
+    Thanh2.displayInfo();
+    Thanh3.displayInfo();
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bai3</title>
+</head>
+<body>
+<script>
+    let arrScore1 = [10, 5, 2, 8, -1, 6, 8];
+    let arrScore2 = [2, 4, 0, 5, 1];
+    let arrScore3 = [8, 6, 2, 8, 1, 1, 4];
+    let arr4=[2,2,2,2,2,2];
+
+    function findMaxScore(arr) {
+        let maxScore = arr[0];
+        let index = 0;
+        for (let i = 1; i < arr.length; i++) {
+            if (arr[i] >= maxScore) {
+                maxScore = arr[i];
+                index = i;
+            }
+        }
+        alert("Max Score: " + maxScore + ", index: " + index);
+    }
+    findMaxScore(arr4);
+</script>
+</body>
+</html>
