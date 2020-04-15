@@ -1,5 +1,6 @@
 package Bai3_MangVaPhuongThucTrongJava.BaiTap;
 
+import com.sun.javafx.fxml.builder.TriangleMeshBuilder;
 import javafx.scene.shape.TriangleMesh;
 
 import java.util.Scanner;
@@ -13,7 +14,8 @@ public class KiemTraTamGiacIllegalTriangleException {
         int b=scanner.nextInt();
         System.out.println("Nhap canh thu ba cua tam giac:");
         int c=scanner.nextInt();
-        TriangleMesh tamgiac=new TriangleMesh();
+
 
     }
 }
+

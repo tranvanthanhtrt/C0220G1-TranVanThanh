@@ -10,11 +10,15 @@ public class SuDungLopArrayIndexOutOfBoundsException {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Nhap chi so phan tu trong mang:");
         int x = scanner.nextInt();
+        int a = 0;
         try {
-            System.out.println("Gia tri cua phan tu " + x + " trong mang la " +arr[x]);
-        } catch (IndexOutOfBoundsException e){
+            System.out.println("Gia tri cua phan tu " + x + " trong mang la " + arr[x] / a);
+        } catch (IndexOutOfBoundsException e) {
             System.out.println("Chi so vuot qua gioi han cua mang");
+        } catch (ArithmeticException e) {
+            System.out.println("loi");
         }
+
 
     }
 
