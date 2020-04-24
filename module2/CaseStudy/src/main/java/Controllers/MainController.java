@@ -361,18 +361,14 @@ public class MainController {
             }
         }
     }
-//    public static void confirmChooseTypeServiceForBooking(int chooseTypeServiceBooking) {
-//        switch (chooseTypeServiceBooking){
-//            case 1:{
-//
-//            }
-//        }
-//        for (int i = 0; i < ReadWriteFile.customers.size(); i++) {
-//            if (i == chooseCustomer) {
-//                booking(chooseCustomer, chooseService);
-//            }
-//        }
-//    }
+    public static void confirmChooseTypeServiceForBooking(int chooseTypeServiceBooking) throws IOException {
+        switch (chooseTypeServiceBooking){
+            case 1:{
+                displayVillaNameList();
+            }
+        }
+
+    }
 
     private static void booking(int chooseCustomer, int chooseService) {
 

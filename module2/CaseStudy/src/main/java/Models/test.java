@@ -1,5 +1,6 @@
 package Models;
 
+import Controllers.CustomerManage;
 import Controllers.MainController;
 
 import java.io.IOException;

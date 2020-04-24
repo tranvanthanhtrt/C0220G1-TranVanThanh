@@ -2,6 +2,10 @@ package Controllers;
 
 import Models.Customer;
 import Models.Villa;
+import UserException.BirthdayException;
+import UserException.GenderException;
+import UserException.IdCardException;
+import UserException.NameException;
 
 import java.io.FileNotFoundException;
 import java.util.Calendar;
@@ -10,50 +14,100 @@ import java.util.TimeZone;
 import java.util.regex.Pattern;
 
 public class CustomerManage {
-        public static Customer addNewCustomer() throws FileNotFoundException {
+
+    public static final String BIRTHDAY_ERROR = "Năm sinh phải >1900 và nhỏ hơn năm hiện tại 18 năm, đúng định dạng dd/mm/yyyy";
+    public static final String NAME_ERROR = "Tên Khách hàng phải in hoa ký tự đầu tiên trong mỗi từ";
+    public static final String GENDER_ERROR = "Gender phải là Male hoặc Female hoặc Unknown!";
+    public static final String ID_ERROR = "Id Card phải có 9 chữ số và theo định dạng XXX XXX XXX !";
+    public static final String EMAIL_ERROR = "Email phải đúng định dạng abc@abc.abc";
+
+    public static Customer addNewCustomer() throws FileNotFoundException {
         Scanner scanner = new Scanner(System.in);
-        String name;
+        String name = "";
         do {
             System.out.print("Input Name of customer: ");
-            name = scanner.nextLine();
+            try {
+                name = scanner.nextLine();
+                if (!validateCustomerName(name)) {
+                    throw new NameException(NAME_ERROR);
+                }
+            } catch (NameException e) {
+                System.out.println(NAME_ERROR);
+            }
+
 
         }
         while (!validateCustomerName(name));
-        String birthday;
+        String birthday = "";
         do {
             System.out.print("Input birthday (dd/mm/yyyy): ");
-            birthday = scanner.nextLine();
+            try {
+                birthday = scanner.nextLine();
+                if (!validateBirthDay(birthday)) {
+                    throw new BirthdayException(BIRTHDAY_ERROR);
+                }
+
+            } catch (BirthdayException e) {
+                System.out.println(BIRTHDAY_ERROR);
+            }
 
         }
         while (!validateBirthDay(birthday));
-        String gender;
+        String gender = "";
         do {
             System.out.print("Input gender of customer: ");
-            gender = scanner.nextLine();
-            gender=gender.substring(0,1).toUpperCase()+gender.substring(1).toLowerCase();
+            try {
+                gender = scanner.nextLine();
+                gender = gender.substring(0, 1).toUpperCase() + gender.substring(1).toLowerCase();
+                if (!validateGender(gender)) {
+                    throw new GenderException(GENDER_ERROR);
+                }
+
+            } catch (GenderException e) {
+                System.out.println(GENDER_ERROR);
+            }
 
         }
+
         while (!validateGender(gender));
-        String id;
+        String id = "";
         do {
             System.out.print("Input Id of customer (xxx xxx xxx): ");
-            id = scanner.nextLine();
-            if(isExistedCustomerId(id)){
-                System.out.println("Customer ID already exists, try another !");
-                id="";
+            try {
+                id = scanner.nextLine();
+                if (isExistedCustomerId(id)) {
+                    System.out.println("Customer ID already exists, try another !");
+                    id = "";
+                }
+                if (!validateId(id)) {
+                    throw new IdCardException(ID_ERROR);
+                }
+
+            } catch (IdCardException e) {
+                System.out.println(ID_ERROR);
             }
+
         }
+
         while (!validateId(id));
 
         System.out.print("Input phone number of customer: ");
         String phoneNumber = scanner.nextLine();
 
-        String email;
+        String email = "";
         do {
             System.out.print("Input email (abc@abc.abc): ");
-            email = scanner.nextLine();
+            try {
+                email = scanner.nextLine();
+                if (!validateEmail(email)) {
+                    throw new GenderException(EMAIL_ERROR);
+                }
 
+            } catch (GenderException e) {
+                System.out.println(EMAIL_ERROR);
+            }
         }
+
         while (!validateEmail(email));
 
         System.out.print("Input type of customer: ");
@@ -65,37 +119,24 @@ public class CustomerManage {
 
     public static boolean validateCustomerName(String value) {
         String PATTERN = "([A-Z][a-z]+\\s)*([A-Z][a-z]+)$";
-        if (!Pattern.matches(PATTERN, value)) {
-            System.out.println("Tên Khách hàng phải in hoa ký tự đầu tiên trong mỗi từ");
-            return false;
-        }
-        return true;
+
+        return Pattern.matches(PATTERN, value);
     }
 
     public static boolean validateEmail(String value) {
         String PATTERN = "[a-z 1-9]+@[a-z 1-9]+[.]([a-z 1-9]+)$";
-        if (!Pattern.matches(PATTERN, value)) {
-            System.out.println("Email phải đúng định dạng abc@abc.abc");
-            return false;
-        }
-        return true;
+        return Pattern.matches(PATTERN, value);
     }
 
     public static boolean validateGender(String value) {
-        value=value.toLowerCase();
-        String PATTERN = "male|female|unknown";
-        if (!Pattern.matches(PATTERN, value)) {
-            System.out.println("Gender phải là Male hoặc Female hoặc Unknown!");
-            return false;
-        }
-        return true;
+        value = value.toLowerCase();
+        String PATTERN = "^male|female|unknown";
+        return Pattern.matches(PATTERN, value);
     }
 
     public static boolean validateId(String value) {
         String PATTERN = "[\\d]{3}\\s[\\d]{3}\\s([\\d]{3})$";
-        if (!Pattern.matches(PATTERN, value)) {
-            System.out.println("Id Card phải có 9 chữ số và theo định dạng XXX XXX XXX !");
-        }
+
         return Pattern.matches(PATTERN, value);
     }
 
@@ -107,12 +148,10 @@ public class CustomerManage {
             return false;
         }
         boolean isValidateBirthday = (year - Integer.parseInt(value.substring(6)) > 18) & (Integer.parseInt(value.substring(6)) > 1900);
-        if (!isValidateBirthday) {
-            System.out.println("Năm sinh phải >1900 và nhỏ hơn năm hiện tại 18 năm, đúng định dạng dd/mm/yyyy");
-            return false;
-        }
+        if (!isValidateBirthday) return false;
         return true;
     }
+
     public static boolean isExistedCustomerId(String id) throws FileNotFoundException {
         ReadWriteFile.loadCustomer();
         for (Customer customer : ReadWriteFile.customers) {
