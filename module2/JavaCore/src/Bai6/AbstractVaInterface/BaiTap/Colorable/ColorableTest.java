@@ -9,22 +9,14 @@ import java.util.function.DoubleToIntFunction;
 
 public class ColorableTest {
     public static void main(String[] args) {
-        Shape[]shapes=new  Shape[4];
-        shapes[0]= new Square(52);
-        shapes[1]=new Rectangle(20,56);
-        shapes[2]=new Circle(45);
-        shapes[3]=new Square(41);
+        Shape[] shapes = new Shape[4];
+        shapes[0] = new Square(52);
+        shapes[1] = new Rectangle(20, 56);
+        shapes[2] = new Circle(45);
+        shapes[3] = new Square(41);
         for (Shape shape : shapes) {
-            System.out.println(shape.toString());
-            System.out.print("Area:");
-            if (shape instanceof Circle) {
-                System.out.printf("%.2f",((Circle) shape).getArea());
-                System.out.println();
-            } else if (shape instanceof Rectangle) {
-                System.out.printf("%.2f",((Rectangle) shape).getArea());
-                System.out.println();
-            } else if (shape instanceof Square) {
-                System.out.printf("%.2f"+"\n",((Square) shape).getArea());
+            System.out.println(shape);
+            if (shape instanceof Square) {
                 ((Square) shape).howToColor();
             }
         }

@@ -1,6 +1,8 @@
 package Bai6.AbstractVaInterface.ThucHanh;
 
-    public class Shape {
+import Bai6.AbstractVaInterface.BaiTap.Resizeable.Resizeable;
+
+public abstract class Shape implements Resizeable {
         private String color = "green";
         private boolean filled = true;
 
@@ -35,5 +37,6 @@ package Bai6.AbstractVaInterface.ThucHanh;
                     + " and "
                     + (isFilled() ? "filled" : "not filled");
         }
+
     }
 

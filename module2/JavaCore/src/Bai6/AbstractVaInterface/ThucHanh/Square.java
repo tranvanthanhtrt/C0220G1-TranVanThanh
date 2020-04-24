@@ -3,7 +3,7 @@ package Bai6.AbstractVaInterface.ThucHanh;
 import Bai6.AbstractVaInterface.BaiTap.Colorable.Colorable;
 import Bai6.AbstractVaInterface.BaiTap.Resizeable.Resizeable;
 
-public class Square extends Shape implements Resizeable, Colorable {
+public class Square extends Shape implements  Colorable {
     private double side = 1.0;
 
     public Square() {
@@ -37,6 +37,7 @@ public class Square extends Shape implements Resizeable, Colorable {
     @Override
     public void resize(double percent) {
         this.side+=this.side*percent/100;
+        System.out.println("Day la hinh vuong");
     }
 
     @Override
