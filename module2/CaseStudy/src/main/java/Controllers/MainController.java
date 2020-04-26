@@ -1,12 +1,10 @@
 package Controllers;
 
-import Models.Customer;
-import Models.House;
-import Models.Room;
-import Models.Villa;
+import Models.*;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -280,6 +278,7 @@ public class MainController {
 
         Scanner scanner = new Scanner(System.in);
         int chooseCustomerBooking = 0;
+
         do {
             displayCustomerNameList();
             System.out.print("Chọn khách hàng để booking:");
@@ -307,8 +306,11 @@ public class MainController {
                 System.out.println("Vui lòng chọn service trong danh sách!");
             }
         } while ((chooseTypeServiceBooking < 1) | (chooseTypeServiceBooking > 3));
+        Services chooseServiceBooking = confirmServiceBooking(chooseTypeServiceBooking);
+        ReadWriteFile.writeBooking(ReadWriteFile.customers.get(chooseCustomerBooking-1), chooseServiceBooking);
+        System.out.println("Booking fof Customer successfully!");
+        displayMainMenu();
 
-        confirmChooseCustomerForBooking(chooseCustomerBooking, chooseTypeServiceBooking);
 
     }
 
@@ -337,6 +339,54 @@ public class MainController {
                 "3.\tBooking Room\n");
 
     }
+
+    public static Services confirmServiceBooking(int typeofService) throws IOException {
+        int chooose = 0;
+        switch (typeofService) {
+            case 1: {
+                do {
+                    displayVillaNameList();
+                    System.out.printf("Chọn Villa có trong danh sách để Booking:");
+                    Scanner scanner = new Scanner(System.in);
+                    try {
+                        chooose = scanner.nextInt();
+                    } catch (Exception e) {
+                        scanner.nextLine();
+                    }
+                } while (chooose < 1 | chooose > ReadWriteFile.villas.size());
+                return ReadWriteFile.villas.get(chooose-1);
+            }
+            case 2: {
+                do {
+                    displayHouseNameList();
+                    System.out.printf("Chọn House có trong danh sách để Booking:");
+                    Scanner scanner = new Scanner(System.in);
+                    try {
+                        chooose = scanner.nextInt();
+                    } catch (Exception e) {
+                        scanner.nextLine();
+                    }
+                } while (chooose < 1 | chooose > ReadWriteFile.houses.size());
+                return ReadWriteFile.houses.get(chooose-1);
+
+            }
+            default: {
+                do {
+                    displayRoomNameList();
+                    System.out.printf("Chọn Room có trong danh sách để Booking:");
+                    Scanner scanner = new Scanner(System.in);
+                    try {
+                        chooose = scanner.nextInt();
+                    } catch (Exception e) {
+                        scanner.nextLine();
+                    }
+                } while (chooose < 1 | chooose > ReadWriteFile.rooms.size());
+                return ReadWriteFile.rooms.get(chooose-1);
+            }
+        }
+
+    }
+
     public static void displayVillaNameList() throws IOException {
         ReadWriteFile.loadVilla();
         if (ReadWriteFile.villas.size() == 0) {
@@ -347,33 +397,57 @@ public class MainController {
         int index = 1;
         System.out.println("Danh sách Villa hiện có:");
         for (Villa villa : ReadWriteFile.villas) {
-            System.out.printf(index + ". %-10s - Name: " + villa.getNameService(),villa.getId() );
+            System.out.printf(index + ". %-10s - Name: " + villa.getNameService(), villa.getId());
             System.out.println();
             index++;
         }
         System.out.println("----------------------------");
 
     }
-    public static void confirmChooseCustomerForBooking(int chooseCustomer, int chooseService) {
-        for (int i = 0; i < ReadWriteFile.customers.size(); i++) {
-            if (i+1 == chooseCustomer) {
-                booking(chooseCustomer, chooseService);
-            }
+
+    public static void displayHouseNameList() throws IOException {
+        ReadWriteFile.loadHouse();
+        if (ReadWriteFile.houses.size() == 0) {
+            System.out.println("No House for booking! please add new House!");
+            showServiceMenu();
+        } else
+            ReadWriteFile.houses.sort(Comparator.comparing(o -> ((House) o).getId()).thenComparing(o -> ((House) o).getNameService()));
+        int index = 1;
+        System.out.println("Danh sách House hiện có:");
+        for (House house : ReadWriteFile.houses) {
+            System.out.printf(index + ". %-10s - Name: " + house.getNameService(), house.getId());
+            System.out.println();
+            index++;
         }
+        System.out.println("----------------------------");
+
     }
-    public static void confirmChooseTypeServiceForBooking(int chooseTypeServiceBooking) throws IOException {
-        switch (chooseTypeServiceBooking){
-            case 1:{
-                displayVillaNameList();
-            }
+
+    public static void displayRoomNameList() throws IOException {
+        ReadWriteFile.loadRoom();
+        if (ReadWriteFile.houses.size() == 0) {
+            System.out.println("No Room for booking! please add new Room!");
+            showServiceMenu();
+        } else
+            ReadWriteFile.rooms.sort(Comparator.comparing(o -> ((Room) o).getId()).thenComparing(o -> ((Room) o).getNameService()));
+        int index = 1;
+        System.out.println("Danh sách Room hiện có:");
+        for (Room room : ReadWriteFile.rooms) {
+            System.out.printf(index + ". %-10s - Name: " + room.getNameService(), room.getId());
+            System.out.println();
+            index++;
         }
+        System.out.println("----------------------------");
 
     }
 
-    private static void booking(int chooseCustomer, int chooseService) {
-
-    }
-
+//    public static void confirmChooseCustomerForBooking(int chooseCustomer, int chooseService) {
+//        for (int i = 0; i < ReadWriteFile.customers.size(); i++) {
+//            if (i + 1 == chooseCustomer) {
+//                booking(chooseCustomer, chooseService);
+//            }
+//        }
+//    }
 
     public static void showInformationEmployee() {
     }

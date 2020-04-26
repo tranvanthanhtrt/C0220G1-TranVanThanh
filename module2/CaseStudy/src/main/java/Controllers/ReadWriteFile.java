@@ -18,25 +18,29 @@ public class ReadWriteFile {
     static ArrayList<House> houses = new ArrayList<House>();
     static ArrayList<Room> rooms = new ArrayList<Room>();
     static ArrayList<Customer> customers = new ArrayList<Customer>();
-    static String fileVilla = "D:\\codegym\\module2\\CaseStudy\\src\\main\\java\\Data\\Villa.csv";
-    static String fileHouse = "D:\\codegym\\module2\\CaseStudy\\src\\main\\java\\Data\\House.csv";
-    static String fileRoom = "D:\\codegym\\module2\\CaseStudy\\src\\main\\java\\Data\\Room.csv";
-    static String fileCustomer = "D:\\codegym\\module2\\CaseStudy\\src\\main\\java\\Data\\Customer.csv";
+    static String fileVilla = "/media/thanhtv/New Volume/codegym/module2/CaseStudy/src/main/java/Data/Villa.csv";
+    static String fileHouse = "/media/thanhtv/New Volume/codegym/module2/CaseStudy/src/main/java/Data/House.csv";
+    static String fileRoom = "/media/thanhtv/New Volume/codegym/module2/CaseStudy/src/main/java/Data/Room.csv";
+    static String fileCustomer = "/media/thanhtv/New Volume/codegym/module2/CaseStudy/src/main/java/Data/Customer.csv";
+    static String fileBooking = "/media/thanhtv/New Volume/codegym/module2/CaseStudy/src/main/java/Data/Booking.csv";
     // the delimiter to use for separating entries
-    static  final char DEFAULT_SEPARATOR = ',';
+    static final char DEFAULT_SEPARATOR = ',';
     // the character to use for quoted elements
-    static  final char DEFAULT_QUOTE = '"';
+    static final char DEFAULT_QUOTE = '"';
     // the line number to skip for start reading
-   static final int NUM_OF_LINE_SKIP = 0;
+    static final int NUM_OF_LINE_SKIP = 0;
+
     public static void writeHouse(House house) throws IOException {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileHouse, true));
              CSVPrinter csvPrinter = new CSVPrinter(writer,
-                     CSVFormat.DEFAULT)) {
+                     CSVFormat.DEFAULT))
+        {
             csvPrinter.printRecord(house.getId(), house.getNameService(), house.getAreaUsed(), house.getRentalCost(), house.getMaxRenter(), house.getTypeOfRent(), house.getStandarOfRoom(), house.getDescribeOtherConvenient(), house.getLevel());
             csvPrinter.flush();
         }
 
     }
+
     public static void writeVilla(Villa villa) throws IOException {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileVilla, true));
              CSVPrinter csvPrinter = new CSVPrinter(writer,
@@ -56,40 +60,60 @@ public class ReadWriteFile {
         }
 
     }
+
     public static void writeCustomer(Customer customer) throws IOException {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileCustomer, true));
-             CSVPrinter csvPrinter = new CSVPrinter(writer,
-                     CSVFormat.DEFAULT)) {
-            csvPrinter.printRecord(customer.getName(),customer.getBirthday(),customer.getGender(),customer.getId(),customer.getPhoneNumber(),customer.getEmail(),customer.getTypeOfCustomer(),customer.getAddress());
+             CSVPrinter csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT))
+        {
+            csvPrinter.printRecord(customer.getName(), customer.getBirthday(), customer.getGender(), customer.getId(), customer.getPhoneNumber(), customer.getEmail(), customer.getTypeOfCustomer(), customer.getAddress());
             csvPrinter.flush();
         }
 
     }
-public static void loadVilla() throws FileNotFoundException {
-       if(!new File(fileVilla).exists()){
-           return;
-       }
-    ColumnPositionMappingStrategy<Villa> strategy = new ColumnPositionMappingStrategy<>();
-    strategy.setType(Villa.class);
-    String[] columns = new String[] { "id","nameService",  "areaUsed",  "rentalCost",  "maxRenter",  "typeOfRent", "standarOfRoom","describeOtherConvenient", "areaOfPool", "level"};
-    strategy.setColumnMapping(columns);
 
-    CsvToBean<Villa> csvToBean = new CsvToBeanBuilder<Villa>(new FileReader(fileVilla))
-            .withMappingStrategy(strategy)
-            .withSeparator(DEFAULT_SEPARATOR)
-            .withQuoteChar(DEFAULT_QUOTE)
-            .withSkipLines(NUM_OF_LINE_SKIP)
-            .withIgnoreLeadingWhiteSpace(true)
-            .build();
-    villas = (ArrayList<Villa>) csvToBean.parse();
-}
+    public static void writeBooking(Customer customer, Services services) throws IOException {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileBooking, true));
+             CSVPrinter csvPrinter = new CSVPrinter(writer,
+                     CSVFormat.DEFAULT))
+        {
+            if (services instanceof Villa){
+                csvPrinter.printRecord(customer.getName(), customer.getBirthday(), customer.getGender(), customer.getId(), customer.getPhoneNumber(), customer.getEmail(), customer.getTypeOfCustomer(), customer.getAddress(),services.getId(), services.getNameService(), services.getAreaUsed(), services.getRentalCost(), services.getMaxRenter(), services.getTypeOfRent(), ((Villa) services).getStandarOfRoom(), ((Villa) services).getDescribeOtherConvenient(), ((Villa) services).getAreaOfPool(), ((Villa) services).getLevel());
+            }else if(services instanceof House){
+            csvPrinter.printRecord(customer.getName(), customer.getBirthday(), customer.getGender(), customer.getId(), customer.getPhoneNumber(), customer.getEmail(), customer.getTypeOfCustomer(), customer.getAddress(),services.getId(), services.getNameService(), services.getAreaUsed(), services.getRentalCost(), services.getMaxRenter(), services.getTypeOfRent(), ((House) services).getStandarOfRoom(), ((House) services).getDescribeOtherConvenient(), ((House) services).getLevel());
+        }else if(services instanceof Room){
+                csvPrinter.printRecord(customer.getName(), customer.getBirthday(), customer.getGender(), customer.getId(), customer.getPhoneNumber(), customer.getEmail(), customer.getTypeOfCustomer(), customer.getAddress(),services.getId(), services.getNameService(), services.getAreaUsed(), services.getRentalCost(), services.getMaxRenter(), services.getTypeOfRent(), ((Room) services).getFreeServiceAttached());
+            }
+            csvPrinter.flush();
+        }
+
+    }
+
+    public static void loadVilla() throws FileNotFoundException {
+        if (!new File(fileVilla).exists()) {
+            return;
+        }
+        ColumnPositionMappingStrategy<Villa> strategy = new ColumnPositionMappingStrategy<>();
+        strategy.setType(Villa.class);
+        String[] columns = new String[]{"id", "nameService", "areaUsed", "rentalCost", "maxRenter", "typeOfRent", "standarOfRoom", "describeOtherConvenient", "areaOfPool", "level"};
+        strategy.setColumnMapping(columns);
+
+        CsvToBean<Villa> csvToBean = new CsvToBeanBuilder<Villa>(new FileReader(fileVilla))
+                .withMappingStrategy(strategy)
+                .withSeparator(DEFAULT_SEPARATOR)
+                .withQuoteChar(DEFAULT_QUOTE)
+                .withSkipLines(NUM_OF_LINE_SKIP)
+                .withIgnoreLeadingWhiteSpace(true)
+                .build();
+        villas = (ArrayList<Villa>) csvToBean.parse();
+    }
+
     public static void loadHouse() throws FileNotFoundException {
-        if(!new File(fileHouse).exists()){
+        if (!new File(fileHouse).exists()) {
             return;
         }
         ColumnPositionMappingStrategy<House> strategy1 = new ColumnPositionMappingStrategy<>();
         strategy1.setType(House.class);
-        String[] columns = new String[] { "id","nameService",  "areaUsed",  "rentalCost",  "maxRenter",  "typeOfRent", "standarOfRoom","describeOtherConvenient", "level"};
+        String[] columns = new String[]{"id", "nameService", "areaUsed", "rentalCost", "maxRenter", "typeOfRent", "standarOfRoom", "describeOtherConvenient", "level"};
         strategy1.setColumnMapping(columns);
         CsvToBean<House> csvToBean1 = new CsvToBeanBuilder<House>(new FileReader(fileHouse))
                 .withMappingStrategy(strategy1)
@@ -101,13 +125,14 @@ public static void loadVilla() throws FileNotFoundException {
         houses = (ArrayList<House>) csvToBean1.parse();
 
     }
+
     public static void loadRoom() throws FileNotFoundException {
-        if(!new File(fileRoom).exists()){
+        if (!new File(fileRoom).exists()) {
             return;
         }
         ColumnPositionMappingStrategy<Room> strategy2 = new ColumnPositionMappingStrategy<>();
         strategy2.setType(Room.class);
-        String[] columns = new String[] { "id","nameService",  "areaUsed",  "rentalCost",  "maxRenter",  "typeOfRent",  "freeServiceAttached" };
+        String[] columns = new String[]{"id", "nameService", "areaUsed", "rentalCost", "maxRenter", "typeOfRent", "freeServiceAttached"};
         strategy2.setColumnMapping(columns);
 
         CsvToBean<Room> csvToBean2 = new CsvToBeanBuilder<Room>(new FileReader(fileRoom))
@@ -118,14 +143,15 @@ public static void loadVilla() throws FileNotFoundException {
                 .withIgnoreLeadingWhiteSpace(true)
                 .build();
         rooms = (ArrayList<Room>) csvToBean2.parse();
-           }
+    }
+
     public static void loadCustomer() throws FileNotFoundException {
-        if(!new File(fileCustomer).exists()){
+        if (!new File(fileCustomer).exists()) {
             return;
         }
         ColumnPositionMappingStrategy<Customer> strategy3 = new ColumnPositionMappingStrategy<>();
         strategy3.setType(Customer.class);
-        String[] columns = new String[] {  "name",  "birthday",  "gender",  "id",  "phoneNumber",  "email",  "typeOfCustomer",  "address" };
+        String[] columns = new String[]{"name", "birthday", "gender", "id", "phoneNumber", "email", "typeOfCustomer", "address"};
         strategy3.setColumnMapping(columns);
 
         CsvToBean<Customer> csvToBean2 = new CsvToBeanBuilder<Customer>(new FileReader(fileCustomer))
