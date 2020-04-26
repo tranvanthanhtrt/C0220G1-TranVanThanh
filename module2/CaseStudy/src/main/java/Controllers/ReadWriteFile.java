@@ -18,11 +18,13 @@ public class ReadWriteFile {
     static ArrayList<House> houses = new ArrayList<House>();
     static ArrayList<Room> rooms = new ArrayList<Room>();
     static ArrayList<Customer> customers = new ArrayList<Customer>();
+    static ArrayList<Employer> employers = new ArrayList<Employer>();
     static String fileVilla = "/media/thanhtv/New Volume/codegym/module2/CaseStudy/src/main/java/Data/Villa.csv";
     static String fileHouse = "/media/thanhtv/New Volume/codegym/module2/CaseStudy/src/main/java/Data/House.csv";
     static String fileRoom = "/media/thanhtv/New Volume/codegym/module2/CaseStudy/src/main/java/Data/Room.csv";
     static String fileCustomer = "/media/thanhtv/New Volume/codegym/module2/CaseStudy/src/main/java/Data/Customer.csv";
     static String fileBooking = "/media/thanhtv/New Volume/codegym/module2/CaseStudy/src/main/java/Data/Booking.csv";
+    static String fileEmployee = "/media/thanhtv/New Volume/codegym/module2/CaseStudy/src/main/java/Data/Employee.csv";
     // the delimiter to use for separating entries
     static final char DEFAULT_SEPARATOR = ',';
     // the character to use for quoted elements
@@ -162,6 +164,24 @@ public class ReadWriteFile {
                 .withIgnoreLeadingWhiteSpace(true)
                 .build();
         customers = (ArrayList<Customer>) csvToBean2.parse();
+    }
+    public static void loadEmployee() throws FileNotFoundException {
+        if (!new File(fileEmployee).exists()) {
+            return;
+        }
+        ColumnPositionMappingStrategy<Employer> strategy4 = new ColumnPositionMappingStrategy<>();
+        strategy4.setType(Employer.class);
+        String[] columns = new String[]{"id", "name", "age", "address"};
+        strategy4.setColumnMapping(columns);
+
+        CsvToBean<Employer> csvToBean2 = new CsvToBeanBuilder<Employer>(new FileReader(fileEmployee))
+                .withMappingStrategy(strategy4)
+                .withSeparator(DEFAULT_SEPARATOR)
+                .withQuoteChar(DEFAULT_QUOTE)
+                .withSkipLines(NUM_OF_LINE_SKIP)
+                .withIgnoreLeadingWhiteSpace(true)
+                .build();
+        employers = (ArrayList<Employer>) csvToBean2.parse();
     }
 //    public static ArrayList<Room> loadRoom() {
 //

@@ -4,10 +4,7 @@ import Models.*;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import java.util.*;
 
 public class MainController {
     public static void displayMainMenu() throws IOException {
@@ -173,14 +170,17 @@ public class MainController {
             }
             case 4: {
                 showAllVillaNotDuplicate();
+                displayMainMenu();
                 break;
             }
             case 5: {
                 showAllHouseNotDuplicate();
+                displayMainMenu();
                 break;
             }
             case 6: {
                 showAllRoomNotDuplicate();
+                displayMainMenu();
                 break;
             }
             case 7: {
@@ -242,15 +242,64 @@ public class MainController {
         showServiceMenu();
     }
 
-    public static void showAllVillaNotDuplicate() {
+    public static void showAllVillaNotDuplicate() throws FileNotFoundException {
+        ReadWriteFile.loadVilla();
+        if (ReadWriteFile.villas.size()==0){
+            System.out.println("No data for display!");
+            return;
+        }
+        TreeSet<String> villaNotDuplicate=new TreeSet<>();
+        for (Villa villa : ReadWriteFile.villas) {
+            villaNotDuplicate.add(villa.getNameService());
+        }
+        System.out.println("All Name Villa Not duplicate:");
+        int index=1;
+        for (String s : villaNotDuplicate) {
+            System.out.println(index+". "+s);
+            index++;
+        }
+        System.out.println("---------------------------------");
 
     }
 
-    public static void showAllHouseNotDuplicate() {
+
+    public static void showAllHouseNotDuplicate() throws FileNotFoundException {
+        ReadWriteFile.loadHouse();
+        if (ReadWriteFile.houses.size()==0){
+            System.out.println("No data for display!");
+            return;
+        }
+        TreeSet<String> houseNotDuplicate=new TreeSet<>();
+        for (House house : ReadWriteFile.houses) {
+            houseNotDuplicate.add(house.getNameService());
+        }
+        System.out.println("All Name House Not duplicate:");
+        int index=1;
+        for (String s : houseNotDuplicate) {
+            System.out.println(index+". "+s);
+            index++;
+        }
+        System.out.println("---------------------------------");
 
     }
 
-    public static void showAllRoomNotDuplicate() {
+    public static void showAllRoomNotDuplicate() throws FileNotFoundException {
+        ReadWriteFile.loadRoom();
+        if (ReadWriteFile.rooms.size()==0){
+            System.out.println("No data for display!");
+            return;
+        }
+        TreeSet<String> roomNotDuplicate=new TreeSet<>();
+        for (Room room : ReadWriteFile.rooms) {
+            roomNotDuplicate.add(room.getNameService());
+        }
+        System.out.println("All Name Room Not duplicate:");
+        int index=1;
+        for (String s : roomNotDuplicate) {
+            System.out.println(index+". "+s);
+            index++;
+        }
+        System.out.println("---------------------------------");
 
     }
 
@@ -441,15 +490,11 @@ public class MainController {
 
     }
 
-//    public static void confirmChooseCustomerForBooking(int chooseCustomer, int chooseService) {
-//        for (int i = 0; i < ReadWriteFile.customers.size(); i++) {
-//            if (i + 1 == chooseCustomer) {
-//                booking(chooseCustomer, chooseService);
-//            }
-//        }
-//    }
-
-    public static void showInformationEmployee() {
+    public static void showInformationEmployee() throws IOException {
+        ReadWriteFile.loadEmployee();
+        EmployeeManage.createEmployeeMap();
+        EmployeeManage.showEmployee();
+        displayMainMenu();
     }
 
     public static void bookingMovieTicket4D() {
