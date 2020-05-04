@@ -15,6 +15,7 @@ import java.util.regex.Pattern;
 
 public class CustomerManage {
 
+
     public static final String BIRTHDAY_ERROR = "Năm sinh phải >1900 và nhỏ hơn năm hiện tại 18 năm, đúng định dạng dd/mm/yyyy";
     public static final String NAME_ERROR = "Tên Khách hàng phải in hoa ký tự đầu tiên trong mỗi từ";
     public static final String GENDER_ERROR = "Gender phải là Male hoặc Female hoặc Unknown!";

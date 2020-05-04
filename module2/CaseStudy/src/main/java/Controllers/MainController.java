@@ -4,7 +4,10 @@ import Models.*;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.*;
+import java.util.Comparator;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+import java.util.TreeSet;
 
 public class MainController {
     public static void displayMainMenu() throws IOException {
@@ -244,18 +247,18 @@ public class MainController {
 
     public static void showAllVillaNotDuplicate() throws FileNotFoundException {
         ReadWriteFile.loadVilla();
-        if (ReadWriteFile.villas.size()==0){
+        if (ReadWriteFile.villas.size() == 0) {
             System.out.println("No data for display!");
             return;
         }
-        TreeSet<String> villaNotDuplicate=new TreeSet<>();
+        TreeSet<String> villaNotDuplicate = new TreeSet<>();
         for (Villa villa : ReadWriteFile.villas) {
             villaNotDuplicate.add(villa.getNameService());
         }
         System.out.println("All Name Villa Not duplicate:");
-        int index=1;
+        int index = 1;
         for (String s : villaNotDuplicate) {
-            System.out.println(index+". "+s);
+            System.out.println(index + ". " + s);
             index++;
         }
         System.out.println("---------------------------------");
@@ -265,18 +268,18 @@ public class MainController {
 
     public static void showAllHouseNotDuplicate() throws FileNotFoundException {
         ReadWriteFile.loadHouse();
-        if (ReadWriteFile.houses.size()==0){
+        if (ReadWriteFile.houses.size() == 0) {
             System.out.println("No data for display!");
             return;
         }
-        TreeSet<String> houseNotDuplicate=new TreeSet<>();
+        TreeSet<String> houseNotDuplicate = new TreeSet<>();
         for (House house : ReadWriteFile.houses) {
             houseNotDuplicate.add(house.getNameService());
         }
         System.out.println("All Name House Not duplicate:");
-        int index=1;
+        int index = 1;
         for (String s : houseNotDuplicate) {
-            System.out.println(index+". "+s);
+            System.out.println(index + ". " + s);
             index++;
         }
         System.out.println("---------------------------------");
@@ -285,18 +288,18 @@ public class MainController {
 
     public static void showAllRoomNotDuplicate() throws FileNotFoundException {
         ReadWriteFile.loadRoom();
-        if (ReadWriteFile.rooms.size()==0){
+        if (ReadWriteFile.rooms.size() == 0) {
             System.out.println("No data for display!");
             return;
         }
-        TreeSet<String> roomNotDuplicate=new TreeSet<>();
+        TreeSet<String> roomNotDuplicate = new TreeSet<>();
         for (Room room : ReadWriteFile.rooms) {
             roomNotDuplicate.add(room.getNameService());
         }
         System.out.println("All Name Room Not duplicate:");
-        int index=1;
+        int index = 1;
         for (String s : roomNotDuplicate) {
-            System.out.println(index+". "+s);
+            System.out.println(index + ". " + s);
             index++;
         }
         System.out.println("---------------------------------");
@@ -307,6 +310,7 @@ public class MainController {
         ReadWriteFile.writeCustomer(CustomerManage.addNewCustomer());
         displayMainMenu();
     }
+
 
     public static void showInformationCustomer() throws IOException {
         ReadWriteFile.loadCustomer();
@@ -356,7 +360,7 @@ public class MainController {
             }
         } while ((chooseTypeServiceBooking < 1) | (chooseTypeServiceBooking > 3));
         Services chooseServiceBooking = confirmServiceBooking(chooseTypeServiceBooking);
-        ReadWriteFile.writeBooking(ReadWriteFile.customers.get(chooseCustomerBooking-1), chooseServiceBooking);
+        ReadWriteFile.writeBooking(ReadWriteFile.customers.get(chooseCustomerBooking - 1), chooseServiceBooking);
         System.out.println("Booking fof Customer successfully!");
         displayMainMenu();
 
@@ -403,7 +407,7 @@ public class MainController {
                         scanner.nextLine();
                     }
                 } while (chooose < 1 | chooose > ReadWriteFile.villas.size());
-                return ReadWriteFile.villas.get(chooose-1);
+                return ReadWriteFile.villas.get(chooose - 1);
             }
             case 2: {
                 do {
@@ -416,7 +420,7 @@ public class MainController {
                         scanner.nextLine();
                     }
                 } while (chooose < 1 | chooose > ReadWriteFile.houses.size());
-                return ReadWriteFile.houses.get(chooose-1);
+                return ReadWriteFile.houses.get(chooose - 1);
 
             }
             default: {
@@ -430,7 +434,7 @@ public class MainController {
                         scanner.nextLine();
                     }
                 } while (chooose < 1 | chooose > ReadWriteFile.rooms.size());
-                return ReadWriteFile.rooms.get(chooose-1);
+                return ReadWriteFile.rooms.get(chooose - 1);
             }
         }
 
@@ -474,7 +478,7 @@ public class MainController {
 
     public static void displayRoomNameList() throws IOException {
         ReadWriteFile.loadRoom();
-        if (ReadWriteFile.houses.size() == 0) {
+        if (ReadWriteFile.rooms.size() == 0) {
             System.out.println("No Room for booking! please add new Room!");
             showServiceMenu();
         } else
@@ -497,10 +501,52 @@ public class MainController {
         displayMainMenu();
     }
 
-    public static void bookingMovieTicket4D() {
+    public static void bookingMovieTicket4D() throws IOException {
+        displaybBokingMovieTicket4DMenu();
+
+    }
+
+    private static void displaybBokingMovieTicket4DMenu() throws IOException {
+        System.out.println("Menu booking Movie Ticket 4D:\n" +
+                "1. Booking Ticket\n" +
+                "2. Show Ticket Selled\n" +
+                "3. Back to Main menu"
+        );
+        Scanner scanner=new Scanner(System.in);
+        String choose= scanner.nextLine();
+        confirmBookingTicket4D(choose);
+    }
+
+    private static void confirmBookingTicket4D(String choose) throws IOException {
+        switch (choose) {
+            case "1":{
+                bookingTicket4D();
+                break;
+            }
+            case "2":{
+                showTicketShelled();
+                break;
+            }
+            case "3":{
+                displayMainMenu();
+                break;
+            }
+            default: {
+                displaybBokingMovieTicket4DMenu();
+                break;
+            }
+        }
+    }
+
+    private static void showTicketShelled() {
+    }
+
+    private static void bookingTicket4D() throws IOException {
+        displayCustomerNameList();
     }
 
     public static void findEmployee() {
+
     }
 
 
