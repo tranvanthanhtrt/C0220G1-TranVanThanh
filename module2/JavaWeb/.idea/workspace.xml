@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="10334946-6f08-49a5-be42-1ced89f76c29" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../CaseStudy/src/main/java/Models/test.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CaseStudy/src/main/java/Models/test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CaseStudy/target/classes/META-INF/CaseStudy.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CaseStudy/target/classes/Models/test.class" beforeDir="false" afterPath="$PROJECT_DIR$/../CaseStudy/target/classes/Models/test.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaCore/out/production/JavaCore/Bai7_CauTrucDuLieuVaGiatThuat/ThucHanh/TaoLopListDonGian/MyListTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/../JavaCore/out/production/JavaCore/Bai7_CauTrucDuLieuVaGiatThuat/ThucHanh/TaoLopListDonGian/MyListTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaCore/out/production/JavaCore/META-INF/JavaCore.kotlin_module" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="1bmtoHr8AcKYVrOYBIvkVI9Y3kj" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/java-web-currency-converter" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Tomcat 9.0.34" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.34" ALTERNATIVE_JRE_ENABLED="false">
+      <deployment>
+        <artifact name="java-web-currency-converter:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/java_web_currency_converter_war_exploded" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings />
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="java-web-currency-converter:war exploded" />
+        </option>
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="10334946-6f08-49a5-be42-1ced89f76c29" name="Default Changelist" comment="" />
+      <created>1589249269603</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1589249269603</updated>
+      <workItem from="1589249273034" duration="78000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="711" y="311" width="424" height="482" key="FileChooserDialogImpl" timestamp="1589249348054">
+      <screen x="0" y="27" width="1856" height="1053" />
+    </state>
+    <state x="711" y="311" width="424" height="482" key="FileChooserDialogImpl/0.27.1856.1053@0.27.1856.1053" timestamp="1589249348054" />
+  </component>
+</project>

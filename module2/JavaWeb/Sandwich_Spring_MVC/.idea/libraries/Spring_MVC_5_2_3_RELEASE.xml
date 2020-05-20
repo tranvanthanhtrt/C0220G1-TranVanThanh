@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Spring MVC-5.2.3.RELEASE" type="spring-mvc">
+    <properties version="5.2.3.RELEASE" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/spring-webmvc-5.2.3.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/spring-web-5.2.3.RELEASE.jar!/" />
+      <root url="jar:///opt/tomcat/webapps/examples/WEB-INF/lib/taglibs-standard-impl-1.2.5.jar!/" />
+      <root url="jar:///opt/tomcat/webapps/examples/WEB-INF/lib/taglibs-standard-spec-1.2.5.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
