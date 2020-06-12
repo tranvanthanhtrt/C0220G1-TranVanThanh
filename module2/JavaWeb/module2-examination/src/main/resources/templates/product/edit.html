@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="layout :: head">
+    <title>Edit product</title>
+</head>
+<body>
+<điv th:replace="layout::header">
+</điv>
+<div class="container-fluid">
+    <h1 style="text-align: center">Edit product</h1>
+
+    <th:block th:if="${message}">
+        <p th:text="${message}"></p>
+    </th:block>
+</div>
+<div class="container-fluid">
+    <div class="container col-10">
+        <form th:action="@{/edit-product}" th:object="${product}" method="post">
+            <input th:type="hidden" name="id" th:field="*{maHang}">
+            <table class="container col-6">
+                <tr class="form-group">
+                    <td >Tên sản Phẩm:</td>
+                    <td><input class="form-control" type="text" th:field="*{name}"/></td>
+                </tr>
+
+                <tr class="form-group">
+                    <td>Loại Hàng:</td>
+                    <td>
+                        <select class="form-control"  th:field="*{loaiHang}">
+                            <option th:each="p : ${listLoaiHang}"
+                                    th:value="${p.id}"
+                                    th:text="${p.name}"></option>
+                        </select>
+                    </td>
+                </tr>
+                <tr class="form-group">
+                    <td>Giá:</td>
+                    <td><input class="form-control"  type="text" th:field="*{gia}"/></td>
+                    <td><span class="messageE" th:if="${#fields.hasErrors('gia')}" th:errors="*{gia}"></span></td>
+
+                </tr>
+                <tr class="form-group">
+                    <td>Số lượng:</td>
+                    <td><input class="form-control"  type="text" th:field="*{soluong}"/></td>
+                    <td><span class="messageE" th:if="${#fields.hasErrors('soluong')}" th:errors="*{soluong}"></span></td>
+
+                </tr>
+                <tr class="form-group">
+                    <td>Mô tả:</td>
+                    <td><textarea class="form-control"  type="text" th:field="*{mota}"/></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input class="button-bar" type="submit" value="Update product"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New Detail Contract</title>
+    <link rel="stylesheet" href="css/bootstrap_4.5.0_css_bootstrap.css">
+</head>
+<body>
+<điv th:replace="main/layout::header">
+</điv>
+<h1>New Detail Contract</h1>
+<p>
+    <a href="/furama">Home Page</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form class="form-group " th:action="@{/create-detail-contract}" th:object="${detailContract}" method="post">
+    <table>
+        <tr>
+            <td>Contract ID:</td>
+            <td>
+                <div class="form-group">
+                    <select class="custom-select my-1 mr-sm-2" th:field="*{id.contract}">
+                        <option th:each="c : ${contractList}"
+                                th:value="${c.id}"
+                                th:text="${c.id}"></option>
+                    </select>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>Attack Service:</td>
+            <td>
+                <div class="form-group">
+                    <select class="custom-select my-1 mr-sm-2" th:field="*{id.attackService}">
+                        <option th:each="c : ${attackServiceList}"
+                                th:value="${c.id}"
+                                th:text="${c.name}"></option>
+                    </select>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>Amount:</td>
+            <td><input type="text" th:field="*{count}"/></td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td><input class="btn-outline-primary" type="submit" value="Add New Detail Contract"></td>
+        </tr>
+    </table>
+</form>
+
+</body>
+</html>

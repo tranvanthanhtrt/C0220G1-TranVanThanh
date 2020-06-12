@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head >
+    <meta charset="UTF-8">
+    <title>List of Blog</title>
+<!--    <link rel="stylesheet" th:href="@{bootstrap_4.5.0_css_bootstrap.css}">-->
+    <link rel="stylesheet" href="/css/bootstrap_4.5.0_css_bootstrap.css">
+    <!--    <link rel="stylesheet" href="../../static/css/bootstrap_4.5.0_css_bootstrap.css">-->
+
+</head>
+<script>
+    function fil() {
+        window.location.href = "/blogs?category=" + document.getElementById("category").value;
+    }
+</script>
+<body>
+
+<p style="float: right">Language:<a href="?lang=en">English</a>|<a href="?lang=vie">Vietnamese</a></p>
+<a href="/new-blog" th:text="#{list.addblog}"></a>
+<br>
+<a href="/create-category" th:text="#{list.addnewcategory}"></a>
+
+<h1 style="text-align: center" th:text="#{list.listblog}">List of blog</h1>
+<span th:text="#{list.Category}">:</span>
+<!--<form th:action="@{/blogs}"  method="get">-->
+<select class="custom-select my-1 mr-sm-2" id="category" name="category" onchange="fil()">
+    <option value="0">All</option>
+    <option th:each="c : ${categories}"
+            th:selected="(${category} == ${c.id})"
+            th:value="${c.id}"
+            th:text="${c.name}">
+    </option>
+</select>
+<table id="blogs" border="1" class="table table-dark table-hover">
+    <tr>
+        <th th:text="#{list.table.title}">Title</th>
+        <th th:text="#{list.table.category}">Category</th>
+        <th th:text="#{list.table.day}">Day</th>
+
+        <th th:text="#{list.table.edit}">Edit</th>
+        <th th:text="#{list.table.delete}">Delete</th>
+        <th th:text="#{list.table.view}">View</th>
+    </tr>
+    <th:block th:each="blog:${blogs}">
+        <tr>
+            <!--            <td><a th:href="@{/view-blog/__${blog.id}__}"><label th:text="${blog.name}">></label></a></td>-->
+            <td><a th:href="@{/view-blog/__${blog.id}__}" th:text="${blog.name}"></a></td>
+            <td th:text="${blog.category.name}"></td>
+<!--            <td th:text="${blog.writeOfDay}"></td>-->
+            <td th:text="${#dates.format(blog.writeOfDay, 'dd-MMM-yyyy')}"></td>
+
+            <td><a th:href="@{/edit-blog/__${blog.id}__}">Edit</a></td>
+            <td><a th:href="@{/delete-blog/__${blog.id}__}">Delete</a></td>
+            <td><a th:href="@{/view-blog/__${blog.id}__}">View</a></td>
+        </tr>
+    </th:block>
+
+</table>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<div>
+    <span >Total:</span>
+    <span th:text="${total}"></span>
+</div>
+<div>
+    <a th:href="@{'/blogs'(page=${blogs.number - 1},category=${category})}" th:if="${blogs.hasPrevious()}">Previous</a>
+    <span th:if="!${blogs.hasPrevious()}">----------</span>
+    <span th:text="${blogs.number + 1}"></span>/<span th:text="${blogs.totalPages}"></span>
+    <a th:href="@{'/blogs'(page=${blogs.number + 1},category=${category})}" th:if="${blogs.hasNext()}">Next</a>
+</div>
+</body>
+</html>

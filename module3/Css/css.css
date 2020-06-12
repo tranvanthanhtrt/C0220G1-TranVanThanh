@@ -1,0 +1,38 @@
+#head {
+    color: aqua;
+    background-color: aqua;
+    width: 100%;
+    height: 100px;
+    position: fixed;
+    z-index: 2;
+    top:0
+}
+
+
+#main {
+    background-color: blue;
+    width: 70%;
+    height: 300px;
+    float: left;
+    position: fixed;
+    top: 100px;
+    z-index: 1;
+
+}
+
+#context {
+    background-color: brown;
+    width: 200px;
+    height: 200px;
+    top: 200px;
+
+}
+
+#feature {
+    background-color: blueviolet;
+    width: 30%;
+    height: 300px;
+    float: left;
+
+
+}

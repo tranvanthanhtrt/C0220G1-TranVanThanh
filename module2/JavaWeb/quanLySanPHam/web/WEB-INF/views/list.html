@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="layout :: head"></head>
+<head th:charset="UTF-8" content="text/html; charset=UTF-8" th:replace="layout :: head">
+    <meta th:charset="UTF-8" http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+</head>
 <body>
 <h3>Products</h3>
 <p>
     <a th:href="@{/quanlysanpham/create}">
-        Add new product
-    </a>
+Thêm khách hàng    </a>
 </p>
 <div class="notify">
     <div th:if="${message}">

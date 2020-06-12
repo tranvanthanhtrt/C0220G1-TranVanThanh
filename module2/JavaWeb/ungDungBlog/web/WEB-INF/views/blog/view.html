@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Blog</title>
+</head>
+<body>
+<h1>Detail blog</h1>
+<label>Title: </label>
+<label style="font-size:30px" th:text="${blog.name}"></label>
+<br>
+<textarea cols="100" rows="30" th:text="${blog.contention}" readonly="true"></textarea>
+
+<p>
+    <a href="/blogs">Blog list</a>
+</p>
+</body>
+</html>

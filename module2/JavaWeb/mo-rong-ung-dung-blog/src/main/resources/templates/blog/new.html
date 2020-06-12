@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New Blog</title>
+    <link rel="stylesheet" href="/css/bootstrap_4.5.0_css_bootstrap.css">
+</head>
+<body>
+<h1 th:text="#{new.newBlog}">New Blog</h1>
+<p>
+    <a href="/blogs" th:text="#{new.blogList}"></a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form class="form-group " th:action="@{/new-blog}" th:object="${blog}" method="post">
+    <table>
+        <tr>
+            <td>Title:</td>
+            <td><input type="text" th:field="*{name}"/></td>
+        </tr>
+        <tr>
+            <td>Day:</td>
+            <td><input type="text" th:field="*{writeOfDay}"/></td>
+        </tr>
+        <tr>
+            <td>Contention:</td>
+            <td><textarea type="text" rows="10" th:field="*{contention}"></textarea></td>
+        </tr>
+        <td>Category:</td>
+        <td>
+            <div class="form-group">
+            <select class="custom-select my-1 mr-sm-2" th:field="*{category}">
+                <option th:each="c : ${categories}"
+                        th:value="${c.id}"
+                        th:text="${c.name}"></option>
+            </select>
+            </div>
+        </td>
+        <tr>
+            <td></td>
+            <td><input class="btn-outline-primary" type="submit" value="Add New Blog"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

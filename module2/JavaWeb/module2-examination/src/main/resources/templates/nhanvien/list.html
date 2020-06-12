@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="layout:: head">
+    <title>Danh sach Nhan Vien</title>
+</head>
+
+
+<body>
+<điv th:replace="layout::header">
+</điv>
+<div class="container-lg">
+    <div>
+        <form class="form-inline">
+            <input name="s" th:value="${s}" class="form-control mr-sm-2" type="search" placeholder="Search"
+                   aria-label="Search">
+            <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+    <th:block th:if="${message}">
+        <p th:text="${message}"></p>
+    </th:block>
+    <div>
+        <table id="blogs" border="1" class="table table-info table-hover container-xl">
+            <tr>
+                <th>Ma Nhan Vien</th>
+                <th>Nhom nhan vien</th>
+
+                <th>Ho ten</th>
+                <th>Gioi tinh</th>
+                <th>So dien thoai</th>
+
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            <th:block th:each="nhanvien,row:${nhaviens}">
+                <tr>
+<!--                    <td th:text="${(row.index+1)+4*(nhaviens.number)}"></td>-->
+
+                    <!--            <td><a th:href="@{/view-blog/__${blog.id}__}"><label th:text="${blog.name}">></label></a></td>-->
+                    <!--                    <td><a th:href="@{/view-customer/__${cusctomer.id}__}" th:text="${cusctomer.id}"></a></td>-->
+                    <td th:text="${nhanvien.maNhanVien}"></td>
+                    <!--            <td th:text="${blog.writeOfDay}"></td>-->
+                    <td th:text="${nhanvien.nhomNhanVien.tenNhom}"></td>
+                    <td th:text="${nhanvien.ten}"></td>
+                    <td th:text="${nhanvien.gender}"></td>
+                    <td th:text="${nhanvien.phoneNumber}"></td>
+
+
+                    <td><a th:href="@{/edit-nhanvien/__${nhanvien.maNhanVien}__}">Edit</a></td>
+                    <td>
+                        <button class="btn btn-danger"><a onclick="return confirm('Ban muon xoa nhan vien')"
+                                                          th:href="@{/delete-nhanvien/__${nhanvien.maNhanVien}__}">Delete</a>
+                        </button>
+                    </td>
+                </tr>
+            </th:block>
+
+        </table>
+    </div>
+
+    <div th:width="200px" style="position: absolute;bottom: 20px;left: 50%">
+        <a th:href="@{'/list-nhanvien'(page=${nhaviens.number - 1},s=${s})}"
+           th:if="${nhaviens.hasPrevious()}">Previous</a>
+        <span th:if="!${nhaviens.hasPrevious()}">----------</span>
+        <span th:text="${nhaviens.number + 1}"></span>/<span th:text="${nhaviens.totalPages}"></span>
+        <a th:href="@{'/list-nhanvien'(page=${nhaviens.number + 1},s=${s})}" th:if="${nhaviens.hasNext()}">Next</a>
+    </div>
+</div>
+</body>
+</html>

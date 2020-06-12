@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="main/layout:: head">
+    <title>New Service</title>
+</head>
+<script>
+    function selectService() {
+        let service = document.getElementById("serviceType").value;
+        switch (service) {
+            case "1": {
+                document.getElementById("freeService").hidden = true;
+                document.getElementById("roomStandard").hidden = false;
+                document.getElementById("convenient").hidden = false;
+                document.getElementById("areaOfPool").hidden = false;
+                document.getElementById("numberOfStories").hidden = false;
+                break;
+            }
+            case "2": {
+                document.getElementById("freeService").hidden = true;
+                document.getElementById("roomStandard").hidden = false;
+                document.getElementById("convenient").hidden = false;
+                document.getElementById("areaOfPool").hidden = true;
+                document.getElementById("numberOfStories").hidden = false;
+                break;
+            }
+            case "3": {
+                document.getElementById("freeService").hidden = false;
+                document.getElementById("roomStandard").hidden = true;
+                document.getElementById("convenient").hidden = true;
+                document.getElementById("areaOfPool").hidden = true;
+                document.getElementById("numberOfStories").hidden = true;
+
+                break;
+            }
+        }
+    }
+</script>
+<body>
+<điv th:replace="main/layout::header">
+</điv>
+<h1>New Service</h1>
+<p>
+    <a href="/furama">Home Page</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form class="form-group " th:action="@{/create-service}" th:object="${service}" method="post">
+    <table>
+        <td>ServiceType:</td>
+        <td>
+            <div class="form-group">
+                <select id="serviceType" th:onchange="selectService()" class="custom-select my-1 mr-sm-2"
+                        th:field="*{serviceType}">
+                    <option th:each="c : ${serviceTypes}"
+                            th:value="${c.id}"
+                            th:text="${c.name}"></option>
+                </select>
+            </div>
+        </td>
+        <tr>
+            <td>ID Service:</td>
+            <td><input type="text" placeholder="SV-XXXX" th:field="*{id}"/></td>
+            <td><span th:class="messageE" th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></span></td>
+
+        </tr>
+
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" th:field="*{nameService}"/></td>
+            <td><span th:class="messageE" th:if="${#fields.hasErrors('nameService')}" th:errors="*{nameService}"></span></td>
+
+        </tr>
+        <tr>
+            <td>Area:</td>
+            <td><input type="text" th:field="*{areaUsed}"/></td>
+        </tr>
+        <tr>
+            <td>Rental Cost:</td>
+            <td><input type="text" th:field="*{rentalCost}"/></td>
+        </tr>
+        <tr>
+            <td>Max of Guest:</td>
+            <td><input type="text" th:field="*{maxRenter}"/></td>
+        </tr>
+        <td>Type of Rent:</td>
+        <td>
+            <div class="form-group">
+                <select class="custom-select my-1 mr-sm-2" th:field="*{typeOfRent}">
+                    <option th:each="c : ${rentTypes}"
+                            th:value="${c.id}"
+                            th:text="${c.name}"></option>
+                </select>
+            </div>
+        </td>
+        <tr id="roomStandard">
+            <td>Room Standard:</td>
+            <td><input type="text" th:field="*{standardOfRoom}"/></td>
+        </tr>
+        <tr id="convenient">
+            <td>Convenient:</td>
+            <td><input type="text" th:field="*{describeOtherConvenient}"/></td>
+        </tr>
+        <tr id="areaOfPool">
+            <td>Area of Pool:</td>
+            <td><input type="text" th:field="*{areaOfPool}"/></td>
+
+        </tr>
+        <tr id="numberOfStories">
+            <td>Number of Stories:</td>
+            <td><input type="text" th:field="*{level}"></td>
+            <td><span th:class="messageE" th:if="${#fields.hasErrors('level')}" th:errors="*{level}"></span></td>
+
+        </tr>
+        <tr id="freeService" hidden="true">
+            <td>Free Service Attacked:</td>
+            <td><input type="text" th:field="*{freeServiceAttack}"/></td>
+        </tr>
+
+
+        <tr>
+            <td></td>
+            <td><input class="btn-outline-primary" type="submit" value="Add New Service"></td>
+        </tr>
+    </table>
+</form>
+
+</body>
+</html>

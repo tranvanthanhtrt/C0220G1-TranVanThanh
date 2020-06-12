@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="layout :: head">
+    <title>Create customer</title>
+</head>
+<body>
+<điv th:replace="layout::header">
+</điv>
+<div class="container-fluid">
+<h1 style="text-align: center">Create customer</h1>
+
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+</div>
+<div class="container-fluid">
+<div class="container col-10">
+<form th:action="@{/create-customer}" th:object="${customer}" method="post">
+    <table class="container col-6">
+        <tr class="form-group">
+            <td >First name:</td>
+            <td><input class="form-control" type="text" th:field="*{firstName}"/></td>
+        </tr>
+        <tr class="form-group">
+            <td>Last name:</td>
+            <td><input class="form-control"  type="text" th:field="*{lastName}"/></td>
+        </tr>
+        <tr class="form-group">
+            <td>Province:</td>
+            <td>
+                <select class="form-control"  th:field="*{province}">
+                    <option th:each="p : ${provinces}"
+                            th:value="${p.id}"
+                            th:text="${p.name}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input class="button-bar" type="submit" value="Create customer"></td>
+        </tr>
+    </table>
+</form>
+</div>
+</div>
+</body>
+</html>

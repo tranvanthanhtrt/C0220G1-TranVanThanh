@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="2fb5eebc-381b-4314-9ccf-ad8dfffc2d83" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../module2/JavaWeb/quanLySanPHam/out/artifacts/quanLySanPHam_war_exploded/WEB-INF/classes/quanlysanpham/Controller/ProductManage.class" beforeDir="false" afterPath="$PROJECT_DIR$/../module2/JavaWeb/quanLySanPHam/out/artifacts/quanLySanPHam_war_exploded/WEB-INF/classes/quanlysanpham/Controller/ProductManage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module2/JavaWeb/quanLySanPHam/out/artifacts/quanLySanPHam_war_exploded/WEB-INF/classes/quanlysanpham/service/ProductServiceIplm.class" beforeDir="false" afterPath="$PROJECT_DIR$/../module2/JavaWeb/quanLySanPHam/out/artifacts/quanLySanPHam_war_exploded/WEB-INF/classes/quanlysanpham/service/ProductServiceIplm.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module2/JavaWeb/quanLySanPHam/out/artifacts/quanLySanPHam_war_exploded/WEB-INF/views/create.html" beforeDir="false" afterPath="$PROJECT_DIR$/../module2/JavaWeb/quanLySanPHam/out/artifacts/quanLySanPHam_war_exploded/WEB-INF/views/create.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module2/JavaWeb/quanLySanPHam/out/artifacts/quanLySanPHam_war_exploded/WEB-INF/views/delete.html" beforeDir="false" afterPath="$PROJECT_DIR$/../module2/JavaWeb/quanLySanPHam/out/artifacts/quanLySanPHam_war_exploded/WEB-INF/views/delete.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module2/JavaWeb/quanLySanPHam/out/artifacts/quanLySanPHam_war_exploded/WEB-INF/views/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/../module2/JavaWeb/quanLySanPHam/out/artifacts/quanLySanPHam_war_exploded/WEB-INF/views/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module2/JavaWeb/quanLySanPHam/out/artifacts/quanLySanPHam_war_exploded/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../module2/JavaWeb/quanLySanPHam/out/artifacts/quanLySanPHam_war_exploded/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module2/JavaWeb/quanLySanPHam/src/main/java/quanlysanpham/Controller/ProductManage.java" beforeDir="false" afterPath="$PROJECT_DIR$/../module2/JavaWeb/quanLySanPHam/src/main/java/quanlysanpham/Controller/ProductManage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module2/JavaWeb/quanLySanPHam/src/main/java/quanlysanpham/service/ProductServiceIplm.java" beforeDir="false" afterPath="$PROJECT_DIR$/../module2/JavaWeb/quanLySanPHam/src/main/java/quanlysanpham/service/ProductServiceIplm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module2/JavaWeb/quanLySanPHam/target/classes/quanlysanpham/Controller/ProductManage.class" beforeDir="false" afterPath="$PROJECT_DIR$/../module2/JavaWeb/quanLySanPHam/target/classes/quanlysanpham/Controller/ProductManage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module2/JavaWeb/quanLySanPHam/target/classes/quanlysanpham/service/ProductServiceIplm.class" beforeDir="false" afterPath="$PROJECT_DIR$/../module2/JavaWeb/quanLySanPHam/target/classes/quanlysanpham/service/ProductServiceIplm.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module2/JavaWeb/quanLySanPHam/web/WEB-INF/views/create.html" beforeDir="false" afterPath="$PROJECT_DIR$/../module2/JavaWeb/quanLySanPHam/web/WEB-INF/views/create.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module2/JavaWeb/quanLySanPHam/web/WEB-INF/views/delete.html" beforeDir="false" afterPath="$PROJECT_DIR$/../module2/JavaWeb/quanLySanPHam/web/WEB-INF/views/delete.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module2/JavaWeb/quanLySanPHam/web/WEB-INF/views/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/../module2/JavaWeb/quanLySanPHam/web/WEB-INF/views/layout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module2/JavaWeb/quanLySanPHam/web/WEB-INF/views/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/../module2/JavaWeb/quanLySanPHam/web/WEB-INF/views/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module2/JavaWeb/quanLySanPHam/web/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../module2/JavaWeb/quanLySanPHam/web/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module2/JavaWeb/quanlykhachhang_JPÁpring/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../module2/JavaWeb/quanlykhachhang_JPÁpring/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module2/JavaWeb/quanlykhachhang_JPÁpring/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../module2/JavaWeb/quanlykhachhang_JPÁpring/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module2/JavaWeb/quanlykhachhang_JPÁpring/web/WEB-INF/configs/dispatcher-servlet.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../module2/JavaWeb/quanlykhachhang_JPÁpring/web/WEB-INF/configs/dispatcher-servlet.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module2/JavaWeb/quanlykhachhang_JPÁpring/web/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../module2/JavaWeb/quanlykhachhang_JPÁpring/web/WEB-INF/web.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1d6p955nA0WYbU78KnyHTId3LUS" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2fb5eebc-381b-4314-9ccf-ad8dfffc2d83" name="Default Changelist" comment="" />
+      <created>1591755242216</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1591755242216</updated>
+      <workItem from="1591755243353" duration="105000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="938" y="324" width="424" height="511" key="FileChooserDialogImpl" timestamp="1591755342483">
+      <screen x="0" y="27" width="1856" height="1053" />
+    </state>
+    <state x="938" y="324" width="424" height="511" key="FileChooserDialogImpl/0.27.1856.1053@0.27.1856.1053" timestamp="1591755342483" />
+  </component>
+</project>

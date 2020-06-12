@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New Contract</title>
+    <link rel="stylesheet" href="css/bootstrap_4.5.0_css_bootstrap.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+</head>
+<body>
+<điv th:replace="main/layout::header">
+</điv>
+<h1>New Contract</h1>
+
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form class="form-group " th:action="@{/create-contract}" th:object="${contract}" method="post">
+    <table>
+        <tr>
+            <td>Customer ID:</td>
+            <td>
+                <div class="form-group">
+                    <select class="custom-select my-1 mr-sm-2" th:field="*{customer}">
+                        <option th:each="c : ${customerList}"
+                                th:value="${c.id}"
+                                th:text="${c.id}"></option>
+                    </select>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>Service:</td>
+            <td>
+                <div class="form-group">
+                    <select class="custom-select my-1 mr-sm-2" th:field="*{service}">
+                        <option th:each="c : ${servicesList}"
+                                th:value="${c.id}"
+                                th:text="${c.nameService}"></option>
+                    </select>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>Employee:</td>
+            <td>
+                <div class="form-group">
+                    <select class="custom-select my-1 mr-sm-2" th:field="*{employee}">
+                        <option th:each="c : ${employeesList}"
+                                th:value="${c.id}"
+                                th:text="${c.name}"></option>
+                    </select>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>Start day:</td>
+            <td><input type="text" id="startday" th:field="*{startDay}"/></td>
+            <td><span class="messageE" th:if="${#fields.hasErrors('startDay')}" th:errors="*{startDay}"></span></td>
+
+        </tr>
+        <tr>
+            <td>End day:</td>
+            <td><input type="text" id="endday" th:field="*{endDay}"/></td>
+            <td><span class="messageE" th:if="${#fields.hasErrors('endDay')}" th:errors="*{endDay}"></span></td>
+
+        </tr>
+
+        <tr>
+            <td>Deposit:</td>
+            <td><input type="text" th:field="*{deposit}"/></td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td><input class="btn-outline-primary" type="submit" value="Add New Contract"></td>
+        </tr>
+    </table>
+</form>
+
+</body>
+<script>
+    $( function() {
+        $( "#startday" ).datepicker({
+            format: 'dd/mm/yyyy',
+            uiLibrary:'bootstrap4',
+            autoClose:true,
+            todayHighlight:true
+
+        });
+    } );
+    $( function() {
+        $( "#endday" ).datepicker({
+            format: 'dd/mm/yyyy',
+            uiLibrary:'bootstrap4',
+            autoClose:true,
+            todayHighlight:true
+
+        });
+    } );
+</script>
+
+</html>

@@ -1,0 +1,95 @@
+body {
+    background-color: antiquewhite;
+    margin: 20px;
+}
+
+#main {
+    background-color: aqua;
+    height: 1200px;
+    width: 100%;
+    position: relative;
+
+}
+
+#head {
+    background-color: brown;
+    height: 200px;
+    width: 100%;
+}
+
+#logo {
+    background-color: blueviolet;
+    height: 200px;
+    width: 20%;
+    float: left;
+
+
+}
+
+#banner {
+    background-color: coral;
+    height: 200px;
+    width: 80%;
+    float: left;
+
+}
+
+#head-link {
+    background-color: white;
+    height: 30px;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    clear: left;
+    position: relative;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+}
+
+#left {
+    background-color: chartreuse;
+    height: 450px;
+    width: 19%;
+    float: left;
+    margin-right: 0.5%;
+    padding: 0.5%;
+
+}
+
+#content {
+    background-color: cadetblue;
+    width: 53%;
+    height: 600px;
+    float: left;
+    margin: 0 0.5% 0 0.5%;
+}
+
+#right {
+    background-color: chartreuse;
+    height: 650px;
+    width: 25%;
+    float: left;
+    margin-left: 0.5%;
+}
+
+#footer {
+    background-color: brown;
+    bottom: 0;
+    height: 2%;
+    width: 97%;
+    clear: both;
+    position: absolute;
+    padding: 1.5%;
+}
+#footer-right{
+    float: right;
+}
+a.head-link {
+    padding: 20px;
+}
+
+a.left {
+   font-size: 20px;
+
+}

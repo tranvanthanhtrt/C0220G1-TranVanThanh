@@ -9,9 +9,11 @@ import java.util.List;
 import java.util.Map;
 @Service
 public class ProductServiceIplm implements ProductService {
+
     private static Map<Integer, Product> products;
 
     static {
+
         products = new HashMap<Integer, Product>();
         products.put(1, new Product(1, "Iphone7", 15000000, "Điện thoại tán gái", "Apple"));
         products.put(2, new Product(2, "Sam Sung G7", 12000000, "Điện thoại này xài ổn", "Sam Sung"));

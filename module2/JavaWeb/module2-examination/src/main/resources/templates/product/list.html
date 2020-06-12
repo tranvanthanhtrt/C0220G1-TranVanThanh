@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="layout:: head">
+    <title>List Customer</title>
+</head>
+
+
+<body>
+<điv th:replace="layout::header">
+</điv>
+<div class="container-lg">
+    <div>
+        <form class="form-inline">
+            <input name="s" th:value="${s}" class="form-control mr-sm-2" type="search" placeholder="Search"
+                   aria-label="Search">
+            <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+    <th:block th:if="${message}">
+        <p th:text="${message}"></p>
+    </th:block>
+    <div>
+        <table id="blogs" border="1" class="table table-info table-hover container-xl">
+            <tr>
+                <th>STT</th>
+
+
+                <th>Name</th>
+
+                <th>Loại Hàng</th>
+                <th>Edit</th>
+                <th>Delete</th>
+                <th>View</th>
+            </tr>
+            <th:block th:each="product,row:${products}">
+                <tr>
+                    <td th:text="${(row.index+1)+4*(products.number)}"></td>
+
+                    <!--            <td><a th:href="@{/view-blog/__${blog.id}__}"><label th:text="${blog.name}">></label></a></td>-->
+                    <!--                    <td><a th:href="@{/view-customer/__${cusctomer.id}__}" th:text="${cusctomer.id}"></a></td>-->
+                    <td th:text="${product.name}"></td>
+                    <!--            <td th:text="${blog.writeOfDay}"></td>-->
+                    <td th:text="${product.name}"></td>
+                    <td><a th:href="@{/edit-product/__${product.maHang}__}">Edit</a></td>
+                    <td>
+                        <button class="btn btn-danger"><a onclick="return confirm('Are you sure?')"
+                                                          th:href="@{/delete-product/__${product.maHang}__}">Delete</a>
+                        </button>
+                    </td>
+                    <td><a th:href="@{/view-customer/__${product.maHang}__}">View</a></td>
+                </tr>
+            </th:block>
+
+        </table>
+    </div>
+
+    <div th:width="200px" style="position: absolute;bottom: 20px;left: 50%">
+        <a th:href="@{'/list-product'(page=${products.number - 1},s=${s})}"
+           th:if="${products.hasPrevious()}">Previous</a>
+        <span th:if="!${products.hasPrevious()}">----------</span>
+        <span th:text="${products.number + 1}"></span>/<span th:text="${products.totalPages}"></span>
+        <a th:href="@{'/list-product'(page=${products.number + 1},s=${s})}" th:if="${products.hasNext()}">Next</a>
+    </div>
+</div>
+</body>
+</html>

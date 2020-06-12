@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="main/layout:: head">
+    <title>New Customer</title>
+    <link rel="stylesheet" th:href="@{/css/dropdown.css}">
+
+
+</head>
+
+<body>
+<điv th:replace="main/layout::header">
+</điv>
+<h1 style="left: 50%">New Customer</h1>
+
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<div class="container-lg">
+<form class="form-group font-weight-bolder " th:action="@{/create-customer/__${static}__}" th:object="${customer}" method="post">
+    <table class="container col-xl-10">
+        <tr class="form-group" th:if="${static=='edit'}" hidden="hidden">
+            <td>ID Customer:</td>
+            <td><input type="text" placeholder="KH-XXXX" th:field="*{id}"/></td>
+            <td><span class="messageE" th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></span></td>
+
+        </tr>
+        <tr class="form-group" th:if="${static=='create'}">
+            <td>ID Customer:</td>
+            <td><input type="text" placeholder="KH-XXXX" th:field="*{id}"/></td>
+            <td><span class="messageE" th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></span></td>
+
+        </tr>
+        <tr class="form-group">
+            <td>Name:</td>
+            <td><input type="text" th:field="*{name}"/></td>
+            <td><span class="messageE" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span></td>
+
+        </tr >
+        <tr class="form-group">
+            <td>Birthday:</td>
+            <td><label for="birthday"></label><input type="text" id="birthday" th:field="*{birthday}"/></td>
+            <td><span class="messageE" th:if="${#fields.hasErrors('birthday')}" th:errors="*{birthday}"></span></td>
+
+        </tr>
+        <tr class="form-group">
+            <td>Gender:</td>
+            <td><input type="radio" id="male" name="gender" value="male" checked="checked" th:field="*{gender}"/>
+                <label for="male">Male</label>
+                <input type="radio" id="female" name="gender" value="female" th:field="*{gender}"/>
+                <label for="female">Female</label>
+                <input type="radio" id="other" name="gender" value="other" th:field="*{gender}"/>
+                <label for="other">Other</label>
+            <td><span class="messageE" th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"></span></td>
+
+        </tr>
+        <tr class="form-group">
+            <td>ID/CMND:</td>
+            <td><input type="text" th:field="*{cmnd}"/></td>
+        </tr>
+        <tr class="form-group">
+            <td>Phone Number:</td>
+            <td><input type="text" th:field="*{phoneNumber}"/></td>
+            <td><span class="messageE" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></span></td>
+
+        </tr>
+        <tr class="form-group">
+            <td>Email:</td>
+            <td><input type="text" th:field="*{email}"/></td>
+            <td><span class="messageE" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span></td>
+
+        </tr>
+        <tr class="form-group">
+            <td>Address:</td>
+            <td><input type="text" th:field="*{address}"/></td>
+        </tr>
+        <tr class="form-group">
+        <td >CustomerType:</td>
+        <td>
+            <div class="form-group">
+                <select class="custom-select my-1 mr-sm-2" th:field="*{customerType}">
+                    <option th:each="c : ${customerTypes}"
+                            th:value="${c.id}"
+                            th:text="${c.name}"></option>
+                </select>
+            </div>
+        </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td th:if="${static=='create'}"><input class="btn-outline-primary" type="submit" value="Add New Customer"></td>
+            <td th:if="${static=='edit'}"><input class="btn-outline-primary" type="submit" value="Update Customer"></td>
+
+        </tr>
+    </table>
+</form>
+</div>
+</body>
+<script>
+    $( function() {
+        $( "#birthday" ).datepicker({
+            format: 'dd/mm/yyyy',
+            uiLibrary:'bootstrap4',
+            autoClose:true,
+            todayHighlight:true
+
+        });
+    } );
+</script>
+</html>

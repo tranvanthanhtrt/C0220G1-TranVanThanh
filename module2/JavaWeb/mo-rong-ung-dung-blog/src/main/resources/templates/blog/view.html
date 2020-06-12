@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Blog</title>
+</head>
+<body>
+<h1>Detail blog</h1>
+<label>Title: </label>
+<label th:width="500px" style="font-size:30px" th:text="${blog.get().name}"></label>
+<br>
+<label>Day: </label>
+
+<span th:align="right" style="font-size:20px " th:text="${blog.get().writeOfDay}"></span>
+<br>
+<label>Category: </label>
+
+<span th:align="right" style="font-size:20px " th:text="${blog.get().category.name}"></span>
+
+
+<br>
+<textarea cols="100" rows="30" th:text="${blog.get().contention}" readonly="true"></textarea>
+
+<p>
+    <a href="/blogs">Blog list</a>
+</p>
+</body>
+</html>

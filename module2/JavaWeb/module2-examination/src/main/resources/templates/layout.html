@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap_4.5.0_css_bootstrap.css}">
+    <link rel="stylesheet" th:href="@{/css/dropdown.css}">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" type="text/css" rel="stylesheet"/>
+    <script>
+        /* When the user clicks on the button,
+    toggle between hiding and showing the dropdown content */
+        function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        // Close the dropdown menu if the user clicks outside of it
+        window.onclick = function (event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body{
+            background-image: url("image/hinhnen.jpg");
+            background-repeat: no-repeat;
+            background-size:100%;}
+    </style>
+</head>
+
+<body>
+<div th:fragment="header" class="gdlr-logo">
+    <div style="  position: relative;
+  text-align: center;
+  color: white">
+        <a href="/exam">
+            <img th:src="@{/image/inner_banner_examination.jpg}"
+                 width="100%">
+        </a>
+        <div style="position: absolute;
+  top: 10%;
+  left: 40%">
+            <h1>Web Examination</h1>
+            <p>ThanhC2002G</p>
+
+        </div>
+        <div style="position: absolute;
+  top: 10%;
+  right: 30%">
+            <a href="">Sign In</a>
+            <a href="">Log In</a>
+
+        </div>
+
+    </div>
+
+    <div>
+        <nav class="navbar navbar-dark bg-dark" style="margin-left: 20%;margin-right: 40%;position: absolute;
+top: 15%;">
+            <div class="navbar-expand-sm " id="navbarColor01" >
+                <ul class="navbar-nav mr-auto nav-tabs navbar-brand" style="align-items: center">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="exam">Home</a>
+                    </li>
+                    <div class="nav-item">
+                        <span onmouseover="myFunction()" class="nav-link">Nhan Vien</span>
+                        <div id="myDropdown" class="dropdown-content">
+                            <a th:href="@{/create-nhanvien}">Them Nhan Vien</a>
+                            <a th:href="@{/list-nhanvien}">Danh sach Nhan Vien</a>
+                        </div>
+                    </div>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/create-customer}">Add New Customer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/create-service}">Add New Service</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/create-employee}">Add New Employee</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/create-contract}">Add New Contract</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/create-detail-contract}">Add New Detail Contract</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/list-customer}">List Customer</a>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+    </div>
+</div>
+<footer th:fragment="footer">
+    &copy; 2020 ThanhTRTPRoduct
+</footer>
+</body>
+</html>

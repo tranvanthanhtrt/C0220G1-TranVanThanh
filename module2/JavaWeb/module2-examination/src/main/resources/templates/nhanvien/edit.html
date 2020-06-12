@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="layout :: head">
+    <title>Chinh Sua Nhan Vien</title>
+</head>
+<body>
+<điv th:replace="layout::header">
+</điv>
+<div class="container-fluid">
+    <h1 style="text-align: center">Chinh Sua Nhan vien</h1>
+
+    <th:block th:if="${message}">
+        <p th:text="${message}"></p>
+    </th:block>
+</div>
+<div class="container-fluid">
+    <div class="container col-10">
+        <form th:action="@{/edit-nhanvien}" th:object="${nhanvien}" method="post">
+            <table class="container col-6">
+                <tr class="form-group">
+                    <input th:type="hidden" name="maNhanVien" th:field="*{maNhanVien}">
+
+                    <td>Ten Nhan Vien</td>
+                    <td><input class="form-control" type="text" th:field="*{ten}"/></td>
+                    <td><span class="messageE" th:if="${#fields.hasErrors('ten')}" th:errors="*{ten}"></span>
+
+                </tr>
+
+                <tr class="form-group">
+                    <td>Nhom Nhan Vien:</td>
+                    <td>
+                        <select class="form-control" th:field="*{nhomNhanVien}">
+                            <option th:each="p : ${listNhomNhanVien}"
+                                    th:value="${p.maNhom}"
+                                    th:text="${p.tenNhom}"></option>
+                        </select>
+                    </td>
+                </tr>
+                <tr class="form-group">
+                    <td>Ngay sinh:</td>
+                    <td><label for="birthday"></label><input type="text" id="birthday" th:field="*{birthday}"/></td>
+                    <td><span class="messageE" th:if="${#fields.hasErrors('birthday')}" th:errors="*{birthday}"></span>
+                    </td>
+
+                </tr>
+                <tr class="form-group">
+                    <td>Gender:</td>
+                    <td><input type="radio" id="male" name="gender" value="male" checked="checked"
+                               th:field="*{gender}"/>
+                        <label for="male">Male</label>
+                        <input type="radio" id="female" name="gender" value="female" th:field="*{gender}"/>
+                        <label for="female">Female</label>
+                    <td><span class="messageE" th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"></span></td>
+
+                </tr>
+                <tr class="form-group">
+                    <td>ID/CMND:</td>
+                    <td><input type="text" th:field="*{cmnd}"/></td>
+                    <td><span class="messageE" th:if="${#fields.hasErrors('cmnd')}" th:errors="*{cmnd}"></span></td>
+
+                </tr>
+                <tr class="form-group">
+                    <td>So Dien thoai:</td>
+                    <td><input type="text" th:field="*{phoneNumber}"/></td>
+                    <td><span class="messageE" th:if="${#fields.hasErrors('phoneNumber')}"
+                              th:errors="*{phoneNumber}"></span></td>
+
+                </tr>
+                <tr class="form-group">
+                    <td>Email:</td>
+                    <td><input type="text" th:field="*{email}"/></td>
+                    <td><span class="messageE" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span></td>
+
+                </tr>
+                <tr class="form-group">
+                    <td>Dia Chi:</td>
+                    <td><input type="text" th:field="*{address}"/></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input class="button-bar" type="submit" value="Cap Nhat Nhan Vien"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+</body>
+<script>
+    $( function() {
+        $( "#birthday" ).datepicker({
+            format: 'dd/mm/yyyy',
+            uiLibrary:'bootstrap4',
+            autoClose:true,
+            todayHighlight:true
+
+        });
+    } );
+</script>
+</html>

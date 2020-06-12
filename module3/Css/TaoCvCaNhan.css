@@ -1,0 +1,131 @@
+body {
+    background-color: lightgoldenrodyellow;
+    margin: 20px;
+}
+
+#main {
+    height: 1000px;
+    width: 100%;
+    position: relative;
+}
+
+#head {
+    height: 300px;
+    width: 100%;
+}
+
+#head-image {
+    height: 100px;
+    width: 30%;
+    float: left;
+    position: relative;
+}
+
+#head-profile {
+    width: 70%;
+    float: left;
+}
+
+#image-profile {
+    width: 250px;
+    height: 250px;
+    position: absolute;
+    top: 0px;
+    left: 50px;
+    border: greenyellow solid 20px;
+    border-radius: 40px;
+}
+
+.profile-name {
+    background-color: cadetblue;
+    position: relative;
+    padding: 30px;
+    font-size: 20px;
+
+
+}
+
+#profile-name {
+    font-size: 50px;
+    position: absolute;
+    top: 20px;
+    left: 50px;
+    margin: 20px;
+    font-family: "Gill Sans", sans-serif;
+}
+
+ul.profile-detail {
+    list-style-type: square;
+    font-size: 30px;
+    font-family: "DejaVu Serif";
+    width: 40%;
+    float: left;
+    line-height: 50px;
+}
+
+#leftContent {
+    height: 800px;
+    width: 40%;
+    padding: 20px;
+    float: left;
+}
+
+#rightContent {
+    height: 800px;
+    width: 55%;
+    float: left;
+    margin-top: 35px;
+}
+
+.left1 {
+    background-color: azure;
+    border: blue solid;
+    border-radius: 50px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.right {
+    height: 230px;
+    background-color: antiquewhite;
+    border: blue dashed;
+    text-align: left;
+}
+
+#right1 {
+    height: 320px;
+}
+
+ul.left1-content {
+    width:80%;
+    font-size: 30px;
+    color: blue;
+    text-align: left;
+
+
+}
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+/* For desktop: */
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    [class*="col-"] {
+        width: 100%;
+    }
+}

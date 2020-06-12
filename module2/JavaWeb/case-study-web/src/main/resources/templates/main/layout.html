@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap_4.5.0_css_bootstrap.css}">
+    <link rel="stylesheet" th:href="@{/css/dropdown.css}">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+<link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" type="text/css" rel="stylesheet"/>
+
+    <script>
+        /* When the user clicks on the button,
+    toggle between hiding and showing the dropdown content */
+        function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        // Close the dropdown menu if the user clicks outside of it
+        window.onclick = function (event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+<div th:fragment="header" class="gdlr-logo">
+    <div style="  position: relative;
+  text-align: center;
+  color: white">
+        <a href="https://www.lagunalangco.com/vi/">
+            <img src=https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Zeller_See_Zell_Am_See.jpg/1280px-Zeller_See_Zell_Am_See.jpg
+                 width="100%">
+        </a>
+        <div style="position: absolute;
+  top: 10%;
+  left: 40%">
+            <h1>Furama Da Nang</h1>
+            <p>Natural for live</p>
+
+        </div>
+        <div style="position: absolute;
+  top: 10%;
+  right: 30%">
+            <a href="">Sign In</a>
+            <a href="">Log In</a>
+
+        </div>
+
+    </div>
+
+    <div>
+        <nav class="navbar navbar-dark bg-dark" >
+            <div class="navbar-expand-xl " id="navbarColor01">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link fa fa-fw fa-home" href="/furama">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Service</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Review</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <div class="nav-item">
+                        <span onmouseover="myFunction()" class="nav-link">Customer</span>
+                        <div id="myDropdown" class="dropdown-content">
+                            <a th:href="@{/create-customer}">Add New Customer</a>
+                            <a th:href="@{/list-customer}">List Customer</a>
+                            <a th:href="@{/list-customer-booking}">Customer Booking List</a>
+                        </div>
+                    </div>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/create-customer}">Add New Customer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/create-service}">Add New Service</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/create-employee}">Add New Employee</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/create-contract}">Add New Contract</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/create-detail-contract}">Add New Detail Contract</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/list-customer}">List Customer</a>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+    </div>
+</div>
+<footer th:fragment="footer">
+    &copy; 2020 ThanhTRTPRoduct
+</footer>
+</body>
+</html>

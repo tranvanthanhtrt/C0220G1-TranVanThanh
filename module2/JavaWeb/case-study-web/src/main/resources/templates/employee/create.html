@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New Employee</title>
+    <link rel="stylesheet" href="css/bootstrap_4.5.0_css_bootstrap.css">
+</head>
+<body>
+<điv th:replace="main/layout::header">
+</điv>
+<h1>New Employee</h1>
+<p>
+    <a href="/furama">Home Page</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form class="form-group " th:action="@{/create-employee}" th:object="${employee}" method="post">
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" th:field="*{name}"/></td>
+        </tr>
+        <tr>
+            <td>Birthday:</td>
+            <td><input type="date" th:field="*{birthday}"/></td>
+        </tr>
+
+        <tr>
+            <td>ID/CMND:</td>
+            <td><input type="text" th:field="*{cmnd}"/></td>
+        </tr>
+        <tr>
+            <td>Phone Number:</td>
+            <td><input type="text" th:field="*{phoneNumber}"/></td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td><input type="text" th:field="*{email}"/></td>
+        </tr>
+        <tr>
+            <td>Salary:</td>
+            <td><input type="text" th:field="*{salary}"/></td>
+        </tr>
+        <tr>
+        <td>Level:</td>
+        <td>
+            <div class="form-group">
+                <select class="custom-select my-1 mr-sm-2" th:field="*{level}">
+                    <option th:each="c : ${employeeLevels}"
+                            th:value="${c.id}"
+                            th:text="${c.name}"></option>
+                </select>
+            </div>
+        </td>
+        </tr>
+        <tr>
+            <td>Department:</td>
+            <td>
+                <div class="form-group">
+                    <select class="custom-select my-1 mr-sm-2" th:field="*{department}">
+                        <option th:each="c : ${employeeDepartments}"
+                                th:value="${c.id}"
+                                th:text="${c.name}"></option>
+                    </select>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>Position:</td>
+            <td>
+                <div class="form-group">
+                    <select class="custom-select my-1 mr-sm-2" th:field="*{position}">
+                        <option th:each="c : ${employeePosition}"
+                                th:value="${c.id}"
+                                th:text="${c.name}"></option>
+                    </select>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input class="btn-outline-primary" type="submit" value="Add New Employer"></td>
+        </tr>
+    </table>
+</form>
+
+</body>
+</html>

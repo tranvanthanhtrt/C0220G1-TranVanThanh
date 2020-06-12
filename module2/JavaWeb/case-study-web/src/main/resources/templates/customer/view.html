@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="main/layout:: head">
+    <title>Info Customer</title>
+</head>
+<body>
+<điv th:replace="main/layout::header">
+</điv>
+<h1 style="text-align: center">Customer Information</h1>
+<div class="container-lg">
+    <table  class="container col-6">
+        <tr class="form-group" >
+            <td><label>ID:</label>
+            </td>
+            <td><label class="text-info" th:text="${customer.get().id}"></label>
+            </td>
+        </tr>
+        <tr class="form-group">
+            <td >Name:</td>
+            <td class="text-info" th:text="${customer.get().name}"></td>
+        </tr>
+        <tr class="form-group">
+            <td>Birthday:</td>
+            <td class="text-info" th:text="${#dates.format(customer.get().birthday, 'dd-MM-yyyy')}"></td>
+        </tr>
+        <tr class="form-group">
+            <td>Gender:</td>
+            <td class="text-info" th:text="${customer.get().gender}"></td>
+        </tr>
+        <tr class="form-group">
+            <td>CMND/ID:</td>
+            <td class="text-info" th:text="${customer.get().cmnd}"></td>
+        </tr>
+        <tr class="form-group">
+            <td>Phone number:</td>
+            <td class="text-info" th:text="${customer.get().phoneNumber}"></td>
+        </tr>
+        <tr class="form-group">
+            <td>Email:</td>
+            <td class="text-info" th:text="${customer.get().email}"></td>
+        </tr>
+        <tr class="form-group">
+            <td>Address:</td>
+            <td class="text-info" th:text="${customer.get().address}"></td>
+        </tr>
+        <tr class="form-group">
+            <td>Type of customer:</td>
+            <td class="text-info" th:text="${customer.get().customerType.name}"></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
