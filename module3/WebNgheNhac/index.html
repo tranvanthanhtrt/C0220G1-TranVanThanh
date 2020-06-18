@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="author" content="Script Tutorials"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <title>HTML5 Audio player with playlist | Script Tutorials</title>
+
+    <!-- add styles and scripts -->
+    <link href="css/styles.css" rel="stylesheet" type="text/css"/>
+    <script src="js/jquery-3.5.1.js"></script>
+    <script type="text/javascript" src="js/musicplayer.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <!-- Add the slick-theme.css if you want default styling -->
+
+    <!--    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css" />-->
+    <!--    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css" />-->
+    <!--    &lt;!&ndash; Add the slick-theme.css if you want default styling &ndash;&gt;-->
+
+</head>
+
+<body>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+
+<button id="action-button">Click me to load song!</button>
+
+<div class="example2">
+    <ul class="playlist">
+        <li data-cover="http://digital.akauk.com/utils/musicPlayer/data/epic.jpg" data-artist="John Doe">
+            <a href="http://digital.akauk.com/utils/musicPlayer/data/epic.mp3">Epic</a>
+        </li>
+        <li data-cover="http://digital.akauk.com/utils/musicPlayer/data/acousticbreeze.jpg" data-artist="Sam Doe">
+            <a href="http://digital.akauk.com/utils/musicPlayer/data/acousticbreeze.mp3"><span>Acoustic Breeze</span></a>
+        </li>
+        <li data-cover="http://digital.akauk.com/utils/musicPlayer/data/dubstep.jpg" data-artist="Jane Doe">
+            <a href="http://digital.akauk.com/utils/musicPlayer/data/dubstep.mp3"></a>Dubstep
+        </li>
+        <li id="song0" >
+
+        </li>
+        <li id="song1" >
+
+        </li>
+        <li id="song2" >
+
+        </li>
+        <li id="song3" >
+
+        </li>
+    </ul>
+</div>
+
+
+<script>
+
+
+    $(".example2").musicPlayer({
+        //volume: 10,
+        //elements: ['artwork', 'controls', 'progress', 'time', 'volume'],
+        //playerAbovePlaylist: false,
+        // autoPlay: true,
+        // loop: true,
+        onLoad: function () {
+            //Add Audio player
+            plElem = "<div class='pl'></div>";
+            $('.example2').find('.player').append(plElem);
+            // show playlist
+            $('.pl').click(function (e) {
+                e.preventDefault();
+                $('.example2').find('.playlist').toggleClass("hidden");
+            });
+        },
+
+    });
+
+
+    $(document).ready(function () {
+
+        $('#action-button').click(function () {
+            $.ajax({
+                type: 'GET',
+                url: 'data/json/lis1.json',
+                data: {get_param: 'value'},
+                dataType: 'json',
+                success: function (data) {
+                    // $('.playlist').append("<li data-cover='http://digital.akauk.com/utils/musicPlayer/data/dubstep.jpg' data-artist='" + data[0].artist + "'><a href='" + data[0].url + "'></a>" + data[0].title + "</li>");
+                    var i;
+                    for (i = 0; i < data.length; i++) {
+                        $('#song'+i).html("<a href='" + data[i].url + "'>"+data[i].title+"</a>");
+                        $('#song'+i).attr("data-artist",data[i].artist);
+
+                    }
+
+                    // $('#song').append("<a href='" + data[0].url + "'>"+data[0].title+"</a>");
+                    // $('#song').attr("class", "thanh")
+                    // $.each(data, function(index, element) {
+                    //
+                    //     $('table').append("<tr><td>" + element.fullName+ "</td><td>"+element.gender+"</td></tr>");
+                    // });
+                }
+            });
+
+        })
+
+    });
+
+</script>
+
+<!--http://api.mp3.zing.vn/api/streaming/audio/60B6C7IW/320-->
+</body>
+
+</html>

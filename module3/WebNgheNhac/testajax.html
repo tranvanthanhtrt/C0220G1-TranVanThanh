@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-3.5.1.js"></script>
+    <style>
+        table, tr, td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<script>
+    $(document).ready(function () {
+
+
+        $('#action-button').ready(function () {
+            $.ajax({
+                type: 'GET',
+                url: 'https://spring-student-api.herokuapp.com/info?apiKey=eaf118ab-babf-43ed-a788-b66d2f0ca00c',
+                data: {get_param: 'value'},
+                dataType: 'json',
+                success: function (data) {
+                    var i=0;
+                    $('input').val(i);
+
+                    $('#action-button').click(function () {
+
+                        $('table').append("<tr><td>" + data[i++].id + "</td><td>" + data[i++].gender + "</td></tr>");
+                        // $.each(data, function(index, element) {
+                        //
+                        //     $('table').append("<tr><td>" + element.fullName+ "</td><td>"+element.gender+"</td></tr>");
+                        // });
+                    })
+                }
+            });
+        });
+    })
+</script>
+<body>
+<button id="action-button">Click me to load info!</button>
+<div id="info"></div>
+<input class="input" value="5">
+<small>Demo created by <a href="https://twitter.com/AurelioDeRosa">Aurelio De Rosa</a></small>
+<table class="table">
+    <tr>
+        <td>id</td>
+        <td>fullName</td>
+    </tr>
+</table>
+</body>
+</html>

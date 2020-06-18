@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/bootstrap.js"></script>
     <script src="js/jquery-3.5.1.js"></script>
-    <script src="js/jquery.js"></script>
-
     <script>
         $(document).ready(function(){
             $("#hide").click(function(){
@@ -21,19 +21,24 @@
             });
         });
     </script>
-    <link rel="stylesheet" href="css/mdb.css">
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <script src="js/mdb.js"></script>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/popper.js"></script>
 </head>
 <body>
-<p>If you click on the "Hide" button, I will disappear.</p>
-<button id="hide">Hide</button>
-<button id="show">Show</button>
-<button>Start Animation</button>
-<p>By default, all HTML elements have a static position, and cannot be moved. To manipulate the position, remember to first set the CSS position property of the element to relative, fixed, or absolute!</p>
-<div style="background:#98bf21;height:100px;width:200px;position:absolute;">HELLO</div>
+<div class="container-fluid">
+    <div class="row">
+        <p>If you click on the "Hide" button, I will disappear.</p>
+        <button id="hide">Hide</button>
+        <button id="show">Show</button>
+        <button>Start Animation</button>
+    </div>
+    <div class="row">
 
+        <p>By default, all HTML elements have a static position, and cannot be moved. To manipulate the position,
+            remember to first set the CSS position property of the element to relative, fixed, or absolute!</p>
+    </div>
+    <div class="row">
+
+        <div style="background:#98bf21;height:100px;width:200px;position:absolute;">HELLO</div>
+    </div>
+</div>
 </body>
 </html>

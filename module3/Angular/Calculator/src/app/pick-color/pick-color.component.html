@@ -1,0 +1,15 @@
+<h1>Color Picker</h1>
+<label for="color">Chọn màu</label>
+
+  <select  class="user-select-auto" [style.backgroundColor]=outputColor style="width: 200px;height: 50px" id="color" [(ngModel)]="outputColor">
+    <option value="red"  style="background-color: red"></option>
+    <option value="blue"  style="background-color: blue"></option>
+    <option value="green" style="background-color: green"></option>
+    <option value="yellow" style="background-color: yellow"></option>
+
+  </select>
+<p>Màu mi mới chọn nè :</p>
+<div [style.backgroundColor]=outputColor style=" height: 300px;width: 300px">
+
+</div>
+
