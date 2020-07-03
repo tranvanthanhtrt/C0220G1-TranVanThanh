@@ -1,0 +1,12 @@
+<p>dictionary-list word</p>
+<ul>
+  <li *ngFor="let item of dictionaryService.dictionaries">
+    <a [routerLink]="['/dictionary',item.eng]">{{item.eng}}</a>
+  </li>
+</ul>
+<div>
+  <label>
+    <input type="text" (change)="search($event.target.value)">Search
+  </label>
+</div>
+<router-outlet></router-outlet>

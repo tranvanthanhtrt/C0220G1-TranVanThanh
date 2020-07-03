@@ -1,0 +1,45 @@
+<div class="card" style="width: 100%;">
+  <div class="card-body">
+    <h2 class="card-title">Thông tin Khách hàng</h2>
+    <table *ngIf="customer" class="table table-bordered">
+      <tr>
+        <th>Mã khách hàng</th>
+        <th  class="text-info">{{customer.maKhachHang}}</th>
+      </tr>
+      <tr>
+        <th>Tên khách hàng</th>
+        <th class="text-info">{{customer.tenKhachHang}}</th>
+
+      </tr>
+      <tr>
+        <th>Loại khách hàng</th>
+        <th class="text-info">{{customer.loaiKhachHang.ten}}</th>
+
+      </tr>
+      <tr>
+        <th>Ngày sinh:</th>
+        <th class="text-info">{{customer.ngaySinh|date: 'dd/MM/yyyy'}}</th>
+
+      </tr>
+      <tr>
+        <th>Giới  tính</th>
+        <th class="text-info">{{customer.gioiTinh}}</th>
+
+      </tr>
+      <tr>
+        <th>Số CMND</th>
+        <th class="text-info">{{customer.soCmnd}}</th>
+
+      </tr>
+      <tr>
+        <th>Số Điện thoại</th>
+        <th class="text-info">{{customer.soDienThoai}}</th>
+
+      </tr>
+    </table>
+
+
+    <a href="/customers" class="card-link">Danh sách khách hàng</a>
+
+  </div>
+</div>

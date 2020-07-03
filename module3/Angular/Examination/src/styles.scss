@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+//@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+//@import "../node_modules/bootstrap/scss/bootstrap";
+body{
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  color: #212112;
+  background-image: url('https://cdn4.vectorstock.com/i/1000x1000/27/33/abstract-blue-and-white-repeating-hexagons-vector-13472733.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-color: #fff;
+  overflow-x: hidden;
+  transition: all 200ms linear;
+}

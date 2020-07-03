@@ -2,15 +2,37 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="48fd30df-a525-45d4-bb99-d1cdb8dfaeb7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../JQuery/SuDungJQuery TaoHieuUng.html" beforeDir="false" afterPath="$PROJECT_DIR$/../JQuery/SuDungJQuery TaoHieuUng.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/module3.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularTemplate/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/AngularTemplate/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularTemplate/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularTemplate/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularTemplate/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/AngularTemplate/src/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+        <option value="tsconfig.json" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="hiddenUrls">
+      <set>
+        <option value="https://github.com/tranvanthanhtrt/C0220G1-TranVanThanh.git" />
+      </set>
+    </option>
   </component>
   <component name="ProjectId" id="1dTLve0pr499rcgsoxZr7SmL5Bb" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -20,9 +42,23 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last.edited.regexp" value="thanhtr.hien@gmail.com" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Examination" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.updates" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/Module-DI/node_modules/typescript/lib" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Case-Study-M3/src/app" />
+      <recent name="$PROJECT_DIR$/Case-Study-M3/src/app/customer" />
+      <recent name="$PROJECT_DIR$/Case-Study-M3" />
+    </key>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -35,7 +71,53 @@
       <option name="presentableId" value="Default" />
       <updated>1592444369179</updated>
       <workItem from="1592444395959" duration="53000" />
+      <workItem from="1592554381790" duration="380000" />
+      <workItem from="1592554762693" duration="58000" />
+      <workItem from="1592875458276" duration="10825000" />
+      <workItem from="1592899429350" duration="7466000" />
+      <workItem from="1592963034397" duration="17207000" />
+      <workItem from="1593048632350" duration="26053000" />
+      <workItem from="1593228793381" duration="8439000" />
+      <workItem from="1593394150249" duration="29088000" />
+      <workItem from="1593481719545" duration="34253000" />
+      <workItem from="1593566620734" duration="14946000" />
+      <workItem from="1593589447939" duration="6829000" />
+      <workItem from="1593612141162" duration="225000" />
+      <workItem from="1593613588102" duration="156000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="523" y="215" width="800" height="675" key="#Notifications" timestamp="1593416220342">
+      <screen x="0" y="27" width="1856" height="1053" />
+    </state>
+    <state x="523" y="215" width="800" height="675" key="#Notifications/0.27.1856.1053@0.27.1856.1053" timestamp="1593416220342" />
+    <state x="599" y="345" width="648" height="414" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1593067910904">
+      <screen x="0" y="27" width="1856" height="1053" />
+    </state>
+    <state x="599" y="345" width="648" height="414" key="#com.intellij.fileTypes.FileTypeChooser/0.27.1856.1053@0.27.1856.1053" timestamp="1593067910904" />
+    <state x="736" y="272" width="374" height="560" key="#com.intellij.ide.util.MemberChooser" timestamp="1593512145151">
+      <screen x="0" y="27" width="1856" height="1053" />
+    </state>
+    <state x="736" y="272" width="374" height="560" key="#com.intellij.ide.util.MemberChooser/0.27.1856.1053@0.27.1856.1053" timestamp="1593512145151" />
+    <state x="661" y="302" width="524" height="500" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1592989918580">
+      <screen x="0" y="27" width="1856" height="1053" />
+    </state>
+    <state x="661" y="302" width="524" height="500" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.27.1856.1053@0.27.1856.1053" timestamp="1592989918580" />
+    <state x="711" y="311" width="424" height="482" key="FileChooserDialogImpl" timestamp="1593613747213">
+      <screen x="0" y="27" width="1856" height="1053" />
+    </state>
+    <state x="711" y="311" width="424" height="482" key="FileChooserDialogImpl/0.27.1856.1053@0.27.1856.1053" timestamp="1593613747213" />
+    <state x="417" y="188" key="SettingsEditor" timestamp="1593416298975">
+      <screen x="0" y="27" width="1856" height="1053" />
+    </state>
+    <state x="417" y="188" key="SettingsEditor/0.27.1856.1053@0.27.1856.1053" timestamp="1593416298975" />
+    <state x="592" y="254" key="run.anything.popup" timestamp="1593420264665">
+      <screen x="0" y="27" width="1856" height="1053" />
+    </state>
+    <state x="592" y="254" key="run.anything.popup/0.27.1856.1053@0.27.1856.1053" timestamp="1593420264665" />
   </component>
 </project>

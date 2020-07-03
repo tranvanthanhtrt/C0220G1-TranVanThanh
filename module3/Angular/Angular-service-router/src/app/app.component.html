@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+<!--        <a [routerLink]="['timelines']" class="link"> Ứng dụng tính thời gian </a>-->
+      <div >
+        <button type="button" class="btn btn-danger" (click)="goTimeLines()">Timelines</button>
+        <!--  <a routerLink="youtube" class="link">Youtube</a>-->
+      </div>
+      <div >
+        <button type="button" class="btn btn-primary" (click)="goYoutube()">Youtube</button>
+      </div>
+    <div >
+      <button type="button" class="btn btn-primary" (click)="goDictionary()">Dictionary</button>
+    </div>
+
+    </div>
+</div>
+<router-outlet></router-outlet>

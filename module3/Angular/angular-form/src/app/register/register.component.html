@@ -1,0 +1,82 @@
+<h1 class="text-center">
+  User Registration
+</h1>
+<form
+  [formGroup]="registerForm"
+  (ngSubmit)="onSubmit()"
+  class="col-md-4 offset-md-4">
+  <div class="form-group row">
+    <label class="col">
+      Email
+      <input type="email" class="form-control" formControlName="email">
+    </label>
+  </div>
+  <div class="alert alert-danger" *ngIf="registerForm.get('email').hasError('email')&&registerForm.get('email').touched">
+    Invalid email!
+  </div>
+  <fieldset formGroupName="pwGroup">
+    <div class="form-group row">
+      <label class="col">
+        Password
+        <input type="password" class="form-control" formControlName="password">
+      </label>
+    </div>
+    <div class="alert alert-danger" *ngIf="registerForm.get('pwGroup').get('password').hasError('pattern') && registerForm.get('pwGroup').get('password').touched">
+      Invalid password!
+    </div>
+    <div class="form-group row">
+      <label class="col">
+        Confirm Password
+        <input type="password" class="form-control" formControlName="confirmPassword">
+      </label>
+    </div>
+  </fieldset>
+  <div class="alert alert-danger" *ngIf="registerForm.hasError('passwordnotmatch', ['pwGroup']) &&
+      registerForm.get('pwGroup').touched">
+    Password does not match!
+  </div>
+  <div class="form-group row">
+    <label class="col">Country
+      <select class="form-control " formControlName="country">
+        <option disabled selected value >Select Country</option>
+
+        <option value="Hue">Huế</option>
+        <option value="Da Nang">Đà Nẵng</option>
+        <option value="Quang Tri">Quảng Trị</option>
+      </select>
+    </label>
+  </div>
+  <div class="alert alert-danger" *ngIf="registerForm.get('country').hasError('required')&&registerForm.get('country').touched">
+    Country is required !
+  </div>
+  <div class="form-group row">
+    <label class="col">
+      Age
+      <input type="number" class="form-control" formControlName="age">
+    </label>
+  </div>
+  <div class="form-group row">
+    <div class="col">
+      Gender
+      <label> <input type="radio" formControlName="gender" name="gender" value="male">Male</label>
+      <label> <input type="radio" formControlName="gender" name="gender" value="female">Female</label>
+    </div>
+  </div>
+  <div class="alert alert-danger" *ngIf="registerForm.get('gender').hasError('required')&& registerForm.get('phone').touched">
+    Gender is required!
+  </div>
+  <div class="form-group row">
+    <label class="col">
+      Phone Number
+      <input type="tel" class="form-control" formControlName="phone" placeholder="+84123456789">
+    </label>
+  </div>
+  <div class="alert alert-danger" *ngIf="registerForm.get('phone').hasError('pattern')&& registerForm.get('phone').touched">
+    Phone number miss match !
+  </div>
+  <input class="btn btn-info" type="submit" value="Register"/>
+
+</form>
+<pre>
+{{registerForm.value|json}}
+</pre>

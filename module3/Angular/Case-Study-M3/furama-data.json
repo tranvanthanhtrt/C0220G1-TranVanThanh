@@ -1,0 +1,286 @@
+{
+  "customerList": [
+    {
+      "id": 2,
+      "maKhachHang": "KH-0002",
+      "loaiKhachHang": "3",
+      "tenKhachHang": "Trần Văn Thanh",
+      "ngaySinh": "2020-07-14T17:00:00.000Z",
+      "soCmnd": "123456789",
+      "soDienThoai": "0123456789",
+      "email": "thach@gmail.com",
+      "diaChi": "Quảng Trị",
+      "gioiTinh": "nu"
+    },
+    {
+      "id": 3,
+      "maKhachHang": "KH-0003",
+      "loaiKhachHang": "3",
+      "tenKhachHang": "Nguyễn Thị Yến Nhi",
+      "ngaySinh": "2020-07-21T17:00:00.000Z",
+      "soCmnd": "123456789",
+      "soDienThoai": "0123456789",
+      "email": "thach@gmail.com",
+      "diaChi": "Quảng Trị",
+      "gioiTinh": "nu"
+    },
+    {
+      "maKhachHang": "thanhtrt",
+      "tenKhachHang": "Ngọc Thạch",
+      "loaiKhachHang": "2",
+      "ngaySinh": "2020-07-06T17:00:00.000Z",
+      "gioiTinh": "nam",
+      "soCmnd": "4",
+      "soDienThoai": "4",
+      "email": "4",
+      "diaChi": "",
+      "id": 5
+    },
+    {
+      "maKhachHang": "Kh-4567",
+      "tenKhachHang": "Hải Hà",
+      "loaiKhachHang": {
+        "id": "1",
+        "name": "Gold"
+      },
+      "ngaySinh": "2020-07-20T17:00:00.000Z",
+      "gioiTinh": "nu",
+      "soCmnd": "thanh",
+      "soDienThoai": "1235",
+      "email": "888",
+      "diaChi": "",
+      "id": 9
+    },
+    {
+      "maKhachHang": "789",
+      "tenKhachHang": "5465",
+      "loaiKhachHang": {
+        "id": "2",
+        "name": "Silver"
+      },
+      "ngaySinh": "46546",
+      "gioiTinh": "nam",
+      "soCmnd": "213215646",
+      "soDienThoai": "248654654",
+      "email": "hhlkouoi",
+      "diaChi": "",
+      "id": 10
+    },
+    {
+      "maKhachHang": "gh",
+      "tenKhachHang": "g",
+      "loaiKhachHang": "2",
+      "ngaySinh": "2020-07-14T17:00:00.000Z",
+      "gioiTinh": "nu",
+      "soCmnd": "hjg",
+      "soDienThoai": "kj",
+      "email": "g",
+      "diaChi": "hg",
+      "id": 19
+    },
+    {
+      "maKhachHang": "kjhkjh",
+      "tenKhachHang": "kjkjhkjh",
+      "loaiKhachHang": "2",
+      "ngaySinh": "2020-07-14T17:00:00.000Z",
+      "gioiTinh": "nam",
+      "soCmnd": "kjhkjh",
+      "soDienThoai": "kjhkjh",
+      "email": "kjhkjh@gmail.com",
+      "diaChi": "kjhkjh",
+      "id": 20
+    },
+    {
+      "maKhachHang": "kjhkjh",
+      "tenKhachHang": "kjkjhkjh",
+      "loaiKhachHang": "2",
+      "ngaySinh": "2020-07-21T17:00:00.000Z",
+      "gioiTinh": "nam",
+      "soCmnd": "kjhkjh",
+      "soDienThoai": "kjhkjh",
+      "email": "kjhkjh@gmail.com",
+      "diaChi": "kjhkjh",
+      "id": 21
+    },
+    {
+      "maKhachHang": "kjhkjh",
+      "tenKhachHang": "kjkjhkjh",
+      "loaiKhachHang": "1",
+      "ngaySinh": "2020-07-08T17:00:00.000Z",
+      "gioiTinh": "nam",
+      "soCmnd": "kjhkjh",
+      "soDienThoai": "kjhkjh",
+      "email": "kjhkjh@gmail.com",
+      "diaChi": "kjhkjh",
+      "id": 22
+    },
+    {
+      "maKhachHang": "KH-0002",
+      "tenKhachHang": "Ha haha",
+      "loaiKhachHang": {
+        "id": "3",
+        "name": "Member"
+      },
+      "ngaySinh": "1321",
+      "gioiTinh": "nam",
+      "soCmnd": "kjl",
+      "soDienThoai": "lkjlkj",
+      "email": "thantrt@gmail.com",
+      "diaChi": "213213",
+      "id": 29
+    },
+    {
+      "maKhachHang": "Hiền",
+      "tenKhachHang": "Hiền ",
+      "ngaySinh": "132131",
+      "gioiTinh": "nu",
+      "soCmnd": "32132132",
+      "soDienThoai": "32132132",
+      "email": "tjhjhlkh@gmail.com",
+      "diaChi": "1321321",
+      "id": 30,
+      "loaiKhachHang": "1"
+    },
+    {
+      "maKhachHang": "Hiền",
+      "tenKhachHang": "Hiền ",
+      "loaiKhachHang": {
+        "id": 3,
+        "ten": "Member",
+        "mota": "mới vào"
+      },
+      "ngaySinh": "132131",
+      "gioiTinh": "nu",
+      "soCmnd": "32132132",
+      "soDienThoai": "32132132",
+      "email": "tjhjhlkh@gmail.com",
+      "diaChi": "1321321",
+      "id": 31
+    },
+    {
+      "maKhachHang": "Hiền",
+      "tenKhachHang": "Hiền ",
+      "ngaySinh": "132131",
+      "gioiTinh": "nu",
+      "soCmnd": "32132132",
+      "soDienThoai": "32132132",
+      "email": "tjhjhlkh@gmail.com",
+      "diaChi": "1321321",
+      "id": 32
+    },
+    {
+      "maKhachHang": "Hiền",
+      "tenKhachHang": "Hiền ",
+      "loaiKhachHang": "2",
+      "ngaySinh": "2020-07-30T17:00:00.000Z",
+      "gioiTinh": "nam",
+      "soCmnd": "32132132",
+      "soDienThoai": "32132132",
+      "email": "tjhjhlkh@gmail.com",
+      "diaChi": "fghfghf",
+      "id": 33
+    },
+    {
+      "maKhachHang": "sfsdf",
+      "tenKhachHang": "heo eho",
+      "loaiKhachHang": {
+        "id": 3,
+        "ten": "Member",
+        "mota": "mới vào"
+      },
+      "ngaySinh": "2020-07-07T17:00:00.000Z",
+      "gioiTinh": "nam",
+      "soCmnd": "ẻwrwe",
+      "soDienThoai": "454",
+      "email": "lklkjlkjl@gmail.cp",
+      "diaChi": "54654",
+      "id": 37
+    },
+    {
+      "maKhachHang": "ngọc châu",
+      "tenKhachHang": "Châu luyét",
+      "loaiKhachHang": {
+        "id": 2,
+        "ten": "Silver",
+        "mota": "Bạc"
+      },
+      "ngaySinh": "2020-07-13T17:00:00.000Z",
+      "gioiTinh": "nam",
+      "soCmnd": "jkhj",
+      "soDienThoai": "kjhkjh",
+      "email": "jklkjlkj@gmail.com",
+      "diaChi": "kjhkj",
+      "id": 39
+    },
+    {
+      "maKhachHang": "431231",
+      "tenKhachHang": "thanhthnah",
+      "loaiKhachHang": {
+        "id": 2,
+        "ten": "Silver",
+        "mota": "Bạc"
+      },
+      "ngaySinh": "2020-07-27T17:00:00.000Z",
+      "gioiTinh": "nam",
+      "soCmnd": "4543",
+      "soDienThoai": "21321",
+      "email": "kjlkhlk@gmail.com",
+      "diaChi": "2131",
+      "id": 41
+    },
+    {
+      "maKhachHang": "hhkjhkj",
+      "tenKhachHang": "kjhkjhkj",
+      "loaiKhachHang": {
+        "id": 1,
+        "ten": "Gold",
+        "mota": "vàng"
+      },
+      "ngaySinh": "2020-07-07T17:00:00.000Z",
+      "gioiTinh": "nu",
+      "soCmnd": "513",
+      "soDienThoai": "23132",
+      "email": "kjljlk@gmial.com",
+      "diaChi": "23132",
+      "id": 42
+    },
+    {
+      "maKhachHang": "wẻwẻ",
+      "tenKhachHang": "ẻtẻt",
+      "loaiKhachHang": {
+        "id": 4,
+        "ten": "Platinium",
+        "mota": "kim cương"
+      },
+      "ngaySinh": "2020-07-04T17:00:00.000Z",
+      "gioiTinh": "nam",
+      "soCmnd": "hkjhkh",
+      "soDienThoai": "kjghkjh",
+      "email": "jlkjlkjhlk@gmail.com",
+      "diaChi": "kjh",
+      "id": 43
+    }
+  ],
+  "loaiKhachList": [
+    {
+      "id": 1,
+      "ten": "Gold",
+      "mota": "vàng"
+    },
+    {
+      "id": 2,
+      "ten": "Silver",
+      "mota": "Bạc"
+    },
+    {
+      "id": 3,
+      "ten": "Member",
+      "mota": "mới vào"
+    },
+    {
+      "id": 4,
+      "ten": "Platinium",
+      "mota": "kim cương"
+    }
+  ]
+}

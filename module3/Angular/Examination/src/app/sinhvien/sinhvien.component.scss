@@ -1,0 +1,37 @@
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 15px;
+  width: 100%;
+
+}
+
+td, th {
+  width: 25%;
+  text-align: center;
+}
+input{
+  border: #0f6674 solid 1px;
+  background-color: white;
+}
+.mat-sort-header{
+  color: darkblue;
+  font-size: 18px;
+}
+.mat-column-STT{
+  width: 8%;
+}
+.mat-column-tenSinhVien{
+  width: 15%;
+}
+.mat-column-maSinhVien{
+  width: 5%;
+}
+.mat-column-tenNhom{
+  width: 10%;
+}
+.mat-column-gvHuongDan{
+  width: 15%;
+}

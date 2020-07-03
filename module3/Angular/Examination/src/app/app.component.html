@@ -1,0 +1,99 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+      integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+<div class="header">
+  <div class="menu-bar">
+    <div class="container relative">
+      <div class="logo">
+        <div class="toggle">
+          <div class='toggle-menu'>
+            <div class="toggle-icon"></div>
+          </div>
+        </div>
+        <a href="#"><img src="https://www.audio4fun.com/player/images/audio4fun-logo.jpg" alt="AVSOFT" /></a>
+      </div>
+
+
+      <div class="main-menu">
+        <input placeholder="Search..." />
+        <ul class="nav">
+          <li class="main-sub">
+            <a >Sinh vien</a>
+            <ul class="sub to-right list-link dark-link small-font">
+              <li><a  [routerLink]="['sinhViens']">Danh sách Sinh viên</a>
+               </li>
+              <li> <a  [routerLink]="['sinhvien-create']">Thêm mới Sinh viên</a></li>
+
+            </ul>
+          </li>
+          <li class="main-sub">
+            <a href="#">Reviews</a>
+            <ul class="sub to-right list-link dark-link small-font">
+              <li><a href="#">Awards</a></li>
+              <li><a href="#">Editor Reviews</a></li>
+              <li><a href="#">User Reviews</a></li>
+            </ul>
+          </li>
+          <li class="main-sub"><a href="#">Partners</a>
+            <ul class="sub to-right list-link dark-link small-font">
+              <li class="child-sub"><a href="#">Partnership</a>
+                <ul class="sub to-right">
+                  <li><a href="#">Hall of Frame</a></li>
+                  <li><a href="#">Affiliate Program</a></li>
+                  <li><a href="#">Contact us</a></li>
+                </ul>
+              </li>
+              <li><a href="#">OEM</a></li>
+              <li><a href="#">Online Advertising</a></li>
+              <li><a href="#">Link Exchange</a></li>
+            </ul>
+          </li>
+          <li class="main-sub"><a href="#">News</a>
+            <ul class="sub to-right list-link dark-link small-font">
+              <li><a href="#">Latest News</a></li>
+              <li><a href="#">Press Center</a></li>
+              <li><a href="#">Newsletter</a></li>
+            </ul>
+          </li>
+          <li class="main-sub"><a href="#">Support</a>
+            <ul class="sub to-right list-link dark-link small-font">
+              <li class="child-sub"><a href="#">Resources</a>
+                <ul class="sub to-left">
+                  <li><a href="#">Ordering Process</a></li>
+                  <li><a href="#">Multiple Licenses</a></li>
+                  <li><a href="#">Edition Upgrade</a></li>
+                  <li><a href="#">FAQs</a></li>
+                  <li><a href="#">Online Tutorials</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Support Center</a></li>
+              <li><a href="#">Get Help</a></li>
+            </ul>
+          </li>
+          <li class="main-sub"><a href="#">Community</a>
+            <ul class="sub to-left list-link dark-link small-font">
+              <li><a href="#">Funny Ringtones</a></li>
+              <li><a href="#">Funny Sounds</a></li>
+              <li><a href="#">Funny Audio Clips</a></li>
+              <li><a href="#">Funny Song Parodies</a></li>
+              <li><a href="#">Funny Morphed Songs</a></li>
+              <li><a href="#">Funny Remix Songs</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
+  <div class="row">
+    <div class="col col-md-1">
+    </div>
+    <div class="col col-md-10">
+      <router-outlet></router-outlet>
+
+    </div>
+    <div class="col col-md-1">
+    </div>
+  </div>
+
+

@@ -1,0 +1,245 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+      integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+<h2 class="text-center text-success">Thêm mới khách hàng</h2>
+
+<div class="container">
+  <form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <h4>Mã Khách hàng:</h4>
+      <div class="input-group input-group-icon">
+        <input formControlName="maKhachHang" type="text" placeholder="KH-XXXX"/>
+        <div class="input-icon"><i class="fa fa-eye"></i></div>
+      </div>
+    </div>
+    <div class="text-error">
+      <div *ngIf="customerForm.get('maKhachHang').hasError('required') && customerForm.get('maKhachHang').touched">
+        Mã khách hàng không được để trống
+      </div>
+      <div *ngIf="customerForm.hasError('maKhachHangHasExist','maKhachHang')">
+        Mã khách hàng đã tồn tại
+      </div>
+    </div>
+    <div class="row">
+      <h4>Tên Khách hàng:</h4>
+      <div class="input-group input-group-icon">
+        <input formControlName="tenKhachHang" type="text" placeholder="Tên khách hàng"/>
+        <div class="input-icon"><i class="fa fa-user"></i></div>
+      </div>
+    </div>
+    <div class="text-error">
+      <div *ngIf="customerForm.get('tenKhachHang').hasError('required') && customerForm.get('tenKhachHang').touched">
+        Tên khách hàng không được để trống
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-half">
+        <h4>Loại Khách hàng:</h4>
+        <div class="input-group">
+          <select formControlName="loaiKhachHang">
+            <option *ngFor="let loai of loaiKhach" value="{{loai.id}}">{{loai.ten}}</option>
+
+          </select>
+        </div>
+        <div class="text-error">
+          <div
+            *ngIf="customerForm.get('loaiKhachHang').hasError('required') && customerForm.get('loaiKhachHang').touched">
+            Vui lòng chọn loại khách hàng
+          </div>
+        </div>
+      </div>
+      <div class="col-half">
+        <h4>Giới tính</h4>
+        <div class="input-group">
+          <input formControlName="gioiTinh" id="gender-male" type="radio" name="gioiTinh" value="nam"/>
+          <label for="gender-male">Nam</label>
+          <input formControlName="gioiTinh" id="gender-female" type="radio" name="gioiTinh" value="nu"/>
+          <label for="gender-female">Nữ</label>
+        </div>
+        <div class="text-error">
+          <div *ngIf="customerForm.get('gioiTinh').hasError('required') && customerForm.get('ngaySinh').touched">
+            Vui lòng chọn giới tính
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-birthday">
+        <h4>Ngày sinh</h4>
+        <div class="input-group input-group-icon">
+          <input id="ngaySinh" formControlName="ngaySinh" type="text" placeholder="dd/mm/yyyy" matInput
+                 [matDatepicker]="picker"/>
+          <div class="input-icon"><i class="fa fa-calendar-alt"></i></div>
+        </div>
+        <div class="text-error">
+          <div *ngIf="customerForm.get('ngaySinh').invalid && customerForm.get('ngaySinh').touched">
+            Vui lòng nhập đúng định dạng
+          </div>
+        </div>
+      </div>
+      <div class="col-1">
+        <h4>.</h4>
+        <div class="input-group input-group-icon">
+          <div>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </div>
+        </div>
+
+
+      </div>
+    </div>
+    <div class="row">
+      <h4>Email</h4>
+      <div class="input-group input-group-icon">
+        <input formControlName="email" type="email" placeholder="Email Adress"/>
+        <div class="input-icon"><i class="fa fa-envelope"></i></div>
+      </div>
+    </div>
+    <div class="text-error">
+      <div
+        *ngIf="customerForm.get('email').hasError('pattern') && customerForm.get('email').touched">
+        Không đúng cú pháp email!
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-half">
+        <h4>CMND</h4>
+        <div class="input-group input-group-icon">
+          <input formControlName="soCmnd" type="text" placeholder="123456789"/>
+          <div class="input-icon"><i class="fa fa-id-card"></i></div>
+        </div>
+      </div>
+      <div class="col-half">
+        <h4>Số điện thoại</h4>
+        <div class="input-group input-group-icon">
+          <input formControlName="soDienThoai" type="text" placeholder="090123456"/>
+          <div class="input-icon"><i class="fa fa-phone"></i></div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <h4>Địa chỉ</h4>
+      <div class="input-group input-group-icon">
+        <input formControlName="diaChi" type="email" placeholder="Home Adress"/>
+        <div class="input-icon"><i class="fa fa-flag"></i></div>
+      </div>
+    </div>
+    <div class="row">
+      <button type="submit" class="btn btn-success">Thêm mới</button>
+<!--      <div class=" text alert-success">-->
+<!--        {{message}}-->
+<!--      </div>-->
+    </div>
+
+  </form>
+
+</div>
+
+<!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"-->
+<!--      integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">-->
+
+<!--<div class="container">-->
+<!--  <form>-->
+<!--    <div class="row">-->
+<!--      <h4>Mã Khách hàng:</h4>-->
+<!--      <div class="input-group input-group-icon">-->
+<!--        <input type="text" placeholder="KH-XXXX"/>-->
+<!--        <div class="input-icon"><i class="fa fa-eye"></i></div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="row">-->
+<!--      <h4>Tên Khách hàng:</h4>-->
+<!--      <div class="input-group input-group-icon">-->
+<!--        <input type="text" placeholder="Tên khách hàng"/>-->
+<!--        <div class="input-icon"><i class="fa fa-user"></i></div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="row">-->
+<!--      <h4>Account</h4>-->
+<!--      <div class="input-group input-group-icon">-->
+<!--        <input type="text" placeholder="Full Name"/>-->
+<!--        <div class="input-icon"><i class="fa fa-user"></i></div>-->
+<!--      </div>-->
+<!--      <div class="input-group input-group-icon">-->
+<!--        <input type="email" placeholder="Email Adress"/>-->
+<!--        <div class="input-icon"><i class="fa fa-envelope"></i></div>-->
+<!--      </div>-->
+<!--      <div class="input-group input-group-icon">-->
+<!--        <input type="password" placeholder="Password"/>-->
+<!--        <div class="input-icon"><i class="fa fa-key"></i></div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="row">-->
+<!--      <h4>Ngày sinh</h4>-->
+<!--      <div class="input-group input-group-icon">-->
+<!--        <input type="text" placeholder="dd/mm/yyyy"/>-->
+<!--        <div class="input-icon"><i class="fa fa-user"></i></div>-->
+<!--      </div>-->
+<!--     -->
+<!--    </div>-->
+<!--    <div class="row">-->
+<!--      <div class="col-half">-->
+<!--        <h4>Date of Birth</h4>-->
+<!--        <div class="input-group">-->
+<!--          <div class="col-third">-->
+<!--            <input type="text" placeholder="DD"/>-->
+<!--          </div>-->
+<!--          <div class="col-third">-->
+<!--            <input type="text" placeholder="MM"/>-->
+<!--          </div>-->
+<!--          <div class="col-third">-->
+<!--            <input type="text" placeholder="YYYY"/>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="col-half">-->
+<!--        <h4>Gender</h4>-->
+<!--        <div class="input-group">-->
+<!--          <input id="gender-male" type="radio" name="gender" value="male"/>-->
+<!--          <label for="gender-male">Male</label>-->
+<!--          <input id="gender-female" type="radio" name="gender" value="female"/>-->
+<!--          <label for="gender-female">Female</label>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="row">-->
+<!--      <h4>Payment Details</h4>-->
+<!--      <div class="input-group">-->
+<!--        <input id="payment-method-card" type="radio" name="payment-method" value="card" checked="true"/>-->
+<!--        <label for="payment-method-card"><span><i class="fa fa-cc-visa"></i>Credit Card</span></label>-->
+<!--        <input id="payment-method-paypal" type="radio" name="payment-method" value="paypal"/>-->
+<!--        <label for="payment-method-paypal"> <span><i class="fa fa-cc-paypal"></i>Paypal</span></label>-->
+<!--      </div>-->
+<!--      <div class="input-group input-group-icon">-->
+<!--        <input type="text" placeholder="Card Number"/>-->
+<!--        <div class="input-icon"><i class="fa fa-credit-card"></i></div>-->
+<!--      </div>-->
+<!--      <div class="col-half">-->
+<!--        <div class="input-group input-group-icon">-->
+<!--          <input type="text" placeholder="Card CVC"/>-->
+<!--          <div class="input-icon"><i class="fa fa-user"></i></div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="col-half">-->
+<!--        <div class="input-group">-->
+<!--          <select>-->
+<!--            <option>01 Jan</option>-->
+<!--            <option>02 Jan</option>-->
+<!--          </select>-->
+<!--          <select>-->
+<!--            <option>2015</option>-->
+<!--            <option>2016</option>-->
+<!--          </select>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="row">-->
+<!--      <h4>Terms and Conditions</h4>-->
+<!--      <div class="input-group">-->
+<!--        <input id="terms" type="checkbox"/>-->
+<!--        <label for="terms">I accept the terms and conditions for signing up to this service, and hereby confirm I have-->
+<!--          read the privacy policy.</label>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </form>-->
+<!--</div>-->

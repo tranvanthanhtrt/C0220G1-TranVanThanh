@@ -1,0 +1,21 @@
+.rating-bar {
+  display: flex;
+}
+.rating-unit {
+  width: 50px;
+  height: 50px;
+  margin-right: 5px;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  content:url(https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Star_empty.svg/589px-Star_empty.svg.png);
+
+}
+.active {
+  content:url(https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Gold_Star.svg/1200px-Gold_Star.svg.png);
+
+}

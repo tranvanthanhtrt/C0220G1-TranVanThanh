@@ -1,0 +1,124 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+      integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+<h1 class="text-center text-success">Cập nhật thông tin sinh viên</h1>
+
+<div class="container">
+    <form [formGroup]="sinhVienForm" (ngSubmit)="onSubmit()">
+        <div class="row" style="display: none">
+            <h4>Mã sinh viên:</h4>
+            <div class="input-group input-group-icon">
+                <input formControlName="id" type="text"/>
+                <div class="input-icon"><i class="fa fa-eye"></i></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <h4>Tên Sinh Viên:</h4>
+            <div class="input-group input-group-icon">
+                <input formControlName="ten_sinh_vien" type="text" placeholder="Họ và tên"/>
+                <div class="input-icon"><i class="fa fa-user"></i></div>
+            </div>
+        </div>
+        <div class="text-error">
+            <div *ngIf="sinhVienForm.get('ten_sinh_vien').hasError('required') && sinhVienForm.get('ten_sinh_vien').touched">
+                Tên sinh viên không được để trống
+            </div>
+            <div *ngIf="sinhVienForm.get('ten_sinh_vien').hasError('pattern') && sinhVienForm.get('ten_sinh_vien').touched">
+                Tên sinh viên không được chứa ký tự đặc biệt
+            </div>
+        </div>
+        <div class="row">
+            <h4>Tên nhóm:</h4>
+            <div class="input-group input-group-icon">
+                <input formControlName="ten_nhom" type="text" placeholder="Tên nhóm"/>
+                <div class="input-icon"><i class="fa fa-user"></i></div>
+            </div>
+        </div>
+
+        <div class="text-error">
+            <div *ngIf="sinhVienForm.get('ten_nhom').hasError('required') && sinhVienForm.get('ten_nhom').touched">
+                Tên nhóm không được để trống
+            </div>
+            <div *ngIf="sinhVienForm.get('ten_nhom').hasError('pattern') && sinhVienForm.get('ten_nhom').touched">
+                Tên nhóm là "Nhóm 1" họăc "Nhóm 2" hoặc "Nhóm 3"
+            </div>
+        </div>
+        <div class="row">
+            <h4>Tên đề tài:</h4>
+            <div class="input-group input-group-icon">
+                <input formControlName="ten_de_tai" type="text" placeholder="Tên nhóm"/>
+                <div class="input-icon"><i class="fa fa-user"></i></div>
+            </div>
+        </div>
+
+        <div class="text-error">
+            <div *ngIf="sinhVienForm.get('ten_de_tai').hasError('required') && sinhVienForm.get('ten_de_tai').touched">
+                Tên nhóm không được để trống
+            </div>
+        </div>
+            <div class="row">
+                <h4>Giáo viên hướng dẫn</h4>
+                <div class="input-group">
+
+                              <select formControlName="giao_vien_huong_dan">
+                                <option value="Hoàng Thanh Sơn">Hoàng Thanh Sơn</option>
+                                <option value="Trần Hoàng Nam">Trần Hoàng Nam</option>
+                                <option value="Doãn Bá Hùng">Doãn Bá Hùng</option>
+                              </select>
+                </div>
+                <div class="text-error">
+                    <div
+                            *ngIf="sinhVienForm.get('giao_vien_huong_dan').hasError('required') && sinhVienForm.get('giao_vien_huong_dan').touched">
+                        Chọn giáo viên hướng dẫn
+                    </div>
+                </div>
+        </div>
+
+
+        <div class="row">
+            <h4>Email</h4>
+            <div class="input-group input-group-icon">
+                <input formControlName="email" type="email" placeholder="Email Adress"/>
+                <div class="input-icon"><i class="fa fa-envelope"></i></div>
+            </div>
+        </div>
+      <div class="text-error">
+        <div *ngIf="sinhVienForm.get('email').hasError('required') && sinhVienForm.get('email').touched">
+          Email không được để trống
+        </div>
+          <div *ngIf="sinhVienForm.get('email').hasError('pattern') && sinhVienForm.get('email').touched">
+              Email định dạng abcde@gmail.com
+          </div>
+      </div>
+        <div class="row">
+            <h4>Số điện thoại</h4>
+            <div class="input-group input-group-icon">
+                <input formControlName="so_dien_thoai" type="email" placeholder="Email Adress"/>
+                <div class="input-icon"><i class="fa fa-envelope"></i></div>
+            </div>
+        </div>
+      <div class="text-error">
+        <div *ngIf="sinhVienForm.get('so_dien_thoai').hasError('required') && sinhVienForm.get('so_dien_thoai').touched">
+         Số điện thoại không được để trống
+        </div>
+          <div *ngIf="sinhVienForm.get('so_dien_thoai').hasError('pattern') && sinhVienForm.get('so_dien_thoai').touched">
+              Số điện thoại 9 hoặc 12 chữ số
+          </div>
+      </div>
+
+
+        <div class="row">
+            <div class="col-half"><button type="submit" class="btn btn-success">Cập nhật</button>
+            </div>
+            <div class="col-half"><button (click)="troVe()" class="btn btn-danger">Hủy bỏ</button>
+            </div>
+
+            <div class=" text alert-success">
+                {{message}}
+            </div>
+        </div>
+
+    </form>
+
+</div>
+
