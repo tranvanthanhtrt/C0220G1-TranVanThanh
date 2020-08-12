@@ -32,13 +32,14 @@ public class RestFullController {
     @Autowired
     CategoryService categoryService;
 
+    @CrossOrigin(origins = "*")
     @RequestMapping(value = "/rest-blogs", method = RequestMethod.GET)
     public ResponseEntity<Page<Blog>> getAllListBlog(Pageable pageable) {
         Page<Blog> blogs = blogService.findAll(pageable);
         return new ResponseEntity<>(blogs, HttpStatus.OK);
     }
 
-//    @RequestMapping(value = "/rest-blog/{id}", method = RequestMethod.GET, produces = { "application/xml", "text/xml" })
+    //    @RequestMapping(value = "/rest-blog/{id}", method = RequestMethod.GET, produces = { "application/xml", "text/xml" })
     @RequestMapping(value = "/rest-blog/{id}", method = RequestMethod.GET)
 
     public ResponseEntity<Blog> getBlog(@PathVariable Long id) {
@@ -58,10 +59,11 @@ public class RestFullController {
         headers.setLocation(uriComponentsBuilder.path("/rest-blog/{id}").buildAndExpand(blog.getId()).toUri());
         return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
     }
-    @RequestMapping(value = "/rest-updateblog/{id}",method = RequestMethod.PUT)
-    public ResponseEntity<Blog> updateBlog(@PathVariable("id") long id, @RequestBody Blog blog){
+
+    @RequestMapping(value = "/rest-updateblog/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<Blog> updateBlog(@PathVariable("id") long id, @RequestBody Blog blog) {
         System.out.println("Updating blog " + blog.getName());
-        Optional<Blog> curblog=blogService.findById(id);
+        Optional<Blog> curblog = blogService.findById(id);
         if (!curblog.isPresent()) {
             System.out.println("Customer with id " + id + " not found");
             return new ResponseEntity<Blog>(HttpStatus.NOT_FOUND);
@@ -71,9 +73,10 @@ public class RestFullController {
         curblog.get().setContention(blog.getContention());
         curblog.get().setWriteOfDay(blog.getWriteOfDay());
         blogService.save(curblog.get());
-return new ResponseEntity<Blog>(curblog.get(),HttpStatus.OK);
+        return new ResponseEntity<Blog>(curblog.get(), HttpStatus.OK);
 
     }
+
     @RequestMapping(value = "/rest-blogs/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Blog> deleteCustomer(@PathVariable("id") long id) {
         System.out.println("Fetching & Deleting Blog with id " + id);

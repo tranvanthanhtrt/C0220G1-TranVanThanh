@@ -32,7 +32,7 @@ export class SinhvienComponent implements OnInit {
     this.sinhVienService.findAll().subscribe(
       next => {
         this.sinhViens = next;
-        console.log(this.sinhViens);
+        // console.log(this.sinhViens);
         this.dataSource = new MatTableDataSource(this.sinhViens);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
